@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://stahe.github.io/pt-struts1x-dec-2003/sitemap.xml
