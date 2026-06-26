@@ -57,6 +57,8 @@
     
       <link rel="stylesheet" href="stylesheets/focus.css">
     
+      <link rel="stylesheet" href="stylesheets/bidi.css">
+    
     <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -303,14 +305,14 @@
   
   
     <li class="md-nav__item">
-      <a href="informacoes-gerais.html" class="md-nav__link">
+      <a href="generalidades.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    1. Informações gerais
+    1. Generalidades
   
 
     
@@ -330,14 +332,14 @@
   
   
     <li class="md-nav__item">
-      <a href="a-aplicacao-strutspersonne.html" class="md-nav__link">
+      <a href="a-aplicacao-struts-pessoa.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    2. A aplicação strutspersonne
+    2. A aplicação Struts «pessoa»
   
 
     
@@ -471,10 +473,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#51-declaracao-de-restricoes-de-integridade" class="md-nav__link">
+  <a href="#51-declaracao-das-restricoes-de-integridade" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5.1. Declaração de restrições de integridade
+        5.1. Declaração das restrições de integridade
       
     </span>
   </a>
@@ -482,10 +484,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#52-escrever-restricoes-de-integridade-para-formularios-dinamicos" class="md-nav__link">
+  <a href="#52-definicao-das-restricoes-de-integridade-dos-formularios-dinamicos" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5.2. Escrever restrições de integridade para formulários dinâmicos
+        5.2. Definição das restrições de integridade dos formulários dinâmicos
       
     </span>
   </a>
@@ -504,15 +506,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#54-implementacao-e-teste-da-aplicacao-strutspersonne2" class="md-nav__link">
+  <a href="#54-implantacao-e-teste-da-aplicacao-strutspersonne2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5.4. Implementação e teste da aplicação strutspersonne2
+        5.4. Implantação e teste da aplicação strutspersonne2
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="5.4. Implementação e teste da aplicação strutspersonne2">
+    <nav class="md-nav" aria-label="5.4. Implantação e teste da aplicação strutspersonne2">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -527,10 +529,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#542-as-visualizacoes" class="md-nav__link">
+  <a href="#542-as-vistas" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5.4.2. As Visualizações
+        5.4.2. As vistas
       
     </span>
   </a>
@@ -541,7 +543,7 @@
   <a href="#543-a-pasta-web-inf" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5.4.3. A pasta WEB-INF
+        5.4.3. A pasta «WEB-INF»
       
     </span>
   </a>
@@ -671,14 +673,14 @@
   
   
     <li class="md-nav__item">
-      <a href="trabalhar-com-uma-fonte-de-dados.html" class="md-nav__link">
+      <a href="exploracao-de-uma-fonte-de-dados.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    9. Trabalhar com uma fonte de dados
+    9. Exploração de uma fonte de dados
   
 
     
@@ -736,16 +738,16 @@
 
 
 <h1 id="5-formularios-dinamicos-com-restricoes-de-integridade">5. <span style="color: #365f91">Formulários dinâmicos com restrições de integridade</span></h1>
-<p>Vamos agora desenvolver uma nova aplicação chamada <strong>strutspersonne2</strong> utilizando </p>
+<p>Vamos agora desenvolver uma nova aplicação chamada <strong>strutspersonne2</strong> que utiliza </p>
 <ul>
-  <li>um formulário dinâmico como no <b>strutspersonne1</b>
+  <li>um formulário dinâmico, tal como no <b>strutspersonne1</b>
   </li>
-  <li>um ficheiro que declara as restrições de integridade a serem verificadas pelos campos deste formulário dinâmico
+  <li>um ficheiro de declaração de restrições de integridade a verificar pelos campos deste formulário dinâmico
   </li>
 </ul>
 
-<h2 id="51-declaracao-de-restricoes-de-integridade">5.1. <span style="color: #4f81bd">Declaração de restrições de integridade</span></h2>
-<p>A classe utilizada para armazenar os valores de nome e idade na aplicação <strong>strutspersonne1</strong> foi declarada da seguinte forma:</p>
+<h2 id="51-declaracao-das-restricoes-de-integridade">5.1. <span style="color: #4f81bd">Declaração das restrições de integridade</span></h2>
+<p>A classe utilizada para armazenar os valores «nome» e «idade» da aplicação <strong>strutspersonne1</strong> foi declarada da seguinte forma:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>    <span class="p">&lt;</span><span class="nt">form-beans</span><span class="p">&gt;</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>        <span class="p">&lt;</span><span class="nt">form-bean</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;frmPersonne&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;istia.st.struts.personne.PersonneDynaForm&quot;</span><span class="p">&gt;</span>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>            <span class="p">&lt;</span><span class="nt">form-property</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;nom&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;java.lang.String&quot;</span> <span class="na">initial</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">/&gt;</span>
@@ -753,16 +755,16 @@
 <a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>        <span class="p">&lt;/</span><span class="nt">form-bean</span><span class="p">&gt;</span>            
 <a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    <span class="p">&lt;/</span><span class="nt">form-beans</span><span class="p">&gt;</span>
 </code></pre></div>
-<p>Tivemos de escrever a classe <strong>PersonneDynaForm</strong> para fornecer um método validate capaz de verificar se os valores de nome e idade no formulário dinâmico eram válidos. Havia dois tipos de verificações a realizar:</p>
+<p>Tivemos de criar a classe <strong>PersonneDynaForm</strong> para dispor de um método de validação capaz de verificar se os valores «nome» e «idade» do formulário dinâmico eram válidos. As verificações a realizar eram de dois tipos:</p>
 <ul>
-  <li>ambos os campos não podiam estar vazios
+  <li>os dois campos não podiam estar vazios
   </li>
-  <li>o campo da idade tinha de corresponder à máscara (expressão regular) <b>\s*\d+\s*</b>
+  <li>o campo «idade» devia verificar o máscara (expressão regular) <b>\s*\d+\s*</b>
   </li>
 </ul>
 
-<p>Estas duas validações estão entre as que o ambiente <strong>StrutsValidator</strong> pode realizar. Este ambiente é fornecido com o Struts e inclui várias classes que se encontram nos ficheiros <strong>commons-validator.jar</strong> e <strong>jakarta-oro.jar</strong>. Se seguiu o procedimento, explicado no início deste documento, para instalar as bibliotecas Struts no Tomcat, estas bibliotecas já estão disponíveis no Tomcat. Certifique-se de que também estão disponíveis no JBuilder. Isto também foi explicado no início deste documento.</p>
-<p>A nova declaração do formulário no <strong>struts-config.xml</strong> passa a ser a seguinte:</p>
+<p>Estas duas verificações fazem parte das verificações que o ambiente <strong>StrutsValidator</strong> pode efetuar. Este ambiente vem com o Struts e inclui várias classes que se encontram em <strong>commons-validator.jar</strong> e <strong>jakarta-oro.jar</strong>. Se seguiu o procedimento, explicado no início deste documento, para a instalação das bibliotecas do Struts no Tomcat, essas bibliotecas já estão disponíveis no Tomcat. Certifique-se de que também estão disponíveis no JBuilder. Isto também foi explicado no início deste documento.</p>
+<p>A nova declaração do formulário no ficheiro <strong>struts-config.xml</strong> passa a ser a seguinte:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>    <span class="p">&lt;</span><span class="nt">form-beans</span><span class="p">&gt;</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>        <span class="p">&lt;</span><span class="nt">form-bean</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;frmPersonne&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;org.apache.struts.validator.DynaValidatorForm&quot;</span><span class="p">&gt;</span>
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>            <span class="p">&lt;</span><span class="nt">form-property</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;nom&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;java.lang.String&quot;</span> <span class="na">initial</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">/&gt;</span>
@@ -770,46 +772,46 @@
 <a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>        <span class="p">&lt;/</span><span class="nt">form-bean</span><span class="p">&gt;</span>            
 <a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>    <span class="p">&lt;/</span><span class="nt">form-beans</span><span class="p">&gt;</span>
 </code></pre></div>
-<p>Portanto, há muito pouca diferença. A classe associada ao formulário dinâmico é agora uma classe StrutsValidator predefinida: <strong>org.apache.struts.validator.DynaValidatorForm</strong>. O programador já não precisa de escrever uma classe. Em vez disso, especifica as restrições de integridade que o formulário deve verificar num ficheiro XML separado. O controlador Struts deve conhecer o nome deste ficheiro. Para tal, surge uma nova secção de configuração no ficheiro <strong>struts-config.xml</strong>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="w">    </span><span class="nt">&lt;plug-in</span><span class="w"> </span><span class="na">className=</span><span class="s">&quot;org.apache.struts.validator.ValidatorPlugIn&quot;</span><span class="nt">&gt;</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">        </span><span class="nt">&lt;set-property</span><span class="w"> </span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">        </span><span class="na">property=</span><span class="s">&quot;pathnames&quot;</span><span class="w"> </span>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">      </span><span class="na">value=</span><span class="s">&quot;/WEB-INF/validator-rules.xml,/WEB-INF/validation.xml&quot;</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="nt">/&gt;</span>
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="nt">&lt;/plug-in&gt;</span>
+<p>Portanto, há muito pouca diferença. A classe associada ao formulário dinâmico é agora uma classe predefinida de StrutsValidator: <strong>org.apache.struts.validator.DynaValidatorForm</strong>. O programador já não precisa de escrever nenhuma classe. Especifica as restrições de integridade que o formulário deve verificar num ficheiro XML separado. O controlador Struts deve conhecer o nome desse ficheiro. Para tal, surge uma nova secção de configuração no ficheiro <strong>struts-config.xml</strong>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>    &lt;plug-in className=&quot;org.apache.struts.validator.ValidatorPlugIn&quot;&gt;
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>        &lt;set-property 
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>        property=&quot;pathnames&quot; 
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>      value=&quot;/WEB-INF/validator-rules.xml,/WEB-INF/validation.xml&quot;
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    /&gt;
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    &lt;/plug-in&gt;
 </code></pre></div>
-<p>A secção <strong>&lt;plug-in&gt;</strong> é utilizada para carregar uma classe externa ao Struts. O seu principal atributo é <strong>classname,</strong> que especifica o nome da classe a ser instanciada. O objeto instanciado poderá necessitar de ser inicializado. Isto é feito utilizando a tag <strong>set-property</strong>, que possui dois atributos:</p>
+<p>A secção <strong>&lt;plug-in&gt;</strong> serve para carregar uma classe externa ao Struts. O seu principal atributo é <strong>classname,</strong> que indica o nome da classe a instanciar. O objeto instanciado pode precisar de ser inicializado. Isto é feito através das tags <strong>set-property,</strong> que têm dois atributos:</p>
 <ul>
-  <li><b>property</b>: o nome da propriedade a ser inicializada
+  <li><b>property</b>: o nome da propriedade a inicializar
   </li>
   <li><b>value</b>: o valor da propriedade
   </li>
 </ul>
 
-<p>Aqui, a classe <strong>DynaValidatorForm</strong> precisa de saber duas informações:</p>
+<p>Neste caso, a classe <strong>DynaValidatorForm</strong> precisa de conhecer duas informações:</p>
 <ul>
-  <li>o ficheiro XML que define as restrições de integridade padrão que a classe pode validar.
+  <li>o ficheiro XML, que define as restrições de integridade padrão que a classe sabe verificar;
   </li>
-  <li>o ficheiro XML que define as restrições de integridade para os vários formulários dinâmicos da aplicação
+  <li>o ficheiro XML, que define as restrições de integridade dos diferentes formulários dinâmicos da aplicação
   </li>
 </ul>
 
-<p>Esta informação é fornecida aqui pela propriedade <strong>pathnames</strong>. O valor desta propriedade é uma lista de ficheiros XML que o validador irá carregar:</p>
+<p>Estas duas informações são aqui fornecidas pela propriedade <strong>pathnames</strong>. O valor desta propriedade é uma lista de ficheiros XML que o validador irá carregar:</p>
 <ul>
-  <li><b>validator-rules.xml </b>é o ficheiro que define as restrições de integridade padrão. Está incluído no Struts. Pode ser encontrado em <b>&lt;struts&gt;\lib </b>juntamente com o seu ficheiro de definição DTD:
+  <li><b>O validator-rules.xml </b>é o ficheiro que define as restrições de integridade padrão. É fornecido com o Struts. Encontra-se em <b>&lt;struts&gt;\lib, </b>acompanhado do seu ficheiro de definição DTD:
   </li>
 </ul>
 
 <p><img src="images/100000000000014B00000021AEFAEF63.png" width="331" height="33" style="width:8.756cm;height:0.873cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/100000000000014B00000021AEFAEF63.png" /></p>
 <ul>
-  <li><b>validation.xml </b>define as restrições de integridade para os vários formulários dinâmicos da aplicação. É criado pelo programador. O seu nome é arbitrário.
+  <li><b>validation.xml </b>define as restrições de integridade dos diferentes formulários dinâmicos da aplicação. É criado pelo programador. O seu nome é livre.
   </li>
 </ul>
 
-<p>Estes dois ficheiros podem ser colocados em qualquer local dentro de WEB-INF. No nosso exemplo, serão colocados diretamente dentro de WEB-INF:</p>
-<p><img src="images/100000000000015D000000950E1C4A7E.png" width="349" height="149" style="width:9.232cm;height:3.941cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/100000000000015D000000950E1C4A7E.png" /></p>
-<h2 id="52-escrever-restricoes-de-integridade-para-formularios-dinamicos">5.2. <span style="color: #4f81bd">Escrever restrições de integridade para formulários dinâmicos</span></h2>
-<p>O ficheiro <strong>validation.xml</strong> conterá as nossas restrições de integridade para os campos nome e idade do formulário <strong>frmPersonne</strong> do tipo <strong>org.apache.struts.validator.DynaValidatorForm</strong>. O seu conteúdo é o seguinte:</p>
+<p>Estes dois ficheiros podem ser colocados em qualquer local abaixo de WEB-INF. No nosso exemplo, serão colocados diretamente abaixo de WEB-INF:</p>
+<p><img src="images/100000000000015D000000950E1C4A7E.png" width="349" height="149" style="width:9.232cm;height:3.942cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/100000000000015D000000950E1C4A7E.png" /></p>
+<h2 id="52-definicao-das-restricoes-de-integridade-dos-formularios-dinamicos">5.2. <span style="color: #4f81bd">Definição das restrições de integridade dos formulários dinâmicos</span></h2>
+<p>O ficheiro <strong>validation.xml</strong> conterá as nossas restrições de integridade para os campos «nome» e «idade» do formulário <strong>frmPersonne,</strong> do tipo <strong>org.apache.struts.validator.DynaValidatorForm</strong>. O seu conteúdo é o seguinte:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="p">&lt;</span><span class="nt">form-validation</span><span class="p">&gt;</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>    <span class="p">&lt;</span><span class="nt">global</span><span class="p">&gt;</span>
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>      <span class="p">&lt;</span><span class="nt">constant</span><span class="p">&gt;</span>
@@ -833,15 +835,15 @@
 <a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a>    <span class="p">&lt;/</span><span class="nt">formset</span><span class="p">&gt;</span>
 <a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="p">&lt;/</span><span class="nt">form-validation</span><span class="p">&gt;</span>    
 </code></pre></div>
-<p>Devem ser seguidas as seguintes regras de escrita:</p>
+<p>As regras de escrita a respeitar são as seguintes:</p>
 <ul>
-  <li>Todas as regras estão contidas dentro de uma tag &lt;<b>form-validation</b>&gt;
+  <li>o conjunto de regras encontra-se numa baliza &lt;<b>form-validation</b>&gt;
   </li>
-  <li>A tag &lt;<b>global</b>&gt; é utilizada para definir informações com âmbito global, ou seja, válidas para todos os formulários, caso existam vários formulários. Aqui, colocámos constantes dentro de &lt;<b>global</b>&gt;. Uma constante é definida pelo seu nome (a tag &lt;<b>constant-name</b>&gt;) e pelo seu valor (a tag &lt;<b>constant-value</b>&gt;). Definimos a constante <b>`entierpositif` </b>com a expressão regular que deve ser verificada para um inteiro positivo: <b>`_^\s*\d+\s*$` </b>(uma sequência de dígitos possivelmente precedida e/ou seguida por espaços).
+  <li>A baliza &lt;<b>global</b>&gt; serve para definir informações de âmbito global, c.a.d. É válida para todos os formulários, caso existam vários. Aqui, colocámos constantes na baliza &lt;<b>global</b>&gt;. Uma constante é definida pelo seu nome (baliza &lt;<b>constant-name</b>&gt;) e pelo seu valor (baliza &lt;<b>constant-value</b>&gt;). Definimos a constante <b>«entierpositif» </b>com o valor da expressão regular que um número inteiro positivo deve satisfazer: <b>^\s*\d+\s*$ </b>(uma sequência de algarismos, eventualmente precedida e/ou seguida de espaços).
   </li>
-  <li>A tag &lt;<b>formset</b>&gt; define o conjunto de formulários para os quais existem restrições de integridade a verificar
+  <li>A baliza &lt;<b>formset</b>&gt; define o conjunto de formulários para os quais existem restrições de integridade a verificar
   </li>
-  <li>A tag &lt;<b>form name=&quot;unFormulaire&quot;</b>&gt; é utilizada para definir as restrições de integridade para um formulário específico, aquele cujo nome é especificado pelo atributo name. Este nome deve existir na lista de formulários definidos em <b>struts-config.xml</b>. Aqui, o formulário <b>frmPersonne </b>utilizado é definido em <b>struts-config.xml </b>pela seguinte secção:
+  <li>a baliza &lt;<b>form name=&quot;unFormulaire&quot;</b>&gt; serve para definir as restrições de integridade de um formulário específico, aquele cujo nome é indicado pelo atributo name. Este nome deve existir na lista de formulários definidos em <b>struts-config.xml</b>. Neste caso, o formulário <b>frmPersonne </b>utilizado está definido em <b>struts-config.xml </b>pela seguinte secção:
   </li>
 </ul>
 
@@ -852,19 +854,19 @@
 <a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>        <span class="p">&lt;/</span><span class="nt">form-bean</span><span class="p">&gt;</span>            
 </code></pre></div>
 <ul>
-  <li>Uma tag de formulário contém tantas tags &lt;<b>field</b>&gt; quantas forem as restrições de integridade a verificar no formulário. Uma tag &lt;<b>field</b>&gt; possui os seguintes atributos:
+  <li>Uma baliza &lt;<b>form</b>&gt; contém tantas balizas &lt;<b>field</b>&gt; quantas forem as restrições de integridade a verificar no formulário. Uma baliza &lt;<b>field</b>&gt; tem os seguintes atributos:
     <ul>
-      <li><b>property</b>: nome do campo do formulário para o qual as restrições de integridade são definidas
+      <li><b>property</b>: nome do campo do formulário para o qual se definem restrições de integridade
       </li>
-      <li><b>depends</b>: lista de restrições de integridade a verificar. 
+      <li><b>depends</b>: lista das restrições de integridade a verificar. 
         <ul>
-          <li>As restrições possíveis são as seguintes: <b>obrigatório </b>(o campo não pode estar vazio), <b>máscara </b>(o valor do campo deve corresponder a uma expressão regular definida pela variável <b>máscara</b>), <b>inteiro</b>: o valor do campo deve ser um número inteiro, <b>byte </b>(byte), <b>long </b>(inteiro longo), <b>float </b>(ponto flutuante de precisão simples), <b>double </b>(ponto flutuante de precisão dupla), <b> short </b>(inteiro curto), <b>data </b>(o valor do campo deve ser uma data válida), <b>intervalo </b>(o valor do campo deve estar dentro de um determinado intervalo), <b>e-mail</b>: (o valor do campo deve ser um endereço de e-mail válido), ...
+          <li>As restrições possíveis são as seguintes: <b>required </b>(o campo não pode estar vazio), <b>mask </b>(o valor do campo deve corresponder a uma expressão regular definida pela variável <b>mask</b>), <b>integer</b>: o valor do campo deve ser um inteiro, <b>byte </b>(octet), <b>long </b>(inteiro longo), <b>float </b>(real simples), <b>double </b>(real duplo), <b> short </b>(inteiro curto), <b>date </b>(o valor do campo deve ser uma data válida), <b>range </b>(o valor do campo deve estar dentro de um intervalo determinado), <b>email</b>: (o valor do campo deve ser um endereço de e-mail válido), ...
           </li>
-          <li>As restrições de integridade são verificadas na ordem especificada pelo atributo <b>depends</b>. Se uma restrição falhar, as seguintes não são testadas.
+          <li>as restrições de integridade são verificadas na ordem do atributo <b>«depends</b>». Se uma restrição não for verificada, as seguintes não são testadas.
           </li>
-          <li>Cada restrição está associada a uma mensagem de erro definida por uma chave. Aqui estão alguns exemplos no formato restrição (chave): required (errors.required), mask (errors.invalid), integer (errors.integer), byte (errors.byte), long (errors.long), ...
+          <li>cada restrição está associada a uma mensagem de erro definida por uma chave. Aqui estão algumas delas na forma restrição (chave): required (errors.required), mask (errors.invalid), integer (errors.integer), byte (errors.byte), long (errors.long), ...
           </li>
-          <li>As mensagens de erro associadas às chaves anteriores são definidas no ficheiro<b> validator-rules.xml</b>:
+          <li>as mensagens de erro associadas às chaves anteriores estão definidas no ficheiro <b>validator-rules.xml</b>:
           </li>
         </ul>
       </li>
@@ -872,7 +874,7 @@
   </li>
 </ul>
 
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="x">   # Struts Validator Error Messages</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="x">   # Mensagens de erro do Struts Validator</span>
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="x">   errors.required={0} is required.</span>
 <a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="x">   errors.minlength={0} can not be less than {1} characters.</span>
 <a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="x">   errors.maxlength={0} can not be greater than {1} characters.</span>
@@ -891,28 +893,28 @@
 <a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="x">   errors.email={0} is an invalid e-mail address.</span>
 </code></pre></div>
 <ul>
-  <li>Como podemos ver acima, as mensagens estão em inglês. Além disso, estão incluídas como comentários no ficheiro, o que especifica que devem ser colocadas no ficheiro de mensagens da aplicação. Recorde-se que isto está definido numa secção do ficheiro struts-config.xml:
+  <li>Como se pode ver acima, as mensagens estão em inglês. Além disso, encontram-se em comentários no ficheiro, onde se indica que devem ser colocadas no ficheiro de mensagens da aplicação. Recorde-se que este está definido numa secção do ficheiro struts-config.xml:
   </li>
 </ul>
 
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="w">    </span><span class="nt">&lt;message-resources</span><span class="w"> </span>
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">      </span><span class="na">parameter=</span><span class="s">&quot;ressources.personneressources&quot;</span>
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span><span class="na">null=</span><span class="s">&quot;false&quot;</span>
-<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">  </span><span class="nt">/&gt;</span><span class="w">    </span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>    &lt;message-resources 
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>      parameter=&quot;ressources.personneressources&quot;
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>    null=&quot;false&quot;
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>  /&gt;    
 </code></pre></div>
-<p>O atributo <strong>parameter</strong> indica que as mensagens da aplicação se encontram no ficheiro</p>
-<p><strong>WEB-INF/classes/resources/personneressources.properties</strong>.</p>
-<p>As mensagens de erro devem, portanto, ser colocadas neste ficheiro. São adicionadas às já existentes:</p>
+<p>O atributo <strong>«parameter»</strong> indica que as mensagens da aplicação se encontram no ficheiro</p>
+<p><strong>WEB-INF/classes/ressources/personneressources.properties</strong>.</p>
+<p>As mensagens de erro devem, portanto, ser colocadas neste ficheiro. São adicionadas às que já existem:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">personne</span><span class="o">.</span><span class="n">formulaire</span><span class="o">.</span><span class="n">nom</span><span class="o">.</span><span class="n">vide</span><span class="o">=&lt;</span><span class="n">li</span><span class="o">&gt;</span><span class="n">Vous</span> <span class="n">devez</span> <span class="n">indiquer</span> <span class="n">un</span> <span class="n">nom</span><span class="o">&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
 <a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="n">personne</span><span class="o">.</span><span class="n">formulaire</span><span class="o">.</span><span class="n">age</span><span class="o">.</span><span class="n">vide</span><span class="o">=&lt;</span><span class="n">li</span><span class="o">&gt;</span><span class="n">Vous</span> <span class="n">devez</span> <span class="n">indiquer</span> <span class="n">un</span> <span class="n">age</span><span class="o">&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
 <a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="n">personne</span><span class="o">.</span><span class="n">formulaire</span><span class="o">.</span><span class="n">age</span><span class="o">.</span><span class="n">incorrect</span><span class="o">=&lt;</span><span class="n">li</span><span class="o">&gt;</span><span class="n">L</span><span class="s1">&#39;âge est incorrect&lt;/li&gt;</span>
 <a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="n">errors</span><span class="o">.</span><span class="n">header</span><span class="o">=&lt;</span><span class="n">ul</span><span class="o">&gt;</span>
 <a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="n">errors</span><span class="o">.</span><span class="n">footer</span><span class="o">=&lt;/</span><span class="n">ul</span><span class="o">&gt;</span>
 <a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>
-<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>   <span class="c1"># Struts Validator error messages</span>
-<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>    <span class="c1"># the key is predefined and must not be changed</span>
-<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>    <span class="c1"># the associated error msg is free</span>
-<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>    <span class="c1"># the msg can have up to 4 parameters {0} to {3}</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>   <span class="c1"># Mensagens de erro do Struts Validator</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>    <span class="c1"># a chave está predefinida e não deve ser alterada</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>    <span class="c1"># a mensagem de erro associada é livre</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>    <span class="c1"># A mensagem pode ter até 4 parâmetros {0} a {3}</span>
 <a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>
 <a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a>   <span class="n">errors</span><span class="o">.</span><span class="n">required</span><span class="o">=&lt;</span><span class="n">li</span><span class="o">&gt;</span><span class="n">Le</span> <span class="n">champ</span> <span class="p">[{</span><span class="mi">0</span><span class="p">}]</span> <span class="n">doit</span> <span class="n">être</span> <span class="n">renseigné</span><span class="o">.&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
 <a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>   <span class="n">errors</span><span class="o">.</span><span class="n">minlength</span><span class="o">=&lt;</span><span class="n">li</span><span class="o">&gt;</span><span class="n">Le</span> <span class="n">champ</span> <span class="p">[{</span><span class="mi">0</span><span class="p">}]</span> <span class="n">foit</span> <span class="n">avoir</span> <span class="n">au</span> <span class="n">moins</span> <span class="p">{</span><span class="mi">1</span><span class="p">}</span> <span class="n">caractère</span><span class="o">.&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
@@ -934,7 +936,7 @@
 <a id="__codelineno-7-29" name="__codelineno-7-29" href="#__codelineno-7-29"></a>   <span class="n">personne</span><span class="o">.</span><span class="n">nom</span><span class="o">=</span><span class="n">nom</span>
 <a id="__codelineno-7-30" name="__codelineno-7-30" href="#__codelineno-7-30"></a>     <span class="n">personne</span><span class="o">.</span><span class="n">age</span><span class="o">=</span><span class="n">age</span>
 </code></pre></div>
-<p>Vamos analisar as restrições de integridade no ficheiro <strong>validation.xml,</strong> uma a uma, para as explicar:</p>
+<p>Vamos analisar as restrições de integridade do ficheiro <strong>validation.xml</strong> uma a uma para as explicar:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>    <span class="p">&lt;</span><span class="nt">formset</span><span class="p">&gt;</span>
 <a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>        <span class="p">&lt;</span><span class="nt">form</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;frmPersonne&quot;</span><span class="p">&gt;</span>
 <a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>          <span class="p">&lt;</span><span class="nt">field</span> <span class="na">property</span><span class="o">=</span><span class="s">&quot;nom&quot;</span> <span class="na">depends</span><span class="o">=</span><span class="s">&quot;required&quot;</span><span class="p">&gt;</span>
@@ -944,25 +946,25 @@
 <a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>    <span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
 <a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>    <span class="p">&lt;/</span><span class="nt">formset</span><span class="p">&gt;</span>
 </code></pre></div>
-<p>Note que estas restrições de integridade aplicam-se aos campos nome e idade de um formulário dinâmico definido em struts-config.xml:</p>
+<p>Recorde-se que estas restrições de integridade se aplicam aos campos «nome» e «idade» de um formulário dinâmico definido em struts-config.xml:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>        <span class="p">&lt;</span><span class="nt">form-bean</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;frmPersonne&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;org.apache.struts.validator.DynaValidatorForm&quot;</span><span class="p">&gt;</span>
 <a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>            <span class="p">&lt;</span><span class="nt">form-property</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;nom&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;java.lang.String&quot;</span> <span class="na">initial</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">/&gt;</span>
 <a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>            <span class="p">&lt;</span><span class="nt">form-property</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;age&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;java.lang.String&quot;</span> <span class="na">initial</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">/&gt;</span>
 <a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>        <span class="p">&lt;/</span><span class="nt">form-bean</span><span class="p">&gt;</span>            
 </code></pre></div>
-<p>É importante que os nomes do formulário e dos seus campos sejam idênticos em ambos os ficheiros. A restrição de integridade no campo name (<strong>property=&quot;name&quot;</strong>) especifica que o campo não pode estar vazio (<strong>depends=&quot;required&quot;</strong>). Se não for esse o caso, será gerado um objeto <strong>ActionError</strong> com a chave <strong>errors.required</strong>. A mensagem associada a esta chave encontra-se no ficheiro <strong>person.resources.properties</strong>:</p>
+<p>É importante que os nomes do formulário e dos seus campos sejam idênticos nos dois ficheiros. A restrição de integridade no campo «nome» (<strong>property=&quot;nom&quot;</strong>) indica que o campo não pode estar vazio (<strong>depends=&quot;required&quot;</strong>). Caso contrário, será gerado um objeto <strong>ActionError</strong> com a chave <strong>errors.required</strong>. A mensagem associada a esta chave encontra-se no ficheiro <strong>personne.ressources.properties</strong>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="x">   errors.required=&lt;li&gt;Le champ [{0}] doit être renseigné.&lt;/li&gt;</span>
 </code></pre></div>
-<p>Podemos ver que esta mensagem utiliza um parâmetro <strong>{0}</strong>. O seu valor é definido pela tag &lt;<strong>arg0</strong>&gt; na restrição de integridade:</p>
+<p>Verifica-se que esta mensagem utiliza um parâmetro <strong>{0}</strong>. O valor deste é definido pela baliza &lt;<strong>arg0</strong>&gt; da restrição de integridade:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>             &lt;arg0 key=&quot;personne.nom&quot;/&gt;      
 </code></pre></div>
 <p>Mais uma vez, <strong>arg0</strong> é designado por uma chave que também se encontra no ficheiro de mensagens: </p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>   personne.nom=nom
 </code></pre></div>
-<p>Juntando tudo, a mensagem de erro gerada se o campo <strong>do nome</strong> não for preenchido é: </p>
+<p>Se juntarmos tudo isto, a mensagem de erro gerada caso o campo <strong>«nom»</strong> não esteja preenchido é: </p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>&lt;li&gt;Le champ [nom] doit être renseigné.&lt;/li&gt;
 </code></pre></div>
-<p>Vamos agora analisar a segunda restrição, a que se aplica ao campo <strong>«idade</strong>»:</p>
+<p>Analisemos agora a segunda restrição, a relativa ao campo <strong>«age</strong>»:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>    <span class="p">&lt;</span><span class="nt">global</span><span class="p">&gt;</span>
 <a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>      <span class="p">&lt;</span><span class="nt">constant</span><span class="p">&gt;</span>
 <a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>        <span class="p">&lt;</span><span class="nt">constant-name</span><span class="p">&gt;</span>entierpositif<span class="p">&lt;/</span><span class="nt">constant-name</span><span class="p">&gt;</span>
@@ -982,23 +984,23 @@
 <a id="__codelineno-14-17" name="__codelineno-14-17" href="#__codelineno-14-17"></a>    <span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
 <a id="__codelineno-14-18" name="__codelineno-14-18" href="#__codelineno-14-18"></a>    <span class="p">&lt;/</span><span class="nt">formset</span><span class="p">&gt;</span>
 </code></pre></div>
-<p>Existem duas restrições para o campo <strong>«idade</strong>»: <strong>«required»</strong> e <strong>«mask</strong>». Podemos repetir a explicação anterior para a restrição <strong>«required</strong>». Isto significa que a mensagem de erro associada a esta restrição será:</p>
+<p>Existem duas restrições para o campo <strong>«age</strong>»: <strong>«required»</strong> e <strong>«mask</strong>». Podemos repetir a explicação anterior para a restrição <strong>«required</strong>». Conclui-se que a mensagem de erro associada a esta restrição será:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>&lt;li&gt;Le champ [age] doit être renseigné.&lt;/li&gt;
 </code></pre></div>
-<p>A segunda restrição é <strong>máscara</strong>. Isto significa que o conteúdo do campo deve corresponder a um padrão expresso por uma expressão regular. O valor desta restrição é definido numa tag &lt;<strong>var</strong>&gt; que define uma variável chamada <strong>mask</strong> (&lt;<strong>var-name</strong>&gt;) com o valor <strong>${positiveInteger}</strong> (&lt;<strong>var-value</strong>&gt;). <strong>positiveInteger</strong> é uma constante definida na secção &lt;<strong>global</strong>&gt; do ficheiro com o valor da expressão regular <strong>^\s*\d+\s*</strong>$.  A restrição de integridade é, portanto, que a idade deve ser uma sequência de um ou mais dígitos, opcionalmente precedida ou seguida por espaços. Se esta restrição não for cumprida, será gerado um objeto <strong>ActionError</strong> com a chave <strong>errors.invalid</strong>. No ficheiro de mensagens, esta chave está associada à seguinte mensagem:</p>
+<p>A segunda restrição é <strong>«mask</strong>». Isto significa que o conteúdo do campo deve corresponder a um padrão expresso por uma expressão regular. O valor desta última é definido numa baliza &lt;<strong>var</strong>&gt; que define uma variável com o nome <strong>«mask»</strong> (&lt;<strong>var-name</strong>&gt;), cujo valor é <strong>${entierpositif}</strong> (&lt;<strong>var-value</strong>&gt;). <strong>«entierpositif»</strong> é uma constante definida na secção &lt;<strong>global</strong>&gt; do ficheiro, cujo valor é a expressão regular <strong>^\s*\d+\s*</strong>$.  A restrição de integridade consiste, portanto, em que a idade deve ser uma sequência de um ou mais algarismos, eventualmente precedida ou seguida de espaços. Se esta restrição não for verificada, será gerado um objeto <strong>ActionError</strong> com a chave <strong>errors.invalid</strong>. No ficheiro de mensagens, esta chave está associada à seguinte mensagem:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>   errors.invalid=&lt;li&gt;Le champ [{0}] est incorrect.&lt;/li&gt;
 </code></pre></div>
-<p>A restrição deve definir um valor para o parâmetro {0}. Faz-o utilizando a tag &lt;arg0&gt;:</p>
+<p>A restrição deve definir um valor para o parâmetro {0}. Faz-o através da baliza &lt;arg0&gt;:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>             &lt;arg0 key=&quot;personne.age&quot;/&gt;      
 </code></pre></div>
-<p>No ficheiro de mensagens, a chave <strong>person.age</strong> está associada à seguinte mensagem:</p>
+<p>No ficheiro de mensagens, a chave <strong>personne.age</strong> está associada à seguinte mensagem:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>     personne.age=age
 </code></pre></div>
-<p>A mensagem de erro que será gerada se a restrição <strong>da máscara</strong> não for verificada é, portanto:</p>
+<p>A mensagem de erro que será gerada se a restrição <strong>«mask»</strong> não for verificada é, portanto:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>&lt;li&gt;Le champ [age] est incorrect.&lt;/li&gt;
 </code></pre></div>
 <h2 id="53-as-classes-da-aplicacao">5.3. <span style="color: #4f81bd">As classes da aplicação</span></h2>
-<p>Numa aplicação Struts, as classes a escrever são as destinadas aos formulários (<strong>ActionForm</strong> ou derivadas) e as destinadas às ações (<strong>Action</strong> ou derivadas). Na nova aplicação <strong>strutspersonne2</strong>, já não existe uma classe para o formulário. O conteúdo do formulário é definido em <strong>struts-config.xml</strong> e as restrições de integridade associadas em <strong>WEB-INF/validation.xml</strong>. Na aplicação <strong>strutspersonne1</strong>, a classe <strong>FormulaireAction</strong> para o processamento do formulário era a seguinte:</p>
+<p>Numa aplicação Struts, as classes a escrever são as dos formulários (<strong>ActionForm</strong> ou derivadas) e as das ações (<strong>Action</strong> ou derivadas). Na nova aplicação <strong>strutspersonne2</strong> já não existe uma classe para o formulário. O conteúdo do formulário é definido em <strong>struts-config.xml</strong> e as restrições de integridade associadas em <strong>WEB-INF/validation.xml</strong>. Na aplicação <strong>strutspersonne1</strong>, a classe <strong>FormulaireAction</strong> de processamento do formulário era a seguinte:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="kn">package</span><span class="w"> </span><span class="nn">istia.st.struts.personne</span><span class="p">;</span>
 <a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>
 <a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="p">....</span>
@@ -1008,35 +1010,35 @@
 <a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a><span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="n">ActionForward</span><span class="w"> </span><span class="nf">execute</span><span class="p">(</span><span class="n">ActionMapping</span><span class="w"> </span><span class="n">mapping</span><span class="p">,</span><span class="w"> </span><span class="n">ActionForm</span><span class="w"> </span><span class="n">form</span><span class="p">,</span>
 <a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a><span class="w">                               </span><span class="n">HttpServletRequest</span><span class="w"> </span><span class="n">request</span><span class="p">,</span><span class="w"> </span><span class="n">HttpServletResponse</span><span class="w"> </span><span class="n">response</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">IOException</span><span class="p">,</span>
 <a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a><span class="w">    </span><span class="n">ServletException</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-20-10" name="__codelineno-20-10" href="#__codelineno-20-10"></a><span class="w">     </span><span class="c1">// we have a valid form, otherwise we wouldn&#39;t have got here</span>
+<a id="__codelineno-20-10" name="__codelineno-20-10" href="#__codelineno-20-10"></a><span class="w">     </span><span class="c1">// temos um formulário válido; caso contrário, não teríamos chegado até aqui</span>
 <a id="__codelineno-20-11" name="__codelineno-20-11" href="#__codelineno-20-11"></a><span class="w">    </span><span class="n">DynaActionForm</span><span class="w"> </span><span class="n">formulaire</span><span class="o">=</span><span class="p">(</span><span class="n">DynaActionForm</span><span class="p">)</span><span class="n">form</span><span class="p">;</span>
 <a id="__codelineno-20-12" name="__codelineno-20-12" href="#__codelineno-20-12"></a><span class="w">    </span><span class="n">request</span><span class="p">.</span><span class="na">setAttribute</span><span class="p">(</span><span class="s">&quot;nom&quot;</span><span class="p">,</span><span class="n">formulaire</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="s">&quot;nom&quot;</span><span class="p">));</span>
 <a id="__codelineno-20-13" name="__codelineno-20-13" href="#__codelineno-20-13"></a><span class="w">    </span><span class="n">request</span><span class="p">.</span><span class="na">setAttribute</span><span class="p">(</span><span class="s">&quot;age&quot;</span><span class="p">,</span><span class="n">formulaire</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="s">&quot;age&quot;</span><span class="p">));</span>
 <a id="__codelineno-20-14" name="__codelineno-20-14" href="#__codelineno-20-14"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">mapping</span><span class="p">.</span><span class="na">findForward</span><span class="p">(</span><span class="s">&quot;reponse&quot;</span><span class="p">);</span>
-<a id="__codelineno-20-15" name="__codelineno-20-15" href="#__codelineno-20-15"></a><span class="w">  </span><span class="p">}</span><span class="c1">//execute</span>
+<a id="__codelineno-20-15" name="__codelineno-20-15" href="#__codelineno-20-15"></a><span class="w">  </span><span class="p">}</span><span class="c1">//executar</span>
 <a id="__codelineno-20-16" name="__codelineno-20-16" href="#__codelineno-20-16"></a><span class="p">}</span>
 </code></pre></div>
-<p>A classe <strong>FormAction</strong> esperava receber um formulário na forma de um objeto <strong>DynaActionForm</strong> (código em caixa). No entanto, no ficheiro struts-config.xml, a classe do formulário está definida da seguinte forma:</p>
+<p>A classe <strong>FormulaireAction</strong> esperava receber um formulário na forma de um objeto <strong>DynaActionForm</strong> (código em caixilhado). No entanto, no ficheiro struts-config.xml, a classe do formulário está definida da seguinte forma:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>        <span class="p">&lt;</span><span class="nt">form-bean</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;frmPersonne&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;org.apache.struts.validator.DynaValidatorForm&quot;</span><span class="p">&gt;</span>
 <a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>...
 <a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>        <span class="p">&lt;/</span><span class="nt">form-bean</span><span class="p">&gt;</span>            
 </code></pre></div>
-<p>O formulário será, portanto, colocado num objeto <strong>DynaValidatorForm</strong>. Verifica-se que esta classe deriva da classe <strong>DynaActionForm</strong>. O método <strong>execute</strong> da nossa classe <strong>FormulaireAction</strong> permanece, portanto, válido. Não é necessário reescrevê-lo.</p>
-<h2 id="54-implementacao-e-teste-da-aplicacao-strutspersonne2">5.4. <span style="color: #4f81bd">Implementação e teste da aplicação strutspersonne2</span></h2>
+<p>O formulário será, portanto, colocado num objeto do tipo <strong>DynaValidatorForm</strong>. Verifica-se que esta classe deriva da classe <strong>DynaActionForm</strong>. O método <strong><code>execute</code></strong> da nossa classe <strong>FormulaireAction</strong> continua, portanto, válido. Não é necessário reescrevê-lo.</p>
+<h2 id="54-implantacao-e-teste-da-aplicacao-strutspersonne2">5.4. <span style="color: #4f81bd">Implantação e teste da aplicação strutspersonne2</span></h2>
 <h3 id="541-criacao-do-contexto">5.4.1. <span style="color: #4f81bd">Criação do contexto</span></h3>
-<p>Chamámos a esta nova aplicação <strong>strutspersonne2</strong>. Criamos uma nova definição no ficheiro <strong>&lt;tomcat&gt;\conf\serveur.xml</strong> do Tomcat 4.x:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="w">                </span><span class="nt">&lt;Context</span><span class="w"> </span><span class="na">path=</span><span class="s">&quot;/strutspersonne2&quot;</span><span class="w"> </span><span class="na">docBase=</span><span class="s">&quot;e:/data/serge/web/struts/personne2&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<p>Chamámos a esta nova aplicação <strong>«strutspersonne2</strong>». Criamos uma nova definição no ficheiro <strong>&lt;tomcat&gt;\conf\serveur.xml</strong> do Tomcat 4.x:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>                &lt;Context path=&quot;/strutspersonne2&quot; docBase=&quot;e:/data/serge/web/struts/personne2&quot; /&gt;
 </code></pre></div>
-<p>Depois de fazer isto, o Tomcat deve ser reiniciado. Pode verificar a validade do contexto solicitando o URL:</p>
+<p>Feito isto, é necessário reiniciar o Tomcat. É possível verificar a validade do contexto acedendo ao URL:</p>
 <p><strong>http://localhost:8080/strutspersonne2/</strong></p>
 <p><img src="images/10000000000001BA000000F35CCC5F66.png" width="442" height="243" style="width:11.693cm;height:6.429cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000001BA000000F35CCC5F66.png" /></p>
-<h3 id="542-as-visualizacoes">5.4.2. <span style="color: #4f81bd">As Visualizações</span></h3>
-<p>Copie a pasta <strong>views</strong> da aplicação <strong>strutspersonne1</strong> para a pasta da aplicação <strong>strutspersonne2</strong>. As visualizações não sofreram alterações.</p>
+<h3 id="542-as-vistas">5.4.2. <span style="color: #4f81bd">As vistas</span></h3>
+<p>Vamos copiar a pasta <strong>«vues»</strong> da aplicação <strong>«strutspersonne1»</strong> para a pasta da aplicação <strong>«strutspersonne2</strong>». Com efeito, as vistas não sofreram alterações.</p>
 <p><img src="images/100000000000016D00000077947A0537.png" width="365" height="119" style="width:9.656cm;height:3.149cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/100000000000016D00000077947A0537.png" /></p>
-<h3 id="543-a-pasta-web-inf">5.4.3. <span style="color: #4f81bd">A pasta WEB-INF</span></h3>
-<p>Copie a pasta <strong>WEB-INF</strong> da aplicação <strong>strutspersonne1</strong> para a pasta da aplicação <strong>strutspersonne2</strong>. Alguns ficheiros foram alterados:</p>
-<p><img src="images/1000000000000166000000B80F3A355B.png" width="358" height="184" style="width:9.47cm;height:4.867cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/1000000000000166000000B80F3A355B.png" /></p>
-<p>O ficheiro de configuração <strong>struts-config.xml</strong> fica assim:</p>
+<h3 id="543-a-pasta-web-inf">5.4.3. <span style="color: #4f81bd">A pasta «WEB-INF»</span></h3>
+<p>Vamos copiar a pasta <strong>WEB-INF</strong> da aplicação <strong>strutspersonne1</strong> para a pasta da aplicação <strong>strutspersonne2</strong>. Alguns ficheiros foram alterados:</p>
+<p><img src="images/1000000000000166000000B80F3A355B.png" width="358" height="184" style="width:9.47cm;height:4.868cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/1000000000000166000000B80F3A355B.png" /></p>
+<p>O ficheiro de configuração <strong>struts-config.xml</strong> passa a ter o seguinte conteúdo:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;ISO-8859-1&quot; ?&gt;</span>
 <a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>
 <a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="cp">&lt;!DOCTYPE struts-config PUBLIC</span>
@@ -1097,8 +1099,8 @@
 <a id="__codelineno-23-58" name="__codelineno-23-58" href="#__codelineno-23-58"></a>
 <a id="__codelineno-23-59" name="__codelineno-23-59" href="#__codelineno-23-59"></a><span class="nt">&lt;/struts-config&gt;</span>
 </code></pre></div>
-<p>Este ficheiro é idêntico ao da aplicação <strong>strutspersonne1</strong>, exceto pela definição dinâmica do formulário e pela inclusão do plugin de validação (secções em caixas).</p>
-<p>Adicione o seguinte ficheiro <strong>validation.xml</strong> à pasta <strong>WEB-INF</strong>:</p>
+<p>Este ficheiro é idêntico ao da aplicação <strong>strutspersonne1,</strong> com exceção da definição dinâmica do formulário e da inserção do plugin de validação (partes emolduradas).</p>
+<p>Adiciona-se ao ficheiro <strong>WEB-INF</strong> o seguinte ficheiro de validação <strong>validation.xml</strong>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="p">&lt;</span><span class="nt">form-validation</span><span class="p">&gt;</span>
 <a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>    <span class="p">&lt;</span><span class="nt">global</span><span class="p">&gt;</span>
 <a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a>      <span class="p">&lt;</span><span class="nt">constant</span><span class="p">&gt;</span>
@@ -1122,21 +1124,21 @@
 <a id="__codelineno-24-21" name="__codelineno-24-21" href="#__codelineno-24-21"></a>    <span class="p">&lt;/</span><span class="nt">formset</span><span class="p">&gt;</span>
 <a id="__codelineno-24-22" name="__codelineno-24-22" href="#__codelineno-24-22"></a><span class="p">&lt;/</span><span class="nt">form-validation</span><span class="p">&gt;</span>
 </code></pre></div>
-<p>Adicione os ficheiros <strong>validator-rules.xml</strong> e <strong>validator-rules_1_1.dtd</strong>, localizados em <strong>&lt;struts&gt;\lib</strong>, à <strong>pasta WEB-INF</strong>:</p>
-<p><img src="images/1000000000000166000000B80F3A355B.png" width="358" height="184" style="width:9.47cm;height:4.867cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/1000000000000166000000B80F3A355B.png" /></p>
-<p>Na pasta <strong>WEB-INF/classes</strong>, existe agora apenas uma classe:</p>
+<p>Adicionamos ao ficheiro <strong>WEB-INF</strong> os ficheiros <strong>validator-rules.xml</strong> e <strong>validator-rules_1_1.dtd</strong>, que se encontram em <strong>&lt;struts&gt;\lib</strong>:</p>
+<p><img src="images/1000000000000166000000B80F3A355B.png" width="358" height="184" style="width:9.47cm;height:4.868cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/1000000000000166000000B80F3A355B.png" /></p>
+<p>Na pasta <strong>WEB-INF/classes</strong>, resta apenas uma única classe:</p>
 <p><img src="images/10000000000001F5000000691874FF34.png" width="501" height="105" style="width:13.254cm;height:2.778cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000001F5000000691874FF34.png" /></p>
-<p>Na pasta <strong>WEB-INF\classes\resources</strong>, encontrará o seguinte ficheiro de mensagens, <strong>personneressources.properties</strong>:</p>
+<p>Na pasta <strong>WEB-INF\classes\ressources</strong>, encontra-se o seguinte ficheiro de mensagens <strong>personneressources.properties</strong>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="n">personne</span><span class="o">.</span><span class="n">formulaire</span><span class="o">.</span><span class="n">nom</span><span class="o">.</span><span class="n">vide</span><span class="o">=&lt;</span><span class="n">li</span><span class="o">&gt;</span><span class="n">Vous</span> <span class="n">devez</span> <span class="n">indiquer</span> <span class="n">un</span> <span class="n">nom</span><span class="o">&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
 <a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="n">personne</span><span class="o">.</span><span class="n">formulaire</span><span class="o">.</span><span class="n">age</span><span class="o">.</span><span class="n">vide</span><span class="o">=&lt;</span><span class="n">li</span><span class="o">&gt;</span><span class="n">Vous</span> <span class="n">devez</span> <span class="n">indiquer</span> <span class="n">un</span> <span class="n">age</span><span class="o">&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
 <a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a><span class="n">personne</span><span class="o">.</span><span class="n">formulaire</span><span class="o">.</span><span class="n">age</span><span class="o">.</span><span class="n">incorrect</span><span class="o">=&lt;</span><span class="n">li</span><span class="o">&gt;</span><span class="n">L</span><span class="s1">&#39;âge est incorrect&lt;/li&gt;</span>
 <a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a><span class="n">errors</span><span class="o">.</span><span class="n">header</span><span class="o">=&lt;</span><span class="n">ul</span><span class="o">&gt;</span>
 <a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a><span class="n">errors</span><span class="o">.</span><span class="n">footer</span><span class="o">=&lt;/</span><span class="n">ul</span><span class="o">&gt;</span>
 <a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a>
-<a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a>   <span class="c1"># Struts Validator error messages</span>
-<a id="__codelineno-25-8" name="__codelineno-25-8" href="#__codelineno-25-8"></a>    <span class="c1"># the key is predefined and must not be changed</span>
-<a id="__codelineno-25-9" name="__codelineno-25-9" href="#__codelineno-25-9"></a>    <span class="c1"># the associated error msg is free</span>
-<a id="__codelineno-25-10" name="__codelineno-25-10" href="#__codelineno-25-10"></a>    <span class="c1"># the msg can have up to 4 parameters {0} to {3}</span>
+<a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a>   <span class="c1"># Mensagens de erro do Struts Validator</span>
+<a id="__codelineno-25-8" name="__codelineno-25-8" href="#__codelineno-25-8"></a>    <span class="c1"># a chave está predefinida e não deve ser alterada</span>
+<a id="__codelineno-25-9" name="__codelineno-25-9" href="#__codelineno-25-9"></a>    <span class="c1"># a mensagem de erro associada é livre</span>
+<a id="__codelineno-25-10" name="__codelineno-25-10" href="#__codelineno-25-10"></a>    <span class="c1"># a mensagem pode ter até 4 parâmetros {0} a {3}</span>
 <a id="__codelineno-25-11" name="__codelineno-25-11" href="#__codelineno-25-11"></a>
 <a id="__codelineno-25-12" name="__codelineno-25-12" href="#__codelineno-25-12"></a>   <span class="n">errors</span><span class="o">.</span><span class="n">required</span><span class="o">=&lt;</span><span class="n">li</span><span class="o">&gt;</span><span class="n">Le</span> <span class="n">champ</span> <span class="p">[{</span><span class="mi">0</span><span class="p">}]</span> <span class="n">doit</span> <span class="n">être</span> <span class="n">renseigné</span><span class="o">.&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
 <a id="__codelineno-25-13" name="__codelineno-25-13" href="#__codelineno-25-13"></a>   <span class="n">errors</span><span class="o">.</span><span class="n">minlength</span><span class="o">=&lt;</span><span class="n">li</span><span class="o">&gt;</span><span class="n">Le</span> <span class="n">champ</span> <span class="p">[{</span><span class="mi">0</span><span class="p">}]</span> <span class="n">foit</span> <span class="n">avoir</span> <span class="n">au</span> <span class="n">moins</span> <span class="p">{</span><span class="mi">1</span><span class="p">}</span> <span class="n">caractère</span><span class="o">.&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
@@ -1160,21 +1162,21 @@
 </code></pre></div>
 <p><img src="images/100000000000019F0000004E5467208F.png" width="415" height="78" style="width:10.978cm;height:2.064cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/100000000000019F0000004E5467208F.png" /></p>
 <h2 id="55-testes">5.5. <span style="color: #4f81bd">Testes</span></h2>
-<p>Estamos prontos para os testes. Abaixo encontram-se algumas capturas de ecrã que convidamos o leitor a reproduzir.</p>
-<p>Solicitamos o URL <strong>http://localhost:8080/strutspersonne2/formulaire.do</strong>:</p>
-<p><img src="images/100000000000019A000000FB05D04EC0.png" width="410" height="251" style="width:10.846cm;height:6.639cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/100000000000019A000000FB05D04EC0.png" /></p>
-<p>Clicamos no botão [Submeter] sem preencher os campos:</p>
+<p>Estamos prontos para os testes. Seguem-se algumas capturas de ecrã que o leitor é convidado a reproduzir.</p>
+<p>Pede-se o URL<strong>http://localhost:8080/strutspersonne2/formulaire.do</strong>:</p>
+<p><img src="images/100000000000019A000000FB05D04EC0.png" width="410" height="251" style="width:10.846cm;height:6.641cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/100000000000019A000000FB05D04EC0.png" /></p>
+<p>Utiliza-se o botão [Envoyer] sem preencher os campos:</p>
 <p><img src="images/10000000000001F9000000D20064CC36.png" width="505" height="210" style="width:13.36cm;height:5.556cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000001F9000000D20064CC36.png" /></p>
-<p>Tentamos novamente com um erro no campo da idade:</p>
-<p><img src="images/100000000000019E00000104B5B71988.png" width="414" height="260" style="width:10.952cm;height:6.877cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/100000000000019E00000104B5B71988.png" /></p>
-<p>Recebemos a seguinte resposta:</p>
-<p><img src="images/10000000000001F2000000C51910A476.png" width="498" height="197" style="width:13.174cm;height:5.211cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000001F2000000C51910A476.png" /></p>
-<p>Tente novamente, desta vez introduzindo os valores corretos:</p>
-<p><img src="images/100000000000018F000000FCCFDEBBB0.png" width="399" height="252" style="width:10.555cm;height:6.666cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/100000000000018F000000FCCFDEBBB0.png" /></p>
-<p>Recebemos a seguinte resposta:</p>
-<p><img src="images/10000000000001F1000000EA40EEF3E0.png" width="497" height="234" style="width:13.148cm;height:6.189cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000001F1000000EA40EEF3E0.png" /></p>
+<p>Repetimos o processo com um erro no campo «age»:</p>
+<p><img src="images/100000000000019E00000104B5B71988.png" width="414" height="260" style="width:10.952cm;height:6.879cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/100000000000019E00000104B5B71988.png" /></p>
+<p>Obtém-se a seguinte resposta:</p>
+<p><img src="images/10000000000001F2000000C51910A476.png" width="498" height="197" style="width:13.174cm;height:5.212cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000001F2000000C51910A476.png" /></p>
+<p>Vamos tentar novamente, desta vez introduzindo valores corretos:</p>
+<p><img src="images/100000000000018F000000FCCFDEBBB0.png" width="399" height="252" style="width:10.555cm;height:6.668cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/100000000000018F000000FCCFDEBBB0.png" /></p>
+<p>Obtém-se a seguinte resposta:</p>
+<p><img src="images/10000000000001F1000000EA40EEF3E0.png" width="497" height="234" style="width:13.148cm;height:6.191cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000001F1000000EA40EEF3E0.png" /></p>
 <h2 id="56-conclusao">5.6. <span style="color: #4f81bd">Conclusão</span></h2>
-<p>Demonstrámos que a utilização de formulários dinâmicos com restrições de integridade «padrão» evita a necessidade de criar classes para as representar. Se as restrições de integridade se desviarem do padrão, então somos novamente obrigados a criar classes para verificar estas novas restrições.</p>
+<p>Demonstrámos que a utilização de formulários dinâmicos cujas restrições de integridade são «padrão» evita a criação de classes para os representar. Se as restrições de integridade se desviarem do padrão, somos novamente obrigados a criar classes para verificar essas novas restrições.</p>
 
 
 

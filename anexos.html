@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://stahe.github.io/pt-struts1x-dec-2003/anexos.html">
       
       
-        <link rel="prev" href="trabalhar-com-uma-fonte-de-dados.html">
+        <link rel="prev" href="exploracao-de-uma-fonte-de-dados.html">
       
       
       
@@ -54,6 +54,8 @@
     
     
       <link rel="stylesheet" href="stylesheets/focus.css">
+    
+      <link rel="stylesheet" href="stylesheets/bidi.css">
     
     <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -301,14 +303,14 @@
   
   
     <li class="md-nav__item">
-      <a href="informacoes-gerais.html" class="md-nav__link">
+      <a href="generalidades.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    1. Informações gerais
+    1. Generalidades
   
 
     
@@ -328,14 +330,14 @@
   
   
     <li class="md-nav__item">
-      <a href="a-aplicacao-strutspersonne.html" class="md-nav__link">
+      <a href="a-aplicacao-struts-pessoa.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    2. A aplicação strutspersonne
+    2. A aplicação Struts «pessoa»
   
 
     
@@ -517,14 +519,14 @@
   
   
     <li class="md-nav__item">
-      <a href="trabalhar-com-uma-fonte-de-dados.html" class="md-nav__link">
+      <a href="exploracao-de-uma-fonte-de-dados.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    9. Trabalhar com uma fonte de dados
+    9. Exploração de uma fonte de dados
   
 
     
@@ -604,10 +606,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#101-configurar-o-tomcat-5" class="md-nav__link">
+  <a href="#101-configuracao-do-tomcat-5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        10.1. Configurar o Tomcat 5
+        10.1. Configuração do Tomcat 5
       
     </span>
   </a>
@@ -640,24 +642,24 @@
 
 
 <h1 id="10-anexos">10. <span style="color: #365f91">Anexos</span></h1>
-<h2 id="101-configurar-o-tomcat-5">10.1. <span style="color: #4f81bd">Configurar o Tomcat 5</span></h2>
-<p>Os exemplos anteriores utilizaram o servidor web Tomcat 4.x. Se estiver a utilizar o Tomcat 5.x, a configuração da aplicação <strong>strutspersonne</strong> será ligeiramente diferente:</p>
+<h2 id="101-configuracao-do-tomcat-5">10.1. <span style="color: #4f81bd">Configuração do Tomcat 5</span></h2>
+<p>Os exemplos anteriores utilizavam o servidor web Tomcat 4.x. Se utilizarmos o Tomcat 5.x, a configuração da aplicação <strong>strutspersonne</strong> será um pouco diferente:</p>
 <ul>
-  <li>Em primeiro lugar, o contexto não é criado no ficheiro<b> &lt;tomcat5&gt;/conf/server.xml</b>. É criado num ficheiro<b> strutspersonne.xml </b>localizado na pasta<b> &lt;tomcat5&gt;/conf/Catalina/localhost</b>:
+  <li>em primeiro lugar, a criação do contexto não é feita no ficheiro <b>&lt;tomcat5&gt;/conf/server.xml</b>. É feita num ficheiro <b>strutspersonne.xml </b>localizado na pasta <b>&lt;tomcat5&gt;/conf/Catalina/localhost</b>:
   </li>
 </ul>
 
-<p><img src="images/100000000000017000000100C0361CD4.png" width="368" height="256" style="width:9.735cm;height:6.772cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/100000000000017000000100C0361CD4.png" /></p>
+<p><img src="images/100000000000017000000100C0361CD4.png" width="368" height="256" style="width:9.735cm;height:6.773cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/100000000000017000000100C0361CD4.png" /></p>
 <ul>
-  <li>O conteúdo do ficheiro<b> strutspersonne.xml </b>(é provável que o seu nome possa, na verdade, ser qualquer outro) é o seguinte:
+  <li>o conteúdo do ficheiro <b>strutspersonne.xml </b>(é provável que, na realidade, o seu nome possa ser qualquer outro) é o seguinte:
   </li>
 </ul>
 
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nt">&lt;Context</span><span class="w"> </span><span class="na">docBase=</span><span class="s">&quot;D:\data\web\struts\personne&quot;</span><span class="w"> </span><span class="na">path=</span><span class="s">&quot;/strutspersonne&quot;</span><span class="nt">&gt;</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nt">&lt;/Context&gt;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>&lt;Context docBase=&quot;D:\data\web\struts\personne&quot; path=&quot;/strutspersonne&quot;&gt;
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>&lt;/Context&gt;
 </code></pre></div>
 <ul>
-<li>Os ficheiros .jar do Struts estão localizados em  <strong>&lt;tomcat5&gt;/shared/lib</strong>:</li>
+<li>os ficheiros .jar do Struts estão localizados em  <strong>&lt;tomcat5&gt;/shared/lib</strong>:</li>
 </ul>
 <p><img src="images/100000000000015D000000E70E200FE6.png" width="349" height="231" style="width:9.232cm;height:6.112cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/100000000000015D000000E70E200FE6.png" /></p>
 

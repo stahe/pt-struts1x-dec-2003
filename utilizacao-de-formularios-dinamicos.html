@@ -57,6 +57,8 @@
     
       <link rel="stylesheet" href="stylesheets/focus.css">
     
+      <link rel="stylesheet" href="stylesheets/bidi.css">
+    
     <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -303,14 +305,14 @@
   
   
     <li class="md-nav__item">
-      <a href="informacoes-gerais.html" class="md-nav__link">
+      <a href="generalidades.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    1. Informações gerais
+    1. Generalidades
   
 
     
@@ -330,14 +332,14 @@
   
   
     <li class="md-nav__item">
-      <a href="a-aplicacao-strutspersonne.html" class="md-nav__link">
+      <a href="a-aplicacao-struts-pessoa.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    2. A aplicação strutspersonne
+    2. A aplicação Struts «pessoa»
   
 
     
@@ -455,10 +457,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#42-escrever-a-classe-dynaactionform-associada-ao-formulario-dinamico" class="md-nav__link">
+  <a href="#42-criacao-da-classe-dynaactionform-associada-ao-formulario-dinamico" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4.2. Escrever a classe DynaActionForm associada ao formulário dinâmico
+        4.2. Criação da classe DynaActionForm associada ao formulário dinâmico
       
     </span>
   </a>
@@ -466,10 +468,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#43-a-nova-classe-formaction" class="md-nav__link">
+  <a href="#43-a-nova-classe-formulaireaction" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4.3. A nova classe FormAction
+        4.3. A nova classe FormulaireAction
       
     </span>
   </a>
@@ -492,7 +494,7 @@
   <a href="#441-criacao-do-contexto" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4.4.1. Criação do Contexto
+        4.4.1. Criação do contexto
       
     </span>
   </a>
@@ -500,10 +502,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#442-as-visualizacoes" class="md-nav__link">
+  <a href="#442-as-vistas" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4.4.2. As Visualizações
+        4.4.2. As vistas
       
     </span>
   </a>
@@ -682,14 +684,14 @@
   
   
     <li class="md-nav__item">
-      <a href="trabalhar-com-uma-fonte-de-dados.html" class="md-nav__link">
+      <a href="exploracao-de-uma-fonte-de-dados.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    9. Trabalhar com uma fonte de dados
+    9. Exploração de uma fonte de dados
   
 
     
@@ -748,15 +750,15 @@
 
 <h1 id="4-utilizacao-de-formularios-dinamicos">4. <span style="color: #365f91">Utilização de formulários dinâmicos</span></h1>
 <h2 id="41-declaracao-do-formulario-dinamico">4.1. <span style="color: #4f81bd">Declaração do formulário dinâmico</span></h2>
-<p>Vimos que o Struts utiliza objetos <strong>ActionForm</strong> para armazenar os valores dos formulários HTML processados pelos vários servlets da aplicação. Para cada formulário na nossa aplicação, precisamos de criar uma classe derivada de <strong>ActionForm</strong>. Isto pode rapidamente tornar-se complicado, uma vez que, para cada campo xx, temos de escrever dois métodos: <strong>setXx</strong> e <strong>getXx</strong>. O Struts oferece a opção de utilizar formulários </p>
+<p>Vimos que o Struts utiliza objetos <strong>ActionForm</strong> para armazenar os valores dos formulários HTML processados pelos diferentes servlets da aplicação. Para cada formulário da nossa aplicação, temos de criar uma classe derivada de <strong>ActionForm</strong>. Isto pode tornar-se rapidamente bastante trabalhoso, uma vez que, para cada campo xx, temos de escrever dois métodos: <strong>setXx</strong> e <strong>getXx</strong>. O Struts oferece-nos a possibilidade de utilizar formulários </p>
 <ul>
   <li>cuja estrutura é declarada no ficheiro struts-config.xml, na secção &lt;form-beans&gt;
   </li>
-  <li>, que são criados dinamicamente pelo ambiente Struts de acordo com a estrutura declarada
+  <li>e que são criados dinamicamente pelo ambiente Struts de acordo com a estrutura declarada
   </li>
 </ul>
 
-<p>Assim, a classe utilizada para armazenar os valores de nome e idade na aplicação <strong>strutspersonne</strong> poderia ser definida da seguinte forma:</p>
+<p>Assim, a classe utilizada para armazenar os valores «nome» e «idade» da aplicação <strong>strutspersonne</strong> poderia ser definida da seguinte forma:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>    <span class="p">&lt;</span><span class="nt">form-beans</span><span class="p">&gt;</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>        <span class="p">&lt;</span><span class="nt">form-bean</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;frmPersonne&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;org.apache.struts.actions.DynaActionForm&quot;</span><span class="p">&gt;</span>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>            <span class="p">&lt;</span><span class="nt">form-property</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;nom&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;java.lang.String&quot;</span> <span class="na">initial</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">/&gt;</span>
@@ -764,7 +766,7 @@
 <a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>        <span class="p">&lt;/</span><span class="nt">form-bean</span><span class="p">&gt;</span>            
 <a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    <span class="p">&lt;/</span><span class="nt">form-beans</span><span class="p">&gt;</span>
 </code></pre></div>
-<p>Para cada campo do formulário, definimos uma tag &lt;<strong>form-property</strong>&gt; com dois atributos:</p>
+<p>Para cada campo do formulário, define-se uma baliza &lt;<strong>form-property</strong>&gt; com dois atributos:</p>
 <ul>
   <li><b>name</b>: o nome do campo
   </li>
@@ -772,7 +774,7 @@
   </li>
 </ul>
 
-<p>Como os valores de um formulário enviado por um cliente web são cadeias de caracteres, os tipos mais utilizados são <strong>java.lang.String</strong> para campos de valor único e <strong>java.lang.String[]</strong> para campos de valores múltiplos (caixas de seleção com o mesmo nome, listas de seleção múltipla, etc.). A classe <strong>DynactionForm</strong>, tal como a classe <strong>ActionForm</strong>, possui um método <strong>validate</strong> que não faz nada. Para que verifique a validade dos parâmetros do formulário, deve estendê-la e escrever o método <strong>validate</strong> você mesmo. A declaração do formulário será, portanto, a seguinte:</p>
+<p>Como os valores de um formulário enviados por um cliente web são cadeias de caracteres, os tipos mais utilizados são <strong>java.lang.String</strong> para campos com um único valor e <strong>java.lang.String[]</strong> para campos com vários valores (caixas de seleção com o mesmo nome, listas de seleção múltipla, etc.). Tanto a classe <strong>DynactionForm</strong> como a classe <strong>ActionForm</strong> têm um método <strong><code>validate</code></strong> que não faz nada. Para que verifique a validade dos parâmetros do formulário, é necessário derivá-la e escrever o método <strong><code>validate</code></strong> por conta própria. A declaração do formulário será, portanto, a seguinte:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>    <span class="p">&lt;</span><span class="nt">form-beans</span><span class="p">&gt;</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>        <span class="p">&lt;</span><span class="nt">form-bean</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;frmPersonne&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;istia.st.struts.personne.PersonneDynaForm&quot;</span><span class="p">&gt;</span>
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>            <span class="p">&lt;</span><span class="nt">form-property</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;nom&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;java.lang.String&quot;</span> <span class="na">initial</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">/&gt;</span>
@@ -780,8 +782,8 @@
 <a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>        <span class="p">&lt;/</span><span class="nt">form-bean</span><span class="p">&gt;</span>            
 <a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>    <span class="p">&lt;/</span><span class="nt">form-beans</span><span class="p">&gt;</span>
 </code></pre></div>
-<p>Teremos de escrever nós próprios a classe <strong>istia.st.struts.personne.PersonneDynaForm</strong>.</p>
-<h2 id="42-escrever-a-classe-dynaactionform-associada-ao-formulario-dinamico">4.2. <span style="color: #4f81bd">Escrever a classe DynaActionForm associada ao formulário dinâmico</span></h2>
+<p>A classe <strong>istia.st.struts.personne.PersonneDynaForm</strong> terá de ser criada por nós.</p>
+<h2 id="42-criacao-da-classe-dynaactionform-associada-ao-formulario-dinamico">4.2. <span style="color: #4f81bd">Criação da classe DynaActionForm associada ao formulário dinâmico</span></h2>
 <p>Acima, associamos a classe <strong>istia.st.struts.personne.PersonneDynaForm</strong> ao formulário (nome, idade). Vamos agora escrever esta classe:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">package</span><span class="w"> </span><span class="nn">istia.st.struts.personne</span><span class="p">;</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
@@ -789,64 +791,64 @@
 <a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.apache.struts.action.*</span><span class="p">;</span>
 <a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
 <a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">PersonneDynaForm</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">DynaActionForm</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">   </span><span class="c1">// validation</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">   </span><span class="c1">// validação</span>
 <a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="n">ActionErrors</span><span class="w"> </span><span class="nf">validate</span><span class="p">(</span><span class="n">ActionMapping</span><span class="w"> </span><span class="n">mapping</span><span class="p">,</span><span class="w"> </span><span class="n">HttpServletRequest</span><span class="w"> </span><span class="n">request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">    </span><span class="c1">// error management</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">    </span><span class="c1">// gestão de erros</span>
 <a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">    </span><span class="n">ActionErrors</span><span class="w"> </span><span class="n">erreurs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ActionErrors</span><span class="p">();</span>
-<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">     </span><span class="c1">// name must be non-empty</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">     </span><span class="c1">// o nome não pode estar vazio</span>
 <a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">nom</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">String</span><span class="p">)</span><span class="k">this</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="s">&quot;nom&quot;</span><span class="p">);</span>
 <a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">nom</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">nom</span><span class="p">.</span><span class="na">trim</span><span class="p">().</span><span class="na">equals</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">      </span><span class="n">erreurs</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">&quot;nomvide&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ActionError</span><span class="p">(</span><span class="s">&quot;personne.formulaire.nom.vide&quot;</span><span class="p">));</span>
 <a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w">     </span><span class="c1">// age must be non-empty</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w">     </span><span class="c1">// a idade não pode estar em branco</span>
 <a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">String</span><span class="p">)</span><span class="k">this</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="s">&quot;age&quot;</span><span class="p">);</span>
 <a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">age</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">age</span><span class="p">.</span><span class="na">trim</span><span class="p">().</span><span class="na">equals</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="w">      </span><span class="n">erreurs</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">&quot;agevide&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ActionError</span><span class="p">(</span><span class="s">&quot;personne.formulaire.age.vide&quot;</span><span class="p">));</span>
 <a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="w">    </span><span class="p">}</span>
 <a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="w">      </span><span class="c1">// age must be a positive integer</span>
+<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="w">      </span><span class="c1">// a idade deve ser um número inteiro positivo</span>
 <a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a><span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">age</span><span class="p">.</span><span class="na">matches</span><span class="p">(</span><span class="s">&quot;^\\s*\\d+\\s*$&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a><span class="w">        </span><span class="n">erreurs</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">&quot;ageincorrect&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ActionError</span><span class="p">(</span><span class="s">&quot;personne.formulaire.age.incorrect&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">age</span><span class="p">));</span>
-<a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a><span class="w">        </span><span class="c1">// return the list of errors</span>
+<a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a><span class="w">        </span><span class="c1">// apresenta-se a lista de erros</span>
 <a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a><span class="w">      </span><span class="p">}</span>
 <a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="c1">//if</span>
-<a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a><span class="w">     </span><span class="c1">// return the error list</span>
+<a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a><span class="w">     </span><span class="c1">// retorna-se a lista de erros</span>
 <a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">erreurs</span><span class="p">;</span>
 <a id="__codelineno-2-30" name="__codelineno-2-30" href="#__codelineno-2-30"></a><span class="w">  </span><span class="p">}</span>
-<a id="__codelineno-2-31" name="__codelineno-2-31" href="#__codelineno-2-31"></a><span class="p">}</span><span class="c1">//class</span>
+<a id="__codelineno-2-31" name="__codelineno-2-31" href="#__codelineno-2-31"></a><span class="p">}</span><span class="c1">//classe</span>
 </code></pre></div>
-<p>Devem ser tidos em conta os seguintes pontos:</p>
+<p>Os pontos a ter em conta são os seguintes:</p>
 <ul>
   <li>a classe deriva de <b>DynaActionForm</b>
   </li>
-  <li>o método <b>validate </b>da classe <b>DynaActionForm </b>foi reescrito. Quando é executado pelo controlador Struts, o objeto <b>PersonneDynaForm </b>é construído. Este contém um dicionário cujas chaves são os campos do formulário <b>name </b>e <b>age</b>, e cujos valores são os valores desses campos. Para aceder a um campo dentro dos métodos <b>DynaActionForm</b>, utilize o método<b> Object get(String fieldName)</b>. Para definir um valor para um campo, utilize o método<b> void set(String fieldName, Object value)</b>. Consulte a definição da classe <b>DynaActionForm </b>para obter uma descrição completa.
+  <li>o método <b>validate </b>da classe <b>DynaActionForm </b>foi reescrito. Quando executado pelo controlador Struts, o objeto <b>PersonneDynaForm </b>foi criado. Este contém um dicionário cujas chaves são os campos do formulário <b>«nome» </b>e <b>«idade» </b>e cujos valores são os valores desses campos. Para aceder a um campo nos métodos de <b>DynaActionForm, </b>utiliza-se o método <b>Object get(String nomDuChamp)</b>. Se se pretender atribuir um valor a um campo, pode-se utilizar o método <b>void set(String nomDuChamp, Object valor)</b>. Consulte a definição da classe <b>DynaActionForm </b>para obter uma definição completa.
   </li>
-  <li>Depois de os valores dos campos name e age do formulário terem sido recuperados, o método <b>validate </b>não difere daquele que foi escrito quando o formulário foi associado a um objeto <b>ActionForm</b>.
+  <li>Depois de recuperados os valores dos campos «nome» e «idade» do formulário, o método <b>«validate» </b>não difere daquele que tinha sido escrito quando o formulário estava associado a um objeto <b>ActionForm</b>.
   </li>
 </ul>
 
-<h2 id="43-a-nova-classe-formaction">4.3. <span style="color: #4f81bd">A nova classe FormAction</span></h2>
+<h2 id="43-a-nova-classe-formulaireaction">4.3. <span style="color: #4f81bd">A nova classe FormulaireAction</span></h2>
 <p>O ficheiro de configuração define a seguinte ação <strong>/main</strong>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>...
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="nt">&lt;form-beans&gt;</span>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">        </span><span class="nt">&lt;form-bean</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;frmPersonne&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;istia.st.struts.personne.PersonneDynaForm&quot;</span><span class="nt">&gt;</span>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">            </span><span class="nt">&lt;form-property</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;nom&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;java.lang.String&quot;</span><span class="w"> </span><span class="na">initial=</span><span class="s">&quot;&quot;</span><span class="nt">/&gt;</span>
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">            </span><span class="nt">&lt;form-property</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;age&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;java.lang.String&quot;</span><span class="w"> </span><span class="na">initial=</span><span class="s">&quot;&quot;</span><span class="nt">/&gt;</span>
-<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">        </span><span class="nt">&lt;/form-bean&gt;</span><span class="w">            </span>
-<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">    </span><span class="nt">&lt;/form-beans&gt;</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>    <span class="p">&lt;</span><span class="nt">form-beans</span><span class="p">&gt;</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>        <span class="p">&lt;</span><span class="nt">form-bean</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;frmPersonne&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;istia.st.struts.personne.PersonneDynaForm&quot;</span><span class="p">&gt;</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>            <span class="p">&lt;</span><span class="nt">form-property</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;nom&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;java.lang.String&quot;</span> <span class="na">initial</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">/&gt;</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>            <span class="p">&lt;</span><span class="nt">form-property</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;age&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;java.lang.String&quot;</span> <span class="na">initial</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">/&gt;</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>        <span class="p">&lt;/</span><span class="nt">form-bean</span><span class="p">&gt;</span>            
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>    <span class="p">&lt;/</span><span class="nt">form-beans</span><span class="p">&gt;</span>
 <a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>....
-<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">      </span><span class="nt">&lt;action</span>
-<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">          </span><span class="na">path=</span><span class="s">&quot;/main&quot;</span>
-<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">          </span><span class="na">name=</span><span class="s">&quot;frmPersonne&quot;</span>
-<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">            </span><span class="na">scope=</span><span class="s">&quot;session&quot;</span>
-<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">            </span><span class="na">validate=</span><span class="s">&quot;true&quot;</span>
-<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">            </span><span class="na">input=</span><span class="s">&quot;/erreurs.do&quot;</span>
-<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="w">          </span><span class="na">type=</span><span class="s">&quot;istia.st.struts.personne.FormulaireAction&quot;</span>
-<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="w">      </span><span class="nt">&gt;</span>
-<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="w">            </span><span class="nt">&lt;forward</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;reponse&quot;</span><span class="w"> </span><span class="na">path=</span><span class="s">&quot;/reponse.do&quot;</span><span class="nt">/&gt;</span>
-<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="w">        </span><span class="nt">&lt;/action&gt;</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>      <span class="p">&lt;</span><span class="nt">action</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>          <span class="na">path</span><span class="o">=</span><span class="s">&quot;/main&quot;</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>          <span class="na">name</span><span class="o">=</span><span class="s">&quot;frmPersonne&quot;</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>            <span class="na">scope</span><span class="o">=</span><span class="s">&quot;session&quot;</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>            <span class="na">validate</span><span class="o">=</span><span class="s">&quot;true&quot;</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>            <span class="na">input</span><span class="o">=</span><span class="s">&quot;/erreurs.do&quot;</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>          <span class="na">type</span><span class="o">=</span><span class="s">&quot;istia.st.struts.personne.FormulaireAction&quot;</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>      <span class="p">&gt;</span>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>            <span class="p">&lt;</span><span class="nt">forward</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;reponse&quot;</span> <span class="na">path</span><span class="o">=</span><span class="s">&quot;/reponse.do&quot;</span><span class="p">/&gt;</span>
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>        <span class="p">&lt;/</span><span class="nt">action</span><span class="p">&gt;</span>
 </code></pre></div>
-<p>Esta definição é idêntica à da aplicação <strong>strutspersonne</strong>. A ação <strong>/main</strong> é implementada por um objeto do tipo <strong>FormulaireAction</strong>. Este objeto costumava receber os valores do formulário <strong>frmPersonne</strong> num objeto do tipo <strong>FormulaireBean</strong>. Agora, recebe-os num objeto do tipo <strong>PersonneDynaForm</strong>. Por conseguinte, a classe deve ser reescrita:</p>
+<p>Esta definição é idêntica à da aplicação <strong>strutspersonne</strong>. A ação <strong>/main</strong> é executada por um objeto do tipo  <strong>FormulaireAction</strong>. Este objeto recebia os valores do formulário <strong>frmPersonne</strong> num objeto do tipo <strong>FormulaireBean</strong>. Agora, recebe-os num objeto do tipo <strong>PersonneDynaForm</strong>. Por isso, é necessário reescrever a classe:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kn">package</span><span class="w"> </span><span class="nn">istia.st.struts.personne</span><span class="p">;</span>
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
 <a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.apache.struts.action.Action</span><span class="p">;</span>
@@ -864,39 +866,39 @@
 <a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="n">ActionForward</span><span class="w"> </span><span class="nf">execute</span><span class="p">(</span><span class="n">ActionMapping</span><span class="w"> </span><span class="n">mapping</span><span class="p">,</span><span class="w"> </span><span class="n">ActionForm</span><span class="w"> </span><span class="n">form</span><span class="p">,</span>
 <a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="w">           </span><span class="n">HttpServletRequest</span><span class="w"> </span><span class="n">request</span><span class="p">,</span><span class="w"> </span><span class="n">HttpServletResponse</span><span class="w"> </span><span class="n">response</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">IOException</span><span class="p">,</span><span class="n">ServletException</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a>
-<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="w">     </span><span class="c1">// we have a valid form, otherwise we wouldn&#39;t have got here</span>
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="w">     </span><span class="c1">// temos um formulário válido; caso contrário, não teríamos chegado até aqui</span>
 <a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="w">    </span><span class="n">PersonneDynaForm</span><span class="w"> </span><span class="n">formulaire</span><span class="o">=</span><span class="p">(</span><span class="n">PersonneDynaForm</span><span class="p">)</span><span class="n">form</span><span class="p">;</span>
 <a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a><span class="w">    </span><span class="n">request</span><span class="p">.</span><span class="na">setAttribute</span><span class="p">(</span><span class="s">&quot;nom&quot;</span><span class="p">,</span><span class="n">formulaire</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="s">&quot;nom&quot;</span><span class="p">));</span>
 <a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a><span class="w">    </span><span class="n">request</span><span class="p">.</span><span class="na">setAttribute</span><span class="p">(</span><span class="s">&quot;age&quot;</span><span class="p">,</span><span class="n">formulaire</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="s">&quot;age&quot;</span><span class="p">));</span>
 <a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">mapping</span><span class="p">.</span><span class="na">findForward</span><span class="p">(</span><span class="s">&quot;reponse&quot;</span><span class="p">);</span>
-<a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a><span class="w">  </span><span class="p">}</span><span class="c1">//execute</span>
+<a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a><span class="w">  </span><span class="p">}</span><span class="c1">//executar</span>
 <a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a><span class="p">}</span>
 </code></pre></div>
-<p>Os seguintes pontos devem ser observados:</p>
+<p>Os pontos a ter em conta são os seguintes:</p>
 <ul>
-  <li>Temos de importar a classe <b>PersonneDynaForm</b>, que contém os dados do formulário, para aceder à sua definição
+  <li>temos de importar a classe <b>PersonneDynaForm, </b>que contém os dados do formulário, para ter acesso à sua definição
   </li>
-  <li>O método <b>execute </b>recupera os valores dos parâmetros do formulário utilizando o método<b> [DynaActionForm].get</b>.
+  <li>o método <b>`execute` </b>recupera o valor dos parâmetros do formulário através do método `<b>[DynaActionForm].get</b>`.
   </li>
 </ul>
 
-<p>Em comparação com a classe <strong>FormAction</strong> na aplicação <strong>strutspersonne</strong>, apenas a forma de aceder aos valores do formulário mudou.</p>
+<p>No que diz respeito à classe <strong>FormulaireAction</strong> da aplicação <strong>strutspersonne</strong>, apenas a forma de aceder aos valores do formulário mudou.</p>
 <h2 id="44-implantacao-e-teste-da-aplicacao-strutspersonne1">4.4. <span style="color: #4f81bd">Implantação e teste da aplicação strutspersonne1</span></h2>
-<h3 id="441-criacao-do-contexto">4.4.1. <span style="color: #4f81bd">Criação do Contexto</span></h3>
-<p>Chamámos a esta nova aplicação <strong>strutspersonne1</strong>. Criamos uma nova definição no ficheiro <strong>&lt;tomcat&gt;\conf\serveur.xml</strong> para o Tomcat 4.x:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="w">    </span><span class="nt">&lt;Context</span><span class="w"> </span><span class="na">path=</span><span class="s">&quot;/strutspersonne1&quot;</span><span class="w"> </span><span class="na">docBase=</span><span class="s">&quot;e:/data/serge/web/struts/personne1&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<h3 id="441-criacao-do-contexto">4.4.1. <span style="color: #4f81bd">Criação do contexto</span></h3>
+<p>Chamámos a esta nova aplicação <strong>«strutspersonne1</strong>». Criamos uma nova definição no ficheiro <strong>&lt;tomcat&gt;\conf\serveur.xml</strong> do Tomcat 4.x:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>    &lt;Context path=&quot;/strutspersonne1&quot; docBase=&quot;e:/data/serge/web/struts/personne1&quot; /&gt;
 </code></pre></div>
-<p>Depois de fazer isto, o Tomcat deve ser reiniciado. Pode verificar a validade do contexto solicitando o URL:</p>
+<p>Feito isto, é necessário reiniciar o Tomcat. É possível verificar a validade do contexto acedendo ao URL:</p>
 <p><strong>http://localhost:8080/strutspersonne1/</strong></p>
-<p><img src="images/10000000000001BF000000FBAC84E5C1.png" width="447" height="251" style="width:11.825cm;height:6.639cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000001BF000000FBAC84E5C1.png" /></p>
-<h3 id="442-as-visualizacoes">4.4.2. <span style="color: #4f81bd">As Visualizações</span></h3>
-<p>Copie a pasta <strong>views</strong> da aplicação <strong>strutspersonne</strong> para a pasta da aplicação <strong>strutspersonne1</strong>. As visualizações não sofreram alterações.</p>
-<p><img src="images/100000000000016400000093AF06E517.png" width="356" height="147" style="width:9.417cm;height:3.888cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/100000000000016400000093AF06E517.png" /></p>
-<h3 id="443-compilacao-das-classes">4.4.3. <span style="color: #4f81bd"><strong><span style="color: #4f81bd">Compilação das classes</span></strong></span></h3>
-<p>Temos duas classes para criar: <strong>PersonneDynaForm</strong> e <strong>FormulaireAction</strong>, sendo que a última utiliza a primeira. Podemos criá-las e compilá-las utilizando um projeto JBuilder:</p>
+<p><img src="images/10000000000001BF000000FBAC84E5C1.png" width="447" height="251" style="width:11.825cm;height:6.641cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000001BF000000FBAC84E5C1.png" /></p>
+<h3 id="442-as-vistas">4.4.2. <span style="color: #4f81bd">As vistas</span></h3>
+<p>Vamos copiar a pasta <strong>«vues»</strong> da aplicação <strong>«strutspersonne»</strong> para a pasta da aplicação <strong>«strutspersonne1</strong>». Com efeito, as vistas não sofreram alterações.</p>
+<p><img src="images/100000000000016400000093AF06E517.png" width="356" height="147" style="width:9.417cm;height:3.889cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/100000000000016400000093AF06E517.png" /></p>
+<h3 id="443-compilacao-das-classes">4.4.3. <span style="color: #4f81bd">Compilação das classes</span></h3>
+<p>Temos duas classes para criar: <strong>PersonneDynaForm</strong> e <strong>FormulaireAction</strong>, sendo que a última utiliza a primeira. Podemos criá-las e compilá-las utilizando um projeto do JBuilder:</p>
 <p><img src="images/10000000000000C400000076AFFB08BF.png" width="196" height="118" style="width:5.186cm;height:3.122cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000000C400000076AFFB08BF.png" /></p>
 <h3 id="444-a-pasta-web-inf">4.4.4. <span style="color: #4f81bd">A pasta WEB-INF</span></h3>
-<p>Copie a pasta <strong>WEB-INF</strong> da aplicação <strong>strutspersonne</strong> para a pasta da aplicação <strong>strutspersonne1</strong>. Alguns ficheiros foram alterados:</p>
+<p>Vamos copiar a pasta <strong>WEB-INF</strong> da aplicação <strong>strutspersonne</strong> para a pasta da aplicação <strong>strutspersonne1</strong>. Alguns ficheiros são alterados:</p>
 <p><img src="images/100000000000014900000077A5BAE4CE.png" width="329" height="119" style="width:8.703cm;height:3.149cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/100000000000014900000077A5BAE4CE.png" /></p>
 <p>O ficheiro de configuração <strong>struts-config.xml</strong> passa a ter o seguinte conteúdo:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;ISO-8859-1&quot; ?&gt;</span>
@@ -944,10 +946,10 @@
 <a id="__codelineno-6-43" name="__codelineno-6-43" href="#__codelineno-6-43"></a><span class="w">    </span><span class="nt">&lt;message-resources</span><span class="w"> </span><span class="na">parameter=</span><span class="s">&quot;ressources.personneressources&quot;</span><span class="nt">/&gt;</span><span class="w">    </span>
 <a id="__codelineno-6-44" name="__codelineno-6-44" href="#__codelineno-6-44"></a><span class="nt">&lt;/struts-config&gt;</span>
 </code></pre></div>
-<p>Este ficheiro é idêntico ao da aplicação <strong>strutspersonne</strong>, com exceção da definição do formulário dinâmico (secção em caixa).</p>
-<p>Na pasta <strong>WEB-INF/classes</strong>, coloque as classes compiladas pelo JBuilder:</p>
+<p>Este ficheiro é idêntico ao da aplicação <strong>strutspersonne,</strong> com exceção da definição dinâmica do formulário (parte emoldurada).</p>
+<p>Na pasta <strong>WEB-INF/classes</strong>, colocar-se-ão as classes compiladas pelo JBuilder:</p>
 <p><img src="images/100000000000020500000069F5F8D51F.png" width="517" height="105" style="width:13.677cm;height:2.778cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/100000000000020500000069F5F8D51F.png" /></p>
-<p>Na pasta <strong>WEB-INF\classes\resources</strong>, coloque o ficheiro de mensagens. Este não sofreu alterações.</p>
+<p>Na pasta <strong>WEB-INF\classes\ressources</strong>, deve-se colocar o ficheiro de mensagens. Este não sofreu alterações.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>personne.formulaire.nom.vide=&lt;li&gt;Vous devez indiquer un nom&lt;/li&gt;
 <a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>personne.formulaire.age.vide=&lt;li&gt;Vous devez indiquer un age&lt;/li&gt;
 <a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>personne.formulaire.age.incorrect=&lt;li&gt;L&#39;âge [{0}] est incorrect&lt;/li&gt;
@@ -956,21 +958,21 @@
 </code></pre></div>
 <p><img src="images/1000000000000195000000689018085D.png" width="405" height="104" style="width:10.714cm;height:2.752cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/1000000000000195000000689018085D.png" /></p>
 <h2 id="45-testes">4.5. <span style="color: #4f81bd">Testes</span></h2>
-<p>Estamos prontos para os testes. Abaixo estão algumas capturas de ecrã que o leitor é convidado a reproduzir.</p>
-<p>Solicite o URL <strong>http://localhost:8080/strutspersonne1/formulaire.do</strong>:</p>
-<p><img src="images/10000000000001A5000000FC5BB2788A.png" width="421" height="252" style="width:11.137cm;height:6.666cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000001A5000000FC5BB2788A.png" /></p>
-<p>Clique no botão [Enviar] sem preencher os campos:</p>
-<p><img src="images/10000000000001F2000000D65B879ADE.png" width="498" height="214" style="width:13.174cm;height:5.66cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000001F2000000D65B879ADE.png" /></p>
-<p>Tente novamente com um erro no campo da idade:</p>
-<p><img src="images/10000000000001A600000100626802BF.png" width="422" height="256" style="width:11.164cm;height:6.772cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000001A600000100626802BF.png" /></p>
-<p>Recebemos a seguinte resposta:</p>
-<p><img src="images/10000000000001F2000000C7D0D592A9.png" width="498" height="199" style="width:13.174cm;height:5.263cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000001F2000000C7D0D592A9.png" /></p>
-<p>Tente novamente, desta vez introduzindo os valores corretos:</p>
-<p><img src="images/100000000000019500000102485CE3F3.png" width="405" height="258" style="width:10.714cm;height:6.824cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/100000000000019500000102485CE3F3.png" /></p>
-<p>Recebemos a seguinte resposta:</p>
+<p>Estamos prontos para os testes. Seguem-se algumas capturas de ecrã que o leitor é convidado a reproduzir.</p>
+<p>Pede-se o URL<strong>http://localhost:8080/strutspersonne1/formulaire.do</strong>:</p>
+<p><img src="images/10000000000001A5000000FC5BB2788A.png" width="421" height="252" style="width:11.137cm;height:6.668cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000001A5000000FC5BB2788A.png" /></p>
+<p>Utiliza-se o botão [Envoyer] sem preencher os campos:</p>
+<p><img src="images/10000000000001F2000000D65B879ADE.png" width="498" height="214" style="width:13.174cm;height:5.662cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000001F2000000D65B879ADE.png" /></p>
+<p>Repetimos o processo com um erro no campo «age»:</p>
+<p><img src="images/10000000000001A600000100626802BF.png" width="422" height="256" style="width:11.164cm;height:6.773cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000001A600000100626802BF.png" /></p>
+<p>Obtém-se a seguinte resposta:</p>
+<p><img src="images/10000000000001F2000000C7D0D592A9.png" width="498" height="199" style="width:13.174cm;height:5.265cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000001F2000000C7D0D592A9.png" /></p>
+<p>Vamos tentar novamente, desta vez introduzindo valores corretos:</p>
+<p><img src="images/100000000000019500000102485CE3F3.png" width="405" height="258" style="width:10.714cm;height:6.826cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/100000000000019500000102485CE3F3.png" /></p>
+<p>Obtém-se a seguinte resposta:</p>
 <p><img src="images/10000000000001F8000000E6A0B8514D.png" width="504" height="230" style="width:13.333cm;height:6.085cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000001F8000000E6A0B8514D.png" /></p>
 <h2 id="46-conclusao">4.6. <span style="color: #4f81bd">Conclusão</span></h2>
-<p>A utilização de formulários dinâmicos facilita a escrita de classes <strong>ActionForm</strong> responsáveis pelo armazenamento dos valores do formulário. Podemos levar a gestão de formulários um passo mais além. Na aplicação <strong>strutspersonne1</strong>, criámos uma classe <strong>PersonneDynaForm</strong> para validar os valores do formulário (nome, idade). Na prática, certas validações ocorrem com frequência: campo não vazio, campo que valida uma expressão regular específica, campo inteiro, campo de data, etc. Este tipo de validação padrão pode então ser especificado no ficheiro de configuração <strong>struts-config.html</strong>. Se todas as validações a realizar forem «padrão», não há necessidade de escrever uma classe para o formulário. É isso que vamos agora examinar.</p>
+<p>A utilização de formulários dinâmicos facilita a criação de classes do tipo <strong>ActionForm,</strong> encarregadas de armazenar os valores dos formulários. É possível ir um pouco mais longe na simplificação da gestão dos formulários. Na aplicação <strong>strutspersonne1</strong>, criámos uma classe <strong>PersonneDynaForm</strong> para verificar a validade dos valores (nome, idade) do formulário. Na prática, algumas verificações repetem-se frequentemente: campo não vazio, campo que verifica uma determinada expressão regular, campo inteiro, campo de data, ... Este tipo de verificação padrão pode, então, ser definido no ficheiro de configuração <strong>struts-config.html</strong>. Se todas as verificações a realizar forem «padrão», então já não é necessário criar nenhuma classe para o formulário. É isso que vamos ver agora.</p>
 
 
 

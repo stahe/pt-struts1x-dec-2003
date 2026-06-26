@@ -18,7 +18,7 @@
         <link rel="prev" href="-aplicacao-quiest.html">
       
       
-        <link rel="next" href="trabalhar-com-uma-fonte-de-dados.html">
+        <link rel="next" href="exploracao-de-uma-fonte-de-dados.html">
       
       
         
@@ -56,6 +56,8 @@
     
     
       <link rel="stylesheet" href="stylesheets/focus.css">
+    
+      <link rel="stylesheet" href="stylesheets/bidi.css">
     
     <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -303,14 +305,14 @@
   
   
     <li class="md-nav__item">
-      <a href="informacoes-gerais.html" class="md-nav__link">
+      <a href="generalidades.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    1. Informações gerais
+    1. Generalidades
   
 
     
@@ -330,14 +332,14 @@
   
   
     <li class="md-nav__item">
-      <a href="a-aplicacao-strutspersonne.html" class="md-nav__link">
+      <a href="a-aplicacao-struts-pessoa.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    2. A aplicação strutspersonne
+    2. A aplicação Struts «pessoa»
   
 
     
@@ -596,10 +598,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#85-testes" class="md-nav__link">
+  <a href="#85-os-testes" class="md-nav__link">
     <span class="md-ellipsis">
       
-        8.5. Testes
+        8.5. Os testes
       
     </span>
   </a>
@@ -632,14 +634,14 @@
   
   
     <li class="md-nav__item">
-      <a href="trabalhar-com-uma-fonte-de-dados.html" class="md-nav__link">
+      <a href="exploracao-de-uma-fonte-de-dados.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    9. Trabalhar com uma fonte de dados
+    9. Exploração de uma fonte de dados
   
 
     
@@ -697,18 +699,18 @@
 
 
 <h1 id="8-criacao-de-um-plugin">8. <span style="color: #365f91">Criação de um plugin</span></h1>
-<p>É possível criar aplicações chamadas <strong>plugins</strong> que são carregadas quando uma aplicação Struts é iniciada e descarregadas quando esta é encerrada. Isto permite, normalmente, a inicialização quando a aplicação é iniciada e a libertação de recursos quando esta é encerrada. Estas operações também podem ser realizadas através da extensão da classe <strong>ActionServlet</strong> do controlador, que foi o que se fez <strong>na</strong> aplicação anterior. O plugin é uma alternativa a esta solução. Um plugin pode ser uma aplicação mais complexa do que uma simples inicialização do ambiente. Vimos um exemplo disso na lição em que foram introduzidas as regras de validação declarativas. Um plugin é declarado no ficheiro de configuração do Struts. O <strong>ValidatorPlugIn</strong> foi declarado no ficheiro <strong>struts-config.xml</strong> da aplicação que o utilizou da seguinte forma:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="w">    </span><span class="nt">&lt;plug-in</span><span class="w"> </span><span class="na">className=</span><span class="s">&quot;org.apache.struts.validator.ValidatorPlugIn&quot;</span><span class="nt">&gt;</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">        </span><span class="nt">&lt;set-property</span><span class="w"> </span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">        </span><span class="na">property=</span><span class="s">&quot;pathnames&quot;</span><span class="w"> </span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">      </span><span class="na">value=</span><span class="s">&quot;/WEB-INF/validator-rules.xml,/WEB-INF/validation.xml&quot;</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="nt">/&gt;</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="nt">&lt;/plug-in&gt;</span>
+<p>É possível criar aplicações denominadas <strong>«plugins»,</strong> que são carregadas no arranque de uma aplicação Struts e descarregadas quando esta é encerrada. Isto permite, normalmente, realizar inicializações no arranque da aplicação e libertar recursos quando esta é encerrada. Estas operações também podem ser realizadas derivando a classe <strong>ActionServlet</strong> do controlador, e foi isso que se fez na aplicação anterior. O plugin é uma alternativa a esta solução. O plugin pode ser uma aplicação mais complexa do que uma simples inicialização do ambiente. Vimos um exemplo disso na lição em que foram introduzidos os conceitos de regras de validação declarativas. Um plugin é declarado no ficheiro de configuração do Struts. O plugin <strong>ValidatorPlugIn</strong> foi, assim, declarado no ficheiro <strong>struts-config.xml</strong> da aplicação que o utilizava:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>    &lt;plug-in className=&quot;org.apache.struts.validator.ValidatorPlugIn&quot;&gt;
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>        &lt;set-property 
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>        property=&quot;pathnames&quot; 
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>      value=&quot;/WEB-INF/validator-rules.xml,/WEB-INF/validation.xml&quot;
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    /&gt;
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    &lt;/plug-in&gt;
 </code></pre></div>
-<p>Vamos agora descrever uma aplicação Struts utilizando um plugin.</p>
+<p>Passamos agora a descrever uma aplicação Struts que utiliza um plugin.</p>
 <h2 id="81-configuracao-da-aplicacao-struts-plugin1">8.1. <span style="color: #4f81bd">Configuração da aplicação Struts /plugin1</span></h2>
 <p>Propomos construir a aplicação Struts <strong>/plugin1</strong> configurada da seguinte forma:</p>
-<p><mark style="background-color: #fff5ce">web.</mark><mark style="background-color: #c0c0c0">xml</mark></p>
+<p><mark style="background-color: #fff5ce">web.xml</mark></p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;ISO-8859-1&quot;?&gt;</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="cp">&lt;!DOCTYPE web-app</span>
@@ -741,7 +743,7 @@
 <a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a>
 <a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a><span class="nt">&lt;/web-app&gt;</span>
 </code></pre></div>
-<p>Não nos vamos deter neste ficheiro, uma vez que é padrão.</p>
+<p>Não nos deteremos neste ficheiro, que é padrão.</p>
 <p><mark style="background-color: #fff5ce">struts-config.xml</mark></p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;ISO-8859-1&quot; ?&gt;</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
@@ -758,18 +760,18 @@
 <a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>
 <a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="nt">&lt;/struts-config&gt;</span>
 </code></pre></div>
-<p>Adicionámos apenas uma secção, a do plugin. Os atributos da tag <strong>&lt;plug-in&gt;</strong> aqui utilizada são os seguintes:</p>
-<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div markdown="block">
+<p>Introduzimos apenas uma secção, a do plugin. Os atributos da baliza <strong>&lt;plug-in&gt;</strong> utilizados aqui são os seguintes:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>className
 </code></pre></div>
-</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">nome da classe do plugin</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div markdown="block">
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">nome da classe do plugin</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>&lt;set-property&gt;
 </code></pre></div>
-</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">permite que o plugin seja inicializado com pares (chave, valor)</div></td></tr></table>
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">permite inicializar o plugin com pares (chave, valor)</div></td></tr></table>
 
-<p>O objetivo desta aplicação é demonstrar como o plugin pode recuperar os seus parâmetros de inicialização e disponibilizá-los a outros objetos que partilham o mesmo contexto de aplicação. Utilizaremos uma vista JSP simples para apresentar os valores de inicialização do plugin, o que explica a ausência de uma ação no ficheiro de configuração.</p>
+<p>O objetivo desta aplicação é mostrar como o plugin pode recuperar os seus parâmetros de inicialização e disponibilizá-los a outros objetos que partilhem o mesmo contexto de aplicação. Iremos utilizar uma vista simples, JSP, para apresentar os valores de inicialização do plugin, o que explica a ausência de qualquer ação no ficheiro de configuração.</p>
 <h2 id="82-a-classe-java-do-plugin">8.2. <span style="color: #4f81bd">A classe Java do plugin</span></h2>
-<p>Uma classe Java que funciona como um plugin para uma aplicação Struts deve implementar a interface <strong>org.apache.struts.action.PlugIn</strong>. Esta implementação envolve a escrita de dois métodos:</p>
+<p>Uma classe Java que funcione como plugin para uma aplicação Struts deve implementar a interface <strong>org.apache.struts.action.PlugIn</strong>. Esta implementação consiste em escrever dois métodos:</p>
 <ul>
   <li>public void init(ActionServlet servlet, ModuleConfig conf)
   </li>
@@ -777,7 +779,7 @@
   </li>
 </ul>
 
-<p>Quando a aplicação Struts é carregada, o seu controlador instanciará todos os plugins declarados no ficheiro <em>struts-config.xml</em>. Em seguida, executará o método <strong>init</strong> para cada um deles. É dentro deste método que o plugin realiza a sua inicialização. Aqui, iremos simplesmente ler os parâmetros de inicialização do plugin e colocá-los no contexto da aplicação, para que fiquem disponíveis para todos os outros objetos na aplicação. Quando a aplicação for descarregada, o controlador executará o método <strong>destroy</strong> para cada um dos plugins carregados. Este é o momento de libertar os recursos que já não são necessários. Aqui, não teremos nada a fazer.</p>
+<p>Quando a aplicação Struts for carregada, o seu controlador irá instanciar todos os plug-ins declarados no ficheiro <em>struts-config.xml</em>. Em seguida, executará o método <strong>init</strong> de cada um deles. É neste método que o plug-in realiza as suas inicializações. Aqui, limitar-nos-emos a ler os parâmetros de inicialização do plugin e a colocá-los no contexto da aplicação, para que fiquem disponíveis para todos os outros objetos da mesma. Quando a aplicação for descarregada, o controlador executará o método <strong>destroy</strong> de cada um dos plugins carregados. Este é o momento de libertar os recursos que já não são necessários. Aqui, não teremos nada a fazer.</p>
 <p>O código da classe é o seguinte:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kn">package</span><span class="w"> </span><span class="nn">istia.st.struts.plugins</span><span class="p">;</span>
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
@@ -789,61 +791,61 @@
 <a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>
 <a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MyPlugin</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">PlugIn</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>
-<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="w">    </span><span class="c1">// method called when application context is deleted</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="w">    </span><span class="c1">// método chamado ao eliminar o contexto da aplicação</span>
 <a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">destroy</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="w">    </span><span class="p">}</span>
 <a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>
-<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="w">     </span><span class="c1">// method called on initial creation of application context</span>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="w">     </span><span class="c1">// método chamado durante a criação inicial do contexto da aplicação</span>
 <a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">init</span><span class="p">(</span><span class="n">ActionServlet</span><span class="w"> </span><span class="n">servlet</span><span class="p">,</span><span class="w"> </span><span class="n">ModuleConfig</span><span class="w"> </span><span class="n">conf</span><span class="p">)</span>
 <a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="w">        </span><span class="kd">throws</span><span class="w"> </span><span class="n">ServletException</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="w">         </span><span class="c1">// class name of this object</span>
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="w">         </span><span class="c1">// nome da classe deste objeto</span>
 <a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">className</span><span class="o">=</span><span class="k">this</span><span class="p">.</span><span class="na">getClass</span><span class="p">().</span><span class="na">getName</span><span class="p">();</span>
-<a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a><span class="w">        </span><span class="c1">// plug-in list</span>
+<a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a><span class="w">        </span><span class="c1">// lista de plugins</span>
 <a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a><span class="w">        </span><span class="n">PlugInConfig</span><span class="o">[]</span><span class="w"> </span><span class="n">pluginConfigs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">.</span><span class="na">findPlugInConfigs</span><span class="p">();</span>
-<a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a><span class="w">         </span><span class="c1">// explore plugins to find the right one</span>
-<a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a><span class="w">         </span><span class="c1">// which is named after this class</span>
+<a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a><span class="w">         </span><span class="c1">// análise dos plugins para encontrar aquele</span>
+<a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a><span class="w">         </span><span class="c1">// que tenha o nome desta classe</span>
 <a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a><span class="w">        </span><span class="kt">boolean</span><span class="w"> </span><span class="n">trouvé</span><span class="o">=</span><span class="kc">false</span><span class="p">;</span>
 <a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="o">!</span><span class="w"> </span><span class="n">trouvé</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">pluginConfigs</span><span class="p">.</span><span class="na">length</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-5-26" name="__codelineno-5-26" href="#__codelineno-5-26"></a><span class="w">            </span><span class="c1">// plugin name</span>
+<a id="__codelineno-5-26" name="__codelineno-5-26" href="#__codelineno-5-26"></a><span class="w">            </span><span class="c1">// nome do plugin</span>
 <a id="__codelineno-5-27" name="__codelineno-5-27" href="#__codelineno-5-27"></a><span class="w">            </span><span class="n">String</span><span class="w"> </span><span class="n">pluginClassName</span><span class="o">=</span><span class="n">pluginConfigs</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">.</span><span class="na">getClassName</span><span class="p">();</span>
-<a id="__codelineno-5-28" name="__codelineno-5-28" href="#__codelineno-5-28"></a><span class="w">             </span><span class="c1">// if it&#39;s not the right plugin, continue</span>
+<a id="__codelineno-5-28" name="__codelineno-5-28" href="#__codelineno-5-28"></a><span class="w">             </span><span class="c1">// se não for o plugin certo, continuamos</span>
 <a id="__codelineno-5-29" name="__codelineno-5-29" href="#__codelineno-5-29"></a><span class="w">            </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="w"> </span><span class="n">pluginClassName</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">className</span><span class="p">))</span><span class="w"> </span><span class="k">continue</span><span class="p">;</span>
-<a id="__codelineno-5-30" name="__codelineno-5-30" href="#__codelineno-5-30"></a><span class="w">            </span><span class="c1">// it&#39;s the right one - you memorize its properties in context</span>
+<a id="__codelineno-5-30" name="__codelineno-5-30" href="#__codelineno-5-30"></a><span class="w">            </span><span class="c1">// é o plugin certo — guardamos as suas propriedades no contexto</span>
 <a id="__codelineno-5-31" name="__codelineno-5-31" href="#__codelineno-5-31"></a><span class="w">            </span><span class="n">servlet</span><span class="p">.</span><span class="na">getServletContext</span><span class="p">().</span><span class="na">setAttribute</span><span class="p">(</span><span class="s">&quot;initialisations&quot;</span><span class="p">,</span><span class="n">pluginConfigs</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">.</span><span class="na">getProperties</span><span class="p">());</span>
 <a id="__codelineno-5-32" name="__codelineno-5-32" href="#__codelineno-5-32"></a><span class="w">            </span><span class="n">trouvé</span><span class="o">=</span><span class="kc">true</span><span class="p">;</span>
 <a id="__codelineno-5-33" name="__codelineno-5-33" href="#__codelineno-5-33"></a><span class="w">        </span><span class="p">}</span><span class="c1">//for i</span>
 <a id="__codelineno-5-34" name="__codelineno-5-34" href="#__codelineno-5-34"></a><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="c1">//init</span>
-<a id="__codelineno-5-35" name="__codelineno-5-35" href="#__codelineno-5-35"></a><span class="p">}</span><span class="w"> </span><span class="c1">//class</span>
+<a id="__codelineno-5-35" name="__codelineno-5-35" href="#__codelineno-5-35"></a><span class="p">}</span><span class="w"> </span><span class="c1">//classe</span>
 </code></pre></div>
-<p>Tenha em atenção os seguintes pontos:</p>
+<p>É importante ter em conta os seguintes pontos:</p>
 <ul>
-  <li>O método <b>init </b>recebe um parâmetro chamado <b>conf </b>(do tipo <b>ModuleConfig) </b>que fornece acesso ao conteúdo do ficheiro<b> struts-config.xml</b>. 
+  <li>o método <b>init </b>recebe um parâmetro denominado aqui <b>conf, </b>do tipo <b>ModuleConfig, </b>que dá acesso ao conteúdo do ficheiro <b>struts-config.xml</b>. 
   </li>
-  <li>O método<b> [ModuleConfig].findPlugInConfigs() </b>recupera todas as secções<b> &lt;plug-in&gt; </b>do ficheiro de configuração do Struts sob a forma de uma matriz de objetos <b>PlugInConfig</b>.
+  <li>O método <b>[ModuleConfig].findPlugInConfigs() </b>permite recuperar todas as secções <b>&lt;plug-in&gt; </b>do ficheiro de configuração do Struts sob a forma de um tabuleiro de objetos <b>PlugInConfig</b>.
   </li>
-  <li>A classe <b>PluginConfig </b>representa uma secção<b> &lt;plug-in&gt; </b>do ficheiro de configuração. O método<b> [PlugInConfig].getProperties </b>permite-nos aceder aos elementos<b> &lt;set-property&gt; </b>da secção sob a forma de um dicionário<b> java.util.Map</b>.
+  <li>A classe <b>PluginConfig </b>representa uma secção <b>&lt;plug-in&gt; </b>do ficheiro de configuração. O método <b>[PlugInConfig].getProperties </b>permite-nos aceder aos elementos <b>&lt;set-property&gt; </b>da secção sob a forma de um dicionário <b>java.util.Map</b>.
   </li>
   <li>O dicionário de propriedades do plugin é colocado no contexto da aplicação.
   </li>
-  <li>Uma vez que podem existir vários plugins, precisamos de encontrar aquele que nos interessa. É aquele com o mesmo nome que a classe que está a ser executada.
+  <li>Como podem existir vários plugins, temos de identificar aquele que nos interessa. É aquele que tem o mesmo nome que a classe que está a ser executada.
   </li>
 </ul>
 
-<p>Aqui, optámos por colocar o dicionário completo no contexto. Poderíamos ter optado por utilizá-lo. O seguinte fragmento de código ilustra uma forma de o fazer:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="w">            </span><span class="n">Map</span><span class="w"> </span><span class="n">initialisations</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pluginConfigs</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">.</span><span class="na">getProperties</span><span class="p">();</span>
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">             </span><span class="c1">// iterate over dictionary entries</span>
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">            </span><span class="n">Iterator</span><span class="w"> </span><span class="n">entrées</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">initialisations</span><span class="p">.</span><span class="na">entrySet</span><span class="p">().</span><span class="na">iterator</span><span class="p">();</span>
-<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">            </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">entrées</span><span class="p">.</span><span class="na">hasNext</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">                 </span><span class="c1">// retrieve current input (key,value)</span>
-<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">                </span><span class="n">Map</span><span class="p">.</span><span class="na">Entry</span><span class="w"> </span><span class="n">entrée</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Map</span><span class="p">.</span><span class="na">Entry</span><span class="p">)</span><span class="w"> </span><span class="n">entrées</span><span class="p">.</span><span class="na">next</span><span class="p">();</span>
-<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">                </span><span class="n">String</span><span class="w"> </span><span class="n">clé</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">String</span><span class="p">)</span><span class="w"> </span><span class="n">entrée</span><span class="p">.</span><span class="na">getKey</span><span class="p">();</span>
-<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">                </span><span class="n">String</span><span class="w"> </span><span class="n">valeur</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">String</span><span class="p">)</span><span class="w"> </span><span class="n">entrée</span><span class="p">.</span><span class="na">getValue</span><span class="p">();</span>
-<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="w">                </span><span class="c1">// exploit (key,value)</span>
-<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="w">                </span><span class="c1">//...</span>
-<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="w">            </span><span class="p">}</span>
+<p>Neste caso, optámos por colocar o dicionário na íntegra no contexto. Poderíamos ter optado por explorar apenas parte dele. A seguinte sequência de código ilustra uma forma de o fazer:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>            Map initialisations = pluginConfigs[i].getProperties();
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>             // iterar pelas entradas do dicionário
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>            Iterator entrées = initialisations.entrySet().iterator();
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>            while (entrées.hasNext()) {
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>                 // recuperar a entrada (chave, valor) atual
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>                Map.Entry entrée = (Map.Entry) entrées.next();
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>                String clé = (String) entrée.getKey();
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>                String valeur = (String) entrée.getValue();
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>                // processar (chave, valor)
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>                //...
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>            }
 </code></pre></div>
 <h2 id="83-o-codigo-da-vista-infosjsp">8.3. <span style="color: #4f81bd">O código da vista infos.jsp</span></h2>
-<p>A vista <strong>infos.jsp</strong> é responsável por exibir o conteúdo do dicionário de propriedades do plugin, que foi colocado no contexto da aplicação. Uma vez que a vista <strong>infos.jsp</strong> faz parte deste contexto, tem acesso ao mesmo. O seu código é o seguinte:</p>
+<p>A vista <strong>infos.jsp</strong> tem como função visualizar o conteúdo do dicionário de propriedades do plugin que foi colocado no contexto da aplicação. Como a vista <strong>infos.jsp</strong> faz parte desse contexto, tem acesso ao mesmo. O seu código é o seguinte:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="err">&lt;</span>%@ taglib uri=&quot;/WEB-INF/struts-bean.tld&quot; prefix=&quot;bean&quot; %&gt;
 <a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="err">&lt;</span>%@ taglib uri=&quot;/WEB-INF/struts-logic.tld&quot; prefix=&quot;logic&quot; %&gt;
 <a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
@@ -867,28 +869,28 @@
 <a id="__codelineno-7-21" name="__codelineno-7-21" href="#__codelineno-7-21"></a>    <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
 <a id="__codelineno-7-22" name="__codelineno-7-22" href="#__codelineno-7-22"></a><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
 </code></pre></div>
-<p>Notas:</p>
+<p>Pontos a ter em conta:</p>
 <ul>
-  <li>Utilizamos as bibliotecas de tags <b>struts-logic </b>e <b>struts-bean</b>
+  <li>utilizamos as bibliotecas de tags <b>struts-logic </b>e <b>struts-bean</b>
   </li>
-  <li>A tag<b> &lt;logic:iterate&gt; </b>permite-nos apresentar o dicionário <b>de inicializações </b>que foi colocado no contexto pelo método <b>init</b> do plugin. O atributo <b>name </b>especifica o objeto sobre o qual se irá iterar. Este deve ser algo como uma coleção, um iterador, etc. O objeto é procurado em todos os âmbitos (página, pedido, sessão, contexto). Aqui, será encontrado no âmbito <b>do contexto</b>. O parâmetro <b>id </b>é utilizado para nomear o elemento atual da coleção à medida que a iteração avança. Aqui, dentro do corpo da tag<b> &lt;logic:iterate&gt;</b>, <b>element </b>representará o elemento atual de um dicionário. Isto é representado por um objeto<b> java.util.Map.Entry</b>, que é essencialmente um par (chave, valor) do dicionário.
+  <li>a tag <b>&lt;logic:iterate&gt; </b>permite-nos apresentar o dicionário <b>«initialisations»</b>, que foi inserido no contexto pelo método <b>«init» </b>do plugin. O atributo <b>«name» </b>designa o objeto sobre o qual se deve iterar. Trata-se de algo que deve assemelhar-se a uma coleção, um iterador, etc. O objeto é procurado em todos os escopos (página, pedido, sessão, contexto). Neste caso, será encontrado no âmbito <b>«context</b>». O parâmetro <b>«id» </b>serve para atribuir um nome ao elemento atual da coleção ao longo das iterações. Aqui, no corpo da baliza <b>&lt;logic:iterate&gt;</b>, <b>element </b>representará o elemento atual de um dicionário. Este é representado por um objeto <b>java.util.Map.Entry, </b>que é, em termos gerais, um par (chave, valor) do dicionário.
   </li>
-  <li>No corpo da tag<b> &lt;logic:iterate&gt;</b>, exibimos (<b>&lt;bean:write&gt;</b>) o conteúdo do elemento atual <b>element</b>. Este é tratado como um objeto com duas <b>propriedades</b>: a <b>chave </b>e o <b>valor</b>. Ambas as propriedades são exibidas.
+  <li>No corpo da baliza <b>&lt;logic:iterate&gt;</b>, exibe-se (<b>&lt;bean:write&gt;</b>) o conteúdo do elemento atual <b>element</b>. Este é considerado como um objeto com duas propriedades (<b>property</b>): a chave <b>key </b>e o valor <b>value</b>. Estas duas propriedades são exibidas.
   </li>
 </ul>
 
 <h2 id="84-implantacao">8.4. <span style="color: #4f81bd">Implantação</span></h2>
 <p>O contexto da aplicação é definido no ficheiro de configuração <strong>server.xml</strong> do Tomcat:</p>
 <p><strong>&lt;Context path=&quot;/plugin11&quot; reloadable=&quot;true&quot; docBase=&quot;E:\data\serge\web\struts\plugins\1&quot; /&gt;</strong></p>
-<p>A estrutura de diretórios da aplicação é a seguinte:</p>
-<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/10000000000001300000008FE31A6D61.png" width="304" height="143" style="display:inline-block; margin:4px;width:8.042cm;height:3.784cm;" class="odt-zoomable" data-zoom-src="images/10000000000001300000008FE31A6D61.png" /><img src="images/1000000000000160000000D371853205.png" width="352" height="211" style="display:inline-block; margin:4px;width:9.312cm;height:5.583cm;" class="odt-zoomable" data-zoom-src="images/1000000000000160000000D371853205.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/100000000000015F0000018256CF5DE2.png" width="351" height="386" style="display:inline-block; margin:4px;width:9.285cm;height:10.211cm;" class="odt-zoomable" data-zoom-src="images/100000000000015F0000018256CF5DE2.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;">&nbsp;</td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;">&nbsp;</td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;" colspan="2"><img src="images/10000000000001DF0000006C6244F965.png" width="479" height="108" style="display:inline-block; margin:4px;width:12.672cm;height:2.858cm;" class="odt-zoomable" data-zoom-src="images/10000000000001DF0000006C6244F965.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;">&nbsp;</td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;">&nbsp;</td></tr></table>
+<p>A estrutura da aplicação é a seguinte:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000001300000008FE31A6D61.png" width="304" height="143" style="display:inline-block; margin:4px;width:8.042cm;height:3.784cm;" class="odt-zoomable" data-zoom-src="images/10000000000001300000008FE31A6D61.png" /><img src="images/1000000000000160000000D371853205.png" width="352" height="211" style="display:inline-block; margin:4px;width:9.312cm;height:5.583cm;" class="odt-zoomable" data-zoom-src="images/1000000000000160000000D371853205.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/100000000000015F0000018256CF5DE2.png" width="351" height="386" style="display:inline-block; margin:4px;width:9.285cm;height:10.211cm;" class="odt-zoomable" data-zoom-src="images/100000000000015F0000018256CF5DE2.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;" colspan="2"><img src="images/10000000000001DF0000006C6244F965.png" width="479" height="108" style="display:inline-block; margin:4px;width:12.672cm;height:2.858cm;" class="odt-zoomable" data-zoom-src="images/10000000000001DF0000006C6244F965.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td></tr></table>
 
-<h2 id="85-testes">8.5. <span style="color: #4f81bd">Testes</span></h2>
-<p>Iniciamos o Tomcat e acedemos à URL <strong>http://localhost:8080/plugin1/infos.jsp</strong>:</p>
-<p><img src="images/10000000000001C2000000D919CB97E0.png" width="450" height="217" style="width:11.904cm;height:5.74cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000001C2000000D919CB97E0.png" /></p>
-<p>Verificamos que a página <strong>infos.jsp</strong> acedeu com sucesso às informações armazenadas no contexto da aplicação através do plugin.</p>
+<h2 id="85-os-testes">8.5. <span style="color: #4f81bd">Os testes</span></h2>
+<p>Iniciamos o Tomcat e solicitamos o URL <strong>http://localhost:8080/plugin1/infos.jsp</strong>:</p>
+<p><img src="images/10000000000001C2000000D919CB97E0.png" width="450" height="217" style="width:11.904cm;height:5.741cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000001C2000000D919CB97E0.png" /></p>
+<p>Constatamos que a vista <strong>infos.jsp</strong> teve efetivamente acesso às informações armazenadas no contexto da aplicação pelo plugin.</p>
 <h2 id="86-conclusao">8.6. <span style="color: #4f81bd">Conclusão</span></h2>
-<p>Demonstrámos que uma aplicação Struts pode ser inicializada utilizando um plugin. Isto pode servir como alternativa à derivação da classe <strong>ActionServlet</strong> para alcançar o mesmo resultado.</p>
+<p>Demonstrámos que é possível inicializar uma aplicação Struts utilizando um plugin. Esta pode ser uma solução alternativa à derivação da classe <strong>ActionServlet</strong> para realizar a mesma tarefa.</p>
 
 
 

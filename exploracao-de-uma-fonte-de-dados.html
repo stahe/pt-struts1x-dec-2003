@@ -1,0 +1,1219 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Introdução ao Struts 1.x através de exemplos">
+      
+      
+        <meta name="author" content="Serge Tahé">
+      
+      
+        <link rel="canonical" href="https://stahe.github.io/pt-struts1x-dec-2003/exploracao-de-uma-fonte-de-dados.html">
+      
+      
+        <link rel="prev" href="criacao-de-um-plugin.html">
+      
+      
+        <link rel="next" href="anexos.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>9. Exploração de uma fonte de dados - Introdução ao Struts 1.x através de exemplos</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="stylesheets/focus.css">
+    
+      <link rel="stylesheet" href="stylesheets/bidi.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EBZC3JVJNR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    var siteName = "Introdução ao Struts 1.x através de exemplos";
+    gtag('config', 'G-EBZC3JVJNR', {
+        'page_title': siteName
+    });
+  </script>
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#9-exploracao-de-uma-fonte-de-dados" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="Introdução ao Struts 1.x através de exemplos" class="md-header__button md-logo" aria-label="Introdução ao Struts 1.x através de exemplos" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Introdução ao Struts 1.x através de exemplos
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              9. Exploração de uma fonte de dados
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="purple"  aria-label="Mudar para modo escuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Mudar para modo escuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="purple"  aria-label="Mudar para modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Mudar para modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://stahe.github.io/pt-struts1x-dec-2003" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="Introdução ao Struts 1.x através de exemplos" class="md-nav__button md-logo" aria-label="Introdução ao Struts 1.x através de exemplos" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Introdução ao Struts 1.x através de exemplos
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://stahe.github.io/pt-struts1x-dec-2003" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bem-vindos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="generalidades.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Generalidades
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="a-aplicacao-struts-pessoa.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. A aplicação Struts «pessoa»
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="processamento-do-formulario-pelo-controlador.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Processamento do formulário pelo controlador
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="utilizacao-de-formularios-dinamicos.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Utilização de formulários dinâmicos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="formularios-dinamicos-com-restricoes-de-integridade.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Formulários dinâmicos com restrições de integridade
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="formularios-html.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Formulários HTML
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="-aplicacao-quiest.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.  Aplicação QuiEst
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="criacao-de-um-plugin.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Criação de um plugin
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Exploração de uma fonte de dados
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="exploracao-de-uma-fonte-de-dados.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Exploração de uma fonte de dados
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#91-a-aplicacao-struts-listarticles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1. A aplicação Struts /listarticles
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#92-configuracao-da-aplicacao-struts-listarticles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2. Configuração da aplicação Struts /listarticles
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9.2. Configuração da aplicação Struts /listarticles">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#921-fontes-de-dados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2.1. Fontes de dados
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#922-acoes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2.2. Ações
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#923-o-ficheiro-de-mensagens" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2.3. O ficheiro de mensagens
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#93-as-vistas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.3. As vistas
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9.3. As vistas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#931-a-vista-erreursjsp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.3.1. A vista erreurs.jsp
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#932-a-vista-listarticlesjsp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.3.2. A vista listarticles.jsp
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#94-a-acao-liste" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.4. A ação /liste
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#95-implementacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.5. Implementação
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#96-os-testes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.6. Os testes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#97-uma-segunda-fonte-de-dados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.7. Uma segunda fonte de dados
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#98-conclusao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.8. Conclusão
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="anexos.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Anexos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="9-exploracao-de-uma-fonte-de-dados">9. <span style="color: #365f91">Exploração de uma fonte de dados</span></h1>
+<p>Propomos aqui estabelecer as bases para a exploração de bases de dados no âmbito de uma aplicação Struts.</p>
+<h2 id="91-a-aplicacao-struts-listarticles">9.1. <span style="color: #4f81bd">A aplicação Struts /listarticles</span></h2>
+<p>Pretendemos apresentar o conteúdo de uma tabela que regista as características dos artigos vendidos por uma loja. </p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000000A500000086752DCB7C.png" width="165" height="134" style="display:inline-block; margin:4px;width:4.366cm;height:3.545cm;" class="odt-zoomable" data-zoom-src="images/10000000000000A500000086752DCB7C.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>code
+</code></pre></div>
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">código do artigo - chave primária</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>nom
+</code></pre></div>
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">nome do artigo</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>prix
+</code></pre></div>
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">preço do artigo</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>stockActuel
+</code></pre></div>
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">stock atual do artigo</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>stockMinimum
+</code></pre></div>
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">stock abaixo do qual</div><div style="margin:0 0 0.5em 0">é necessário iniciar um reabastecimento</div></td></tr></table></td></tr></table>
+
+<p>O conteúdo da tabela é o seguinte:</p>
+<p><img src="images/10000000000001BA000000E4F17E5C65.png" width="442" height="228" style="width:11.693cm;height:6.033cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000001BA000000E4F17E5C65.png" /></p>
+<p>A aplicação <strong>listarticles</strong> irá apresentar-nos o mesmo resultado (de forma menos elegante) numa página web:</p>
+<p><img src="images/10000000000001D3000001591615758A.png" width="467" height="345" style="width:12.354cm;height:9.126cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000001D3000001591615758A.png" /></p>
+<h2 id="92-configuracao-da-aplicacao-struts-listarticles">9.2. <span style="color: #4f81bd">Configuração da aplicação Struts /listarticles</span></h2>
+<p>O ficheiro web.xml da aplicação é padrão:</p>
+<p><mark style="background-color: #fff5ce">web.xml</mark></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;ISO-8859-1&quot;?&gt;</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="cp">&lt;!DOCTYPE web-app</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="cp">    PUBLIC &quot;-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN&quot;</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="cp">    &quot;http://java.sun.com/dtd/web-app_2_3.dtd&quot;&gt;</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="nt">&lt;web-app&gt;</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">    </span><span class="nt">&lt;servlet&gt;</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">      </span><span class="nt">&lt;servlet-name&gt;</span>action<span class="nt">&lt;/servlet-name&gt;</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">    </span><span class="nt">&lt;servlet-class&gt;</span>org.apache.struts.action.ActionServlet<span class="nt">&lt;/servlet-class&gt;</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="w">    </span><span class="nt">&lt;init-param&gt;</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="w">        </span><span class="nt">&lt;param-name&gt;</span>config<span class="nt">&lt;/param-name&gt;</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="w">      </span><span class="nt">&lt;param-value&gt;</span>/WEB-INF/struts-config.xml<span class="nt">&lt;/param-value&gt;</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="w">    </span><span class="nt">&lt;/init-param&gt;</span>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="w">    </span><span class="nt">&lt;load-on-startup&gt;</span>1<span class="nt">&lt;/load-on-startup&gt;</span>
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="w">  </span><span class="nt">&lt;/servlet&gt;</span>
+<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="w">  </span><span class="nt">&lt;servlet-mapping&gt;</span>
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="w">      </span><span class="nt">&lt;servlet-name&gt;</span>action<span class="nt">&lt;/servlet-name&gt;</span>
+<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a><span class="w">    </span><span class="nt">&lt;url-pattern&gt;</span>*.do<span class="nt">&lt;/url-pattern&gt;</span>
+<a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a><span class="w">  </span><span class="nt">&lt;/servlet-mapping&gt;</span>
+<a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a>
+<a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a><span class="w">  </span><span class="nt">&lt;taglib&gt;</span>
+<a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a><span class="w">      </span><span class="nt">&lt;taglib-uri&gt;</span>/WEB-INF/struts-bean.tld<span class="nt">&lt;/taglib-uri&gt;</span>
+<a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a><span class="w">    </span><span class="nt">&lt;taglib-location&gt;</span>/WEB-INF/struts-bean.tld<span class="nt">&lt;/taglib-location&gt;</span>
+<a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a><span class="w">  </span><span class="nt">&lt;/taglib&gt;</span>
+<a id="__codelineno-5-26" name="__codelineno-5-26" href="#__codelineno-5-26"></a><span class="w">  </span><span class="nt">&lt;taglib&gt;</span>
+<a id="__codelineno-5-27" name="__codelineno-5-27" href="#__codelineno-5-27"></a><span class="w">      </span><span class="nt">&lt;taglib-uri&gt;</span>/WEB-INF/struts-logic.tld<span class="nt">&lt;/taglib-uri&gt;</span>
+<a id="__codelineno-5-28" name="__codelineno-5-28" href="#__codelineno-5-28"></a><span class="w">    </span><span class="nt">&lt;taglib-location&gt;</span>/WEB-INF/struts-logic.tld<span class="nt">&lt;/taglib-location&gt;</span>
+<a id="__codelineno-5-29" name="__codelineno-5-29" href="#__codelineno-5-29"></a><span class="w">  </span><span class="nt">&lt;/taglib&gt;</span>
+<a id="__codelineno-5-30" name="__codelineno-5-30" href="#__codelineno-5-30"></a>
+<a id="__codelineno-5-31" name="__codelineno-5-31" href="#__codelineno-5-31"></a><span class="nt">&lt;/web-app&gt;</span>
+</code></pre></div>
+<p>O ficheiro <strong>struts-config.xml</strong> introduz uma nova secção <strong>&lt;data-sources&gt;</strong> que permite declarar e configurar fontes de dados:</p>
+<p><mark style="background-color: #fff5ce">struts-config.xml</mark></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;ISO-8859-1&quot; ?&gt;</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="cp">&lt;!DOCTYPE struts-config PUBLIC</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="cp">          &quot;-//Apache Software Foundation//DTD Struts Configuration 1.1//EN&quot;</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="cp">          &quot;http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd&quot;&gt;</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="nt">&lt;struts-config&gt;</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">    </span><span class="nt">&lt;data-sources&gt;</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="w">        </span><span class="nt">&lt;data-source</span><span class="w"> </span><span class="na">key=</span><span class="s">&quot;dbarticles&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="w">            </span><span class="nt">&lt;set-property</span><span class="w"> </span><span class="na">property=</span><span class="s">&quot;driverClass&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;com.mysql.jdbc.Driver&quot;</span><span class="nt">&gt;&lt;/set-property&gt;</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="w">            </span><span class="nt">&lt;set-property</span><span class="w"> </span><span class="na">property=</span><span class="s">&quot;url&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;jdbc:mysql://localhost/dbarticles&quot;</span><span class="nt">&gt;&lt;/set-property&gt;</span>
+<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="w">            </span><span class="nt">&lt;set-property</span><span class="w"> </span><span class="na">property=</span><span class="s">&quot;user&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;admarticles&quot;</span><span class="nt">&gt;&lt;/set-property&gt;</span>
+<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="w">            </span><span class="nt">&lt;set-property</span><span class="w"> </span><span class="na">property=</span><span class="s">&quot;password&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;mdparticles&quot;</span><span class="nt">&gt;&lt;/set-property&gt;</span>
+<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a><span class="w">            </span><span class="nt">&lt;set-property</span><span class="w"> </span><span class="na">property=</span><span class="s">&quot;minCount&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;2&quot;</span><span class="nt">&gt;&lt;/set-property&gt;</span>
+<a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a><span class="w">            </span><span class="nt">&lt;set-property</span><span class="w"> </span><span class="na">property=</span><span class="s">&quot;maxCount&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;5&quot;</span><span class="nt">&gt;&lt;/set-property&gt;</span>
+<a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a><span class="w">        </span><span class="nt">&lt;/data-source&gt;</span>
+<a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a><span class="w">    </span><span class="nt">&lt;/data-sources&gt;</span>
+<a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a>
+<a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a><span class="w">    </span><span class="nt">&lt;action-mappings&gt;</span>
+<a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a><span class="w">        </span><span class="nt">&lt;action</span><span class="w"> </span><span class="na">path=</span><span class="s">&quot;/liste&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;istia.st.struts.articles.ListeArticlesAction&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a><span class="w">            </span><span class="nt">&lt;forward</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;afficherListeArticles&quot;</span><span class="w"> </span><span class="na">path=</span><span class="s">&quot;/vues/listarticles.jsp&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-6-22" name="__codelineno-6-22" href="#__codelineno-6-22"></a><span class="w">            </span><span class="nt">&lt;forward</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;afficherErreurs&quot;</span><span class="w"> </span><span class="na">path=</span><span class="s">&quot;/vues/erreurs.jsp&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-6-23" name="__codelineno-6-23" href="#__codelineno-6-23"></a><span class="w">        </span><span class="nt">&lt;/action&gt;</span>
+<a id="__codelineno-6-24" name="__codelineno-6-24" href="#__codelineno-6-24"></a><span class="w">    </span><span class="nt">&lt;/action-mappings&gt;</span>
+<a id="__codelineno-6-25" name="__codelineno-6-25" href="#__codelineno-6-25"></a>
+<a id="__codelineno-6-26" name="__codelineno-6-26" href="#__codelineno-6-26"></a><span class="w">    </span><span class="nt">&lt;message-resources</span><span class="w"> </span><span class="na">parameter=</span><span class="s">&quot;istia.st.struts.articles.ApplicationResources&quot;</span><span class="w"> </span>
+<a id="__codelineno-6-27" name="__codelineno-6-27" href="#__codelineno-6-27"></a><span class="w">        </span><span class="na">null=</span><span class="s">&quot;false&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<a id="__codelineno-6-28" name="__codelineno-6-28" href="#__codelineno-6-28"></a>
+<a id="__codelineno-6-29" name="__codelineno-6-29" href="#__codelineno-6-29"></a><span class="nt">&lt;/struts-config&gt;</span>
+</code></pre></div>
+<h3 id="921-fontes-de-dados">9.2.1. <span style="color: #4f81bd">Fontes de dados</span></h3>
+<p>A secção <strong>&lt;data-sources&gt;</strong> permite declarar todas as fontes de dados da aplicação, sendo cada uma delas descrita por uma secção <strong>&lt;data-source&gt;</strong>. Esta baliza admite vários atributos:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>key
+</code></pre></div>
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">identifica a fonte de dados quando existem várias.</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>driverClass
+</code></pre></div>
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">o nome da classe a instanciar para aceder à base de dados. Esta classe encontra-se geralmente numa biblioteca de classes (.jar) fornecida pelo editor do SGBD. Esta biblioteca contém o controlador JDBC de acesso à base de dados. A propriedade <b>driverClass </b>identifica este controlador. O ficheiro .jar das classes de acesso ao SGBD será colocado na pasta WEB-INF/lib da aplicação.</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>url
+</code></pre></div>
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">cadeia de ligação a uma base de dados específica. Com efeito, o controlador JDBC permite o acesso a todas as bases de dados geridas pelo SGBD. A propriedade url permite-nos indicar qual delas iremos utilizar.</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>user, password
+</code></pre></div>
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">O acesso às bases de dados está protegido. O SGBD gere utilizadores identificados por um nome de utilizador e uma palavra-passe. Estes são especificados nos atributos «user» e «password» da baliza.</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>minCount, maxCount
+</code></pre></div>
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">O Struts irá gerir um conjunto de ligações ao SGBD. Abrir uma ligação a um SGBD é uma operação que consome muitos recursos em termos de tempo e memória. Em vez de abrir e fechar uma ligação ao SGBD para cada uma das solicitações que serão feitas à aplicação, a aplicação gere um conjunto de n ligações, em que n está no intervalo [minCount, maxCount]. Se, durante uma solicitação, a aplicação precisar de uma ligação:</div><div style="margin:0 0 0.5em 0">- procura obter uma no conjunto de ligações. Se encontrar uma disponível, utiliza-a.</div><div style="margin:0 0 0.5em 0">- se não houver ligações livres no conjunto e se houver menos de maxCount ligações no conjunto, é aberta uma nova ligação e adicionada ao conjunto. A solicitação atual poderá utilizá-la.</div><div style="margin:0 0 0.5em 0">- se não houver ligações livres e não for possível criar uma nova, o pedido fica em espera.</div><div style="margin:0 0 0.5em 0">Quando a consulta atual encerra a ligação, esta não é realmente encerrada, mas sim devolvida ao conjunto.</div></td></tr></table>
+
+<p>Aqui, temos as seguintes propriedades:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>key
+</code></pre></div>
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>dbarticles </b>— é o nome pelo qual a fonte de dados será identificada no contexto da aplicação</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>driverClass
+</code></pre></div>
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>com.mysql.jdbc.Driver</b>. Utilizamos uma base de dados MySQL.</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>url
+</code></pre></div>
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>jdbc:mysql://localhost/dbarticles</b>. A base de dados chama-se dbarticles e está presente no computador local.</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>user, password
+</code></pre></div>
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>admarticles, mdparticles</b>. Este utilizador foi definido com todos os privilégios sobre a base de dados <b>dbarticles</b>.</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>minCount, maxCount
+</code></pre></div>
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>2, 5</b>. Mínimo de 2 ligações no pool, máximo de 5.</div></td></tr></table>
+
+<h3 id="922-acoes">9.2.2. <span style="color: #4f81bd">Ações</span></h3>
+<p>As ações declaradas no ficheiro de configuração do Struts são as seguintes:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>    &lt;action-mappings&gt;
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>        &lt;action path=&quot;/liste&quot; type=&quot;istia.st.struts.articles.ListeArticlesAction&quot;&gt;
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>            &lt;forward name=&quot;afficherListeArticles&quot; path=&quot;/vues/listarticles.jsp&quot;/&gt;
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>            &lt;forward name=&quot;afficherErreurs&quot; path=&quot;/vues/erreurs.jsp&quot;/&gt;
+<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>        &lt;/action&gt;
+<a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a>    &lt;/action-mappings&gt;
+</code></pre></div>
+<p>A única ação chama-se <strong>/liste</strong> e está associada à classe <strong>istia.st.struts.articles.ListeArticlesAction</strong>. Esta ação termina com a exibição:</p>
+<ul>
+  <li>da página dos artigos (<b>/vues/listarticles.jsp</b>)
+  </li>
+  <li>da página de erros (<b>/vues/erreurs.jsp</b>)
+  </li>
+</ul>
+
+<h3 id="923-o-ficheiro-de-mensagens">9.2.3. <span style="color: #4f81bd">O ficheiro de mensagens</span></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>    &lt;message-resources parameter=&quot;istia.st.struts.articles.ApplicationResources&quot; 
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>        null=&quot;false&quot; /&gt;
+</code></pre></div>
+<p>O ficheiro de mensagens <strong>ApplicationResources.properties</strong> será colocado na pasta <em>WEB-INF/classes/istia/st/struts/articles</em>. O seu conteúdo será o seguinte:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="gh"># erros</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>errors.header=&lt;ul&gt;
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>errors.footer=&lt;/ul&gt;
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>erreur.dbarticles=&lt;li&gt;Erreur d&#39;accès à la base des articles ({0})&lt;/li&gt;
+</code></pre></div>
+<p>Pode ocorrer apenas um erro: um erro de acesso à base de dados. Na verdade, existem vários tipos de erros possíveis, todos agrupados na mesma mensagem de erro. A causa exata do erro será, no entanto, especificada no parâmetro <strong>{0}</strong>.</p>
+<h2 id="93-as-vistas">9.3. <span style="color: #4f81bd">As vistas</span></h2>
+<h3 id="931-a-vista-erreursjsp">9.3.1. <span style="color: #4f81bd">A vista erreurs.jsp</span></h3>
+<p>Esta vista deve apresentar uma lista de erros. Já a encontrámos várias vezes.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="err">&lt;</span>%@ taglib uri=&quot;/WEB-INF/struts-html.tld&quot; prefix=&quot;html&quot; %&gt;
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>    <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a>      <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Liste d&#39;articles - erreurs<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a>  <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a>  <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+<a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a>      <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Les erreurs suivantes se sont produites<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+<a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a>        <span class="p">&lt;</span><span class="nt">html:errors</span><span class="p">/&gt;</span>
+<a id="__codelineno-20-10" name="__codelineno-20-10" href="#__codelineno-20-10"></a>  <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<a id="__codelineno-20-11" name="__codelineno-20-11" href="#__codelineno-20-11"></a><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div>
+<p>Esta vista limita-se a apresentar a lista de erros com a baliza <strong>&lt;html:errors/&gt;</strong>.</p>
+<h3 id="932-a-vista-listarticlesjsp">9.3.2. <span style="color: #4f81bd">A vista listarticles.jsp</span></h3>
+<p>Esta vista deve apresentar o conteúdo da tabela ARTICLES da base de dados. O seu código é o seguinte:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="err">&lt;</span>%@ taglib uri=&quot;/WEB-INF/struts-bean.tld&quot; prefix=&quot;bean&quot; %&gt;
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="err">&lt;</span>%@ taglib uri=&quot;/WEB-INF/struts-logic.tld&quot; prefix=&quot;logic&quot; %&gt;
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>
+<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="err">&lt;</span>%
+<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a>     // listarticles: ArrayList na consulta
+<a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a>     // listArticles(i): tabela (String[5]) com 5 elementos 
+<a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a>%&gt;
+<a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a>
+<a id="__codelineno-21-9" name="__codelineno-21-9" href="#__codelineno-21-9"></a><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+<a id="__codelineno-21-10" name="__codelineno-21-10" href="#__codelineno-21-10"></a>    <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+<a id="__codelineno-21-11" name="__codelineno-21-11" href="#__codelineno-21-11"></a>        <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>DataSource Struts<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<a id="__codelineno-21-12" name="__codelineno-21-12" href="#__codelineno-21-12"></a>    <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<a id="__codelineno-21-13" name="__codelineno-21-13" href="#__codelineno-21-13"></a>    <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+<a id="__codelineno-21-14" name="__codelineno-21-14" href="#__codelineno-21-14"></a>        <span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span>Liste des articles<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
+<a id="__codelineno-21-15" name="__codelineno-21-15" href="#__codelineno-21-15"></a>        <span class="p">&lt;</span><span class="nt">hr</span><span class="p">&gt;</span>
+<a id="__codelineno-21-16" name="__codelineno-21-16" href="#__codelineno-21-16"></a>        <span class="p">&lt;</span><span class="nt">table</span> <span class="na">border</span><span class="o">=</span><span class="s">&quot;1&quot;</span><span class="p">&gt;</span>
+<a id="__codelineno-21-17" name="__codelineno-21-17" href="#__codelineno-21-17"></a>            <span class="p">&lt;</span><span class="nt">logic:iterate</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;ligne&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;listArticles&quot;</span><span class="p">&gt;</span>
+<a id="__codelineno-21-18" name="__codelineno-21-18" href="#__codelineno-21-18"></a>                <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+<a id="__codelineno-21-19" name="__codelineno-21-19" href="#__codelineno-21-19"></a>                    <span class="p">&lt;</span><span class="nt">logic:iterate</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;colonne&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;ligne&quot;</span><span class="p">&gt;</span>
+<a id="__codelineno-21-20" name="__codelineno-21-20" href="#__codelineno-21-20"></a>                        <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;&lt;</span><span class="nt">bean:write</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;colonne&quot;</span><span class="p">/&gt;&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+<a id="__codelineno-21-21" name="__codelineno-21-21" href="#__codelineno-21-21"></a>                    <span class="p">&lt;/</span><span class="nt">logic:iterate</span><span class="p">&gt;</span>
+<a id="__codelineno-21-22" name="__codelineno-21-22" href="#__codelineno-21-22"></a>                <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+<a id="__codelineno-21-23" name="__codelineno-21-23" href="#__codelineno-21-23"></a>            <span class="p">&lt;/</span><span class="nt">logic:iterate</span><span class="p">&gt;</span>
+<a id="__codelineno-21-24" name="__codelineno-21-24" href="#__codelineno-21-24"></a>        <span class="p">&lt;/</span><span class="nt">table</span><span class="p">&gt;</span>
+<a id="__codelineno-21-25" name="__codelineno-21-25" href="#__codelineno-21-25"></a>    <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<a id="__codelineno-21-26" name="__codelineno-21-26" href="#__codelineno-21-26"></a><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>    
+</code></pre></div>
+<p>A ação <strong>/liste</strong> irá colocar o conteúdo da tabela ARTICLES num objeto <em>ArrayList,</em> inserido na consulta com o nome <strong>listArticles</strong>. Cada elemento do objeto <strong>listArticles</strong> é uma matriz de 5 cadeias de caracteres que representam as 5 informações (código, nome, preço, stockActuel, stockMinimum) associadas a um artigo na tabela. A vista deve apresentar o conteúdo do objeto <strong>listArticles</strong> numa tabela HTML. Para tal, utiliza a baliza <strong>&lt;logic:iterate&gt;</strong>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>            &lt;logic:iterate id=&quot;ligne&quot; name=&quot;listArticles&quot;&gt;
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>                &lt;tr&gt;
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>                    &lt;logic:iterate id=&quot;colonne&quot; name=&quot;ligne&quot;&gt;
+<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a>                        &lt;td&gt;&lt;bean:write name=&quot;colonne&quot;/&gt;&lt;/td&gt;
+<a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a>                    &lt;/logic:iterate&gt;
+<a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a>                &lt;/tr&gt;
+<a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a>            &lt;/logic:iterate&gt;
+</code></pre></div>
+<p>Existem aqui duas iterações. A primeira percorre os elementos do objeto <strong>ArrayList listArticles</strong>. O elemento atual de <strong>listArticles</strong> é aqui designado por <strong>«linha</strong>». O elemento <strong>«linha»</strong> representa um objeto <strong>String[5]</strong> que é percorrido através da segunda iteração. O elemento desta segunda iteração é denominado <strong>«coluna</strong>». Representa o elemento atual de uma matriz de cadeias de caracteres e é, portanto, uma cadeia de caracteres (código, nome, preço, stockActuel, stockMinimum). O seu valor é apresentado através da baliza <strong>&lt;bean:write&gt;</strong>.</p>
+<p>A vista utiliza tags das bibliotecas <strong>struts-logic</strong> e <strong>struts-bean</strong>. Por isso, é necessário declarar a utilização destas:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>&lt;%@ taglib uri=&quot;/WEB-INF/struts-bean.tld&quot; prefix=&quot;bean&quot; %&gt;
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>&lt;%@ taglib uri=&quot;/WEB-INF/struts-logic.tld&quot; prefix=&quot;logic&quot; %&gt;
+</code></pre></div>
+<h2 id="94-a-acao-liste">9.4. <span style="color: #4f81bd">A ação /liste</span></h2>
+<p>A ação <strong>/liste</strong> tem como objetivo inserir na solicitação um objeto <em>ArrayList</em> que representa o conteúdo da tabela ARTICLES, para que uma vista o possa utilizar. O seu código é o seguinte:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="n">package</span> <span class="n">istia</span><span class="o">.</span><span class="n">st</span><span class="o">.</span><span class="n">struts</span><span class="o">.</span><span class="n">articles</span><span class="p">;</span>
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>
+<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.io.IOException</span><span class="p">;</span>
+<a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.sql.Connection</span><span class="p">;</span>
+<a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.sql.ResultSet</span><span class="p">;</span>
+<a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.sql.Statement</span><span class="p">;</span>
+<a id="__codelineno-24-7" name="__codelineno-24-7" href="#__codelineno-24-7"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.ArrayList</span><span class="p">;</span>
+<a id="__codelineno-24-8" name="__codelineno-24-8" href="#__codelineno-24-8"></a>
+<a id="__codelineno-24-9" name="__codelineno-24-9" href="#__codelineno-24-9"></a><span class="kn">import</span><span class="w"> </span><span class="nn">javax.servlet.ServletException</span><span class="p">;</span>
+<a id="__codelineno-24-10" name="__codelineno-24-10" href="#__codelineno-24-10"></a><span class="kn">import</span><span class="w"> </span><span class="nn">javax.servlet.http.HttpServletRequest</span><span class="p">;</span>
+<a id="__codelineno-24-11" name="__codelineno-24-11" href="#__codelineno-24-11"></a><span class="kn">import</span><span class="w"> </span><span class="nn">javax.servlet.http.HttpServletResponse</span><span class="p">;</span>
+<a id="__codelineno-24-12" name="__codelineno-24-12" href="#__codelineno-24-12"></a><span class="kn">import</span><span class="w"> </span><span class="nn">javax.sql.DataSource</span><span class="p">;</span>
+<a id="__codelineno-24-13" name="__codelineno-24-13" href="#__codelineno-24-13"></a>
+<a id="__codelineno-24-14" name="__codelineno-24-14" href="#__codelineno-24-14"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.apache.struts.action.Action</span><span class="p">;</span>
+<a id="__codelineno-24-15" name="__codelineno-24-15" href="#__codelineno-24-15"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.apache.struts.action.ActionError</span><span class="p">;</span>
+<a id="__codelineno-24-16" name="__codelineno-24-16" href="#__codelineno-24-16"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.apache.struts.action.ActionErrors</span><span class="p">;</span>
+<a id="__codelineno-24-17" name="__codelineno-24-17" href="#__codelineno-24-17"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.apache.struts.action.ActionForm</span><span class="p">;</span>
+<a id="__codelineno-24-18" name="__codelineno-24-18" href="#__codelineno-24-18"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.apache.struts.action.ActionForward</span><span class="p">;</span>
+<a id="__codelineno-24-19" name="__codelineno-24-19" href="#__codelineno-24-19"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.apache.struts.action.ActionMapping</span><span class="p">;</span>
+<a id="__codelineno-24-20" name="__codelineno-24-20" href="#__codelineno-24-20"></a>
+<a id="__codelineno-24-21" name="__codelineno-24-21" href="#__codelineno-24-21"></a><span class="n">public</span> <span class="k">class</span><span class="w"> </span><span class="nc">ListeArticlesAction</span> <span class="n">extends</span> <span class="n">Action</span> <span class="p">{</span>
+<a id="__codelineno-24-22" name="__codelineno-24-22" href="#__codelineno-24-22"></a>
+<a id="__codelineno-24-23" name="__codelineno-24-23" href="#__codelineno-24-23"></a>    <span class="n">public</span> <span class="n">ActionForward</span> <span class="n">execute</span><span class="p">(</span>
+<a id="__codelineno-24-24" name="__codelineno-24-24" href="#__codelineno-24-24"></a>        <span class="n">ActionMapping</span> <span class="n">mapping</span><span class="p">,</span>
+<a id="__codelineno-24-25" name="__codelineno-24-25" href="#__codelineno-24-25"></a>        <span class="n">ActionForm</span> <span class="n">form</span><span class="p">,</span>
+<a id="__codelineno-24-26" name="__codelineno-24-26" href="#__codelineno-24-26"></a>        <span class="n">HttpServletRequest</span> <span class="n">request</span><span class="p">,</span>
+<a id="__codelineno-24-27" name="__codelineno-24-27" href="#__codelineno-24-27"></a>        <span class="n">HttpServletResponse</span> <span class="n">response</span><span class="p">)</span>
+<a id="__codelineno-24-28" name="__codelineno-24-28" href="#__codelineno-24-28"></a>        <span class="n">throws</span> <span class="n">IOException</span><span class="p">,</span> <span class="n">ServletException</span> <span class="p">{</span>
+<a id="__codelineno-24-29" name="__codelineno-24-29" href="#__codelineno-24-29"></a>
+<a id="__codelineno-24-30" name="__codelineno-24-30" href="#__codelineno-24-30"></a>         <span class="o">//</span> <span class="n">lê</span> <span class="n">o</span> <span class="n">conteúdo</span> <span class="n">da</span> <span class="n">tabela</span> <span class="n">de</span> <span class="n">artigos</span> <span class="n">de</span> <span class="n">uma</span> <span class="n">ligação</span>
+<a id="__codelineno-24-31" name="__codelineno-24-31" href="#__codelineno-24-31"></a>         <span class="o">//</span> <span class="n">estabelecida</span> <span class="n">na</span> <span class="n">inicialização</span> <span class="n">do</span> <span class="n">contexto</span>
+<a id="__codelineno-24-32" name="__codelineno-24-32" href="#__codelineno-24-32"></a>         <span class="o">//</span> <span class="n">recupera</span><span class="o">-</span><span class="n">se</span> <span class="n">a</span> <span class="n">fonte</span> <span class="n">de</span> <span class="n">dados</span> <span class="err">«</span><span class="n">dbarticles</span><span class="err">»</span>
+<a id="__codelineno-24-33" name="__codelineno-24-33" href="#__codelineno-24-33"></a>        <span class="n">DataSource</span> <span class="n">dataSource</span> <span class="o">=</span> <span class="n">this</span><span class="o">.</span><span class="n">getDataSource</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s2">&quot;dbarticles&quot;</span><span class="p">);</span>
+<a id="__codelineno-24-34" name="__codelineno-24-34" href="#__codelineno-24-34"></a>        <span class="k">if</span> <span class="p">(</span><span class="n">dataSource</span> <span class="o">==</span> <span class="n">null</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-24-35" name="__codelineno-24-35" href="#__codelineno-24-35"></a>             <span class="o">//</span> <span class="n">não</span> <span class="n">foi</span> <span class="n">possível</span> <span class="n">criar</span> <span class="n">a</span> <span class="n">fonte</span> <span class="n">de</span> <span class="n">dados</span>
+<a id="__codelineno-24-36" name="__codelineno-24-36" href="#__codelineno-24-36"></a>            <span class="n">ActionErrors</span> <span class="n">erreurs</span> <span class="o">=</span> <span class="n">new</span> <span class="n">ActionErrors</span><span class="p">();</span>
+<a id="__codelineno-24-37" name="__codelineno-24-37" href="#__codelineno-24-37"></a>            <span class="n">erreurs</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>    <span class="s2">&quot;dbarticles&quot;</span><span class="p">,</span><span class="n">new</span> <span class="n">ActionError</span><span class="p">(</span><span class="s2">&quot;erreur.dbarticles&quot;</span><span class="p">,</span><span class="s2">&quot;La source de données n&#39;a pu être créée&quot;</span><span class="p">));</span>
+<a id="__codelineno-24-38" name="__codelineno-24-38" href="#__codelineno-24-38"></a>            <span class="n">this</span><span class="o">.</span><span class="n">saveErrors</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">erreurs</span><span class="p">);</span>
+<a id="__codelineno-24-39" name="__codelineno-24-39" href="#__codelineno-24-39"></a>            <span class="k">return</span> <span class="n">mapping</span><span class="o">.</span><span class="n">findForward</span><span class="p">(</span><span class="s2">&quot;afficherErreurs&quot;</span><span class="p">);</span>
+<a id="__codelineno-24-40" name="__codelineno-24-40" href="#__codelineno-24-40"></a>        <span class="p">}</span>
+<a id="__codelineno-24-41" name="__codelineno-24-41" href="#__codelineno-24-41"></a>         <span class="o">//</span> <span class="n">aqui</span><span class="p">,</span> <span class="n">a</span> <span class="n">fonte</span> <span class="n">de</span> <span class="n">dados</span> <span class="n">existe</span> <span class="err">—</span> <span class="n">é</span> <span class="n">utilizada</span>         <span class="n">Conexão</span> <span class="n">conexão</span> <span class="o">=</span> <span class="n">null</span><span class="p">;</span>
+<a id="__codelineno-24-42" name="__codelineno-24-42" href="#__codelineno-24-42"></a>        <span class="n">Statement</span> <span class="n">st</span> <span class="o">=</span> <span class="n">null</span><span class="p">;</span>
+<a id="__codelineno-24-43" name="__codelineno-24-43" href="#__codelineno-24-43"></a>        <span class="n">ResultSet</span> <span class="n">rs</span> <span class="o">=</span> <span class="n">null</span><span class="p">;</span>
+<a id="__codelineno-24-44" name="__codelineno-24-44" href="#__codelineno-24-44"></a>        <span class="n">String</span> <span class="n">requête</span> <span class="o">=</span> <span class="n">null</span><span class="p">;</span>
+<a id="__codelineno-24-45" name="__codelineno-24-45" href="#__codelineno-24-45"></a>        <span class="n">ArrayList</span> <span class="n">alArticles</span> <span class="o">=</span> <span class="n">new</span> <span class="n">ArrayList</span><span class="p">();</span>
+<a id="__codelineno-24-46" name="__codelineno-24-46" href="#__codelineno-24-46"></a>         <span class="o">//</span> <span class="n">gestão</span> <span class="n">de</span> <span class="n">erros</span>
+<a id="__codelineno-24-47" name="__codelineno-24-47" href="#__codelineno-24-47"></a>        <span class="k">try</span> <span class="p">{</span>
+<a id="__codelineno-24-48" name="__codelineno-24-48" href="#__codelineno-24-48"></a>             <span class="o">//</span> <span class="n">obter</span> <span class="n">uma</span> <span class="n">ligação</span>
+<a id="__codelineno-24-49" name="__codelineno-24-49" href="#__codelineno-24-49"></a>            <span class="n">connexion</span> <span class="o">=</span> <span class="n">dataSource</span><span class="o">.</span><span class="n">getConnection</span><span class="p">();</span>
+<a id="__codelineno-24-50" name="__codelineno-24-50" href="#__codelineno-24-50"></a>             <span class="o">//</span> <span class="n">preparar</span> <span class="n">a</span> <span class="n">consulta</span> <span class="n">SQL</span>
+<a id="__codelineno-24-51" name="__codelineno-24-51" href="#__codelineno-24-51"></a>            <span class="n">requête</span> <span class="o">=</span>
+<a id="__codelineno-24-52" name="__codelineno-24-52" href="#__codelineno-24-52"></a>                <span class="s2">&quot;select code, nom, prix, stockActuel, stockMinimum from articles order by nom&quot;</span><span class="p">;</span>
+<a id="__codelineno-24-53" name="__codelineno-24-53" href="#__codelineno-24-53"></a>             <span class="o">//</span> <span class="n">executá</span><span class="o">-</span><span class="n">la</span>
+<a id="__codelineno-24-54" name="__codelineno-24-54" href="#__codelineno-24-54"></a>            <span class="n">st</span> <span class="o">=</span> <span class="n">connexion</span><span class="o">.</span><span class="n">createStatement</span><span class="p">();</span>
+<a id="__codelineno-24-55" name="__codelineno-24-55" href="#__codelineno-24-55"></a>            <span class="n">rs</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">executeQuery</span><span class="p">(</span><span class="n">requête</span><span class="p">);</span>
+<a id="__codelineno-24-56" name="__codelineno-24-56" href="#__codelineno-24-56"></a>             <span class="o">//</span> <span class="n">analisar</span> <span class="n">os</span> <span class="n">resultados</span>
+<a id="__codelineno-24-57" name="__codelineno-24-57" href="#__codelineno-24-57"></a>            <span class="k">while</span> <span class="p">(</span><span class="n">rs</span><span class="o">.</span><span class="n">next</span><span class="p">())</span> <span class="p">{</span>
+<a id="__codelineno-24-58" name="__codelineno-24-58" href="#__codelineno-24-58"></a>                 <span class="o">//</span> <span class="n">gravar</span> <span class="n">a</span> <span class="n">linha</span> <span class="n">atual</span>
+<a id="__codelineno-24-59" name="__codelineno-24-59" href="#__codelineno-24-59"></a>                <span class="n">alArticles</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
+<a id="__codelineno-24-60" name="__codelineno-24-60" href="#__codelineno-24-60"></a>                    <span class="n">new</span> <span class="n">String</span><span class="p">[]</span> <span class="p">{</span>
+<a id="__codelineno-24-61" name="__codelineno-24-61" href="#__codelineno-24-61"></a>                        <span class="n">rs</span><span class="o">.</span><span class="n">getString</span><span class="p">(</span><span class="s2">&quot;code&quot;</span><span class="p">),</span>
+<a id="__codelineno-24-62" name="__codelineno-24-62" href="#__codelineno-24-62"></a>                        <span class="n">rs</span><span class="o">.</span><span class="n">getString</span><span class="p">(</span><span class="s2">&quot;nom&quot;</span><span class="p">),</span>
+<a id="__codelineno-24-63" name="__codelineno-24-63" href="#__codelineno-24-63"></a>                        <span class="n">rs</span><span class="o">.</span><span class="n">getString</span><span class="p">(</span><span class="s2">&quot;prix&quot;</span><span class="p">),</span>
+<a id="__codelineno-24-64" name="__codelineno-24-64" href="#__codelineno-24-64"></a>                        <span class="n">rs</span><span class="o">.</span><span class="n">getString</span><span class="p">(</span><span class="s2">&quot;stockactuel&quot;</span><span class="p">),</span>
+<a id="__codelineno-24-65" name="__codelineno-24-65" href="#__codelineno-24-65"></a>                        <span class="n">rs</span><span class="o">.</span><span class="n">getString</span><span class="p">(</span><span class="s2">&quot;stockMinimum&quot;</span><span class="p">)});</span>
+<a id="__codelineno-24-66" name="__codelineno-24-66" href="#__codelineno-24-66"></a>                <span class="o">//</span> <span class="n">linha</span> <span class="n">seguinte</span>
+<a id="__codelineno-24-67" name="__codelineno-24-67" href="#__codelineno-24-67"></a>            <span class="p">}</span> <span class="o">//</span><span class="n">enquanto</span>
+<a id="__codelineno-24-68" name="__codelineno-24-68" href="#__codelineno-24-68"></a>             <span class="o">//</span> <span class="n">liberar</span> <span class="n">os</span> <span class="n">recursos</span>
+<a id="__codelineno-24-69" name="__codelineno-24-69" href="#__codelineno-24-69"></a>            <span class="n">rs</span><span class="o">.</span><span class="n">close</span><span class="p">();</span>
+<a id="__codelineno-24-70" name="__codelineno-24-70" href="#__codelineno-24-70"></a>            <span class="n">st</span><span class="o">.</span><span class="n">close</span><span class="p">();</span>
+<a id="__codelineno-24-71" name="__codelineno-24-71" href="#__codelineno-24-71"></a>            <span class="n">connexion</span><span class="o">.</span><span class="n">close</span><span class="p">();</span>
+<a id="__codelineno-24-72" name="__codelineno-24-72" href="#__codelineno-24-72"></a>        <span class="p">}</span> <span class="n">catch</span> <span class="p">(</span><span class="ne">Exception</span> <span class="n">ex</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-24-73" name="__codelineno-24-73" href="#__codelineno-24-73"></a>             <span class="o">//</span> <span class="n">ocorreram</span> <span class="n">erros</span>
+<a id="__codelineno-24-74" name="__codelineno-24-74" href="#__codelineno-24-74"></a>            <span class="n">ActionErrors</span> <span class="n">erreurs</span> <span class="o">=</span> <span class="n">new</span> <span class="n">ActionErrors</span><span class="p">();</span>
+<a id="__codelineno-24-75" name="__codelineno-24-75" href="#__codelineno-24-75"></a>            <span class="n">erreurs</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;dbarticles&quot;</span><span class="p">,</span><span class="n">new</span> <span class="n">ActionError</span><span class="p">(</span><span class="s2">&quot;erreur.dbarticles&quot;</span><span class="p">,</span> <span class="n">ex</span><span class="o">.</span><span class="n">getMessage</span><span class="p">()));</span>
+<a id="__codelineno-24-76" name="__codelineno-24-76" href="#__codelineno-24-76"></a>            <span class="n">this</span><span class="o">.</span><span class="n">saveErrors</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">erreurs</span><span class="p">);</span>
+<a id="__codelineno-24-77" name="__codelineno-24-77" href="#__codelineno-24-77"></a>            <span class="k">return</span> <span class="n">mapping</span><span class="o">.</span><span class="n">findForward</span><span class="p">(</span><span class="s2">&quot;afficherErreurs&quot;</span><span class="p">);</span>
+<a id="__codelineno-24-78" name="__codelineno-24-78" href="#__codelineno-24-78"></a>        <span class="p">}</span>
+<a id="__codelineno-24-79" name="__codelineno-24-79" href="#__codelineno-24-79"></a>         <span class="o">//</span> <span class="n">tudo</span> <span class="n">bem</span>
+<a id="__codelineno-24-80" name="__codelineno-24-80" href="#__codelineno-24-80"></a>        <span class="n">request</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="s2">&quot;listArticles&quot;</span><span class="p">,</span> <span class="n">alArticles</span><span class="p">);</span>
+<a id="__codelineno-24-81" name="__codelineno-24-81" href="#__codelineno-24-81"></a>        <span class="k">return</span> <span class="n">mapping</span><span class="o">.</span><span class="n">findForward</span><span class="p">(</span><span class="s2">&quot;afficherListeArticles&quot;</span><span class="p">);</span>
+<a id="__codelineno-24-82" name="__codelineno-24-82" href="#__codelineno-24-82"></a>    <span class="p">}</span> <span class="o">//</span><span class="n">executar</span>
+<a id="__codelineno-24-83" name="__codelineno-24-83" href="#__codelineno-24-83"></a><span class="p">}</span> <span class="o">//</span><span class="n">classe</span>
+</code></pre></div>
+<p>O leitor é, sem dúvida, capaz de compreender a essência do código acima. Iremos centrar-nos apenas na única novidade: a utilização de um objeto <strong>DataSource</strong> fornecido pelo framework Struts. Este objeto <em>DataSource</em> representa o conjunto de ligações configurado pela secção <strong>&lt;data-source key=&quot;dbarticles&quot;&gt;</strong> do ficheiro de configuração. O objeto <em>DataSource</em> foi colocado, após a sua criação, no contexto da aplicação para que todos os objetos desse contexto tenham acesso ao mesmo. É, portanto, recuperado da seguinte forma:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>         // a recuperar a fonte de dados dbarticles
+<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>        DataSource dataSource = this.getDataSource(request, &quot;dbarticles&quot;);
+</code></pre></div>
+<p>Aqui, solicitamos a fonte de dados identificada pela chave «dbarticles». Se recuperarmos um ponteiro <em>null</em>, isso significa que a fonte de dados não pôde ser criada durante a inicialização da aplicação. Nesse caso, registamos o erro num objeto <strong>ActionErrors</strong> e passamos o controlo para a página de erros identificada pela chave «afficherErreurs» no ficheiro de configuração:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>        &lt;action path=&quot;/liste&quot; type=&quot;istia.st.struts.articles.ListeArticlesAction&quot;&gt;
+<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>            &lt;forward name=&quot;afficherListeArticles&quot; path=&quot;/vues/listarticles.jsp&quot;/&gt;
+<a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a>            &lt;forward name=&quot;afficherErreurs&quot; path=&quot;/vues/erreurs.jsp&quot;/&gt;
+<a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a>        &lt;/action&gt;
+<a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a>    &lt;/action-mappings&gt;
+</code></pre></div>
+<p>Assim que a fonte de dados for obtida, temos acesso ao conjunto de ligações. Uma ligação à base de dados é estabelecida através do código:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>             // obter uma ligação
+<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a>            Connection connexion = dataSource.getConnection();
+</code></pre></div>
+<p>Neste caso, o pool fornecer-nos-á uma ligação reutilizada ou criada, caso ainda haja possibilidade de criar uma nova.</p>
+<h2 id="95-implementacao">9.5. <span style="color: #4f81bd">Implementação</span></h2>
+<p>O contexto da aplicação é definido no ficheiro de configuração <strong>server.xml</strong> do Tomcat:</p>
+<p><strong>&lt;Context path=&quot;/listarticles&quot; reloadable=&quot;true&quot; docBase=&quot;E:\data\serge\web\struts\articles\liste&quot; /&gt;</strong></p>
+<p>A estrutura da aplicação é a seguinte:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/100000000000014D0000008EF656760E.png" width="333" height="142" style="display:inline-block; margin:4px;width:8.809cm;height:3.757cm;" class="odt-zoomable" data-zoom-src="images/100000000000014D0000008EF656760E.png" /><img src="images/10000000000001C3000000DE66BCA429.png" width="451" height="222" style="display:inline-block; margin:4px;width:11.931cm;height:5.874cm;" class="odt-zoomable" data-zoom-src="images/10000000000001C3000000DE66BCA429.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;" colspan="2"><img src="images/100000000000016A000001830D7623DD.png" width="362" height="387" style="display:inline-block; margin:4px;width:9.576cm;height:10.238cm;" class="odt-zoomable" data-zoom-src="images/100000000000016A000001830D7623DD.png" /><img src="images/100000000000014D00000053C0C9D216.png" width="333" height="83" style="display:inline-block; margin:4px;width:8.809cm;height:2.196cm;" class="odt-zoomable" data-zoom-src="images/100000000000014D00000053C0C9D216.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;" colspan="2"><img src="images/10000000000001D90000006AEC167657.png" width="473" height="106" style="display:inline-block; margin:4px;width:12.513cm;height:2.805cm;" class="odt-zoomable" data-zoom-src="images/10000000000001D90000006AEC167657.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td></tr></table>
+
+<p>Note-se a biblioteca <em>mysql-connector-java-3.0.10-stable-bin.jar</em> em WEB-INF/lib. É esta que contém o controlador JDBC da base MySQL aqui utilizada.</p>
+<h2 id="96-os-testes">9.6. <span style="color: #4f81bd">Os testes</span></h2>
+<p>Iniciamos o Tomcat e solicitamos o URL <strong>http://localhost:8080/listarticles/liste.do</strong>:</p>
+<p><img src="images/10000000000001D40000015A051021DC.png" width="468" height="346" style="width:12.381cm;height:9.153cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000001D40000015A051021DC.png" /></p>
+<h2 id="97-uma-segunda-fonte-de-dados">9.7. <span style="color: #4f81bd">Uma segunda fonte de dados</span></h2>
+<p>Utilizamos agora uma segunda fonte de dados presente numa base de dados Postgres. Também aqui, os dados encontram-se numa tabela ARTICLES com as mesmas colunas que anteriormente. O seu conteúdo é o seguinte:</p>
+<p><img src="images/10000000000001420000005A42F75553.png" width="322" height="90" style="width:8.518cm;height:2.381cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000001420000005A42F75553.png" /></p>
+<p>Esta nova fonte de dados é declarada no ficheiro de configuração do Struts:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>    <span class="o">&lt;</span><span class="n">data</span><span class="o">-</span><span class="n">sources</span><span class="o">&gt;</span>
+<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a>        <span class="o">&lt;</span><span class="n">data</span><span class="o">-</span><span class="n">source</span> <span class="n">key</span><span class="o">=</span><span class="s2">&quot;dbarticles&quot;</span> <span class="o">&gt;</span>
+<a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a>            <span class="o">&lt;</span><span class="nb">set</span><span class="o">-</span><span class="nb">property</span> <span class="nb">property</span><span class="o">=</span><span class="s2">&quot;driverClass&quot;</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;com.mysql.jdbc.Driver&quot;</span><span class="o">&gt;&lt;/</span><span class="nb">set</span><span class="o">-</span><span class="nb">property</span><span class="o">&gt;</span>
+<a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a>            <span class="o">&lt;</span><span class="nb">set</span><span class="o">-</span><span class="nb">property</span> <span class="nb">property</span><span class="o">=</span><span class="s2">&quot;url&quot;</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;jdbc:mysql://localhost/dbarticles&quot;</span><span class="o">&gt;&lt;/</span><span class="nb">set</span><span class="o">-</span><span class="nb">property</span><span class="o">&gt;</span>
+<a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a>            <span class="o">&lt;</span><span class="nb">set</span><span class="o">-</span><span class="nb">property</span> <span class="nb">property</span><span class="o">=</span><span class="s2">&quot;user&quot;</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;admarticles&quot;</span><span class="o">&gt;&lt;/</span><span class="nb">set</span><span class="o">-</span><span class="nb">property</span><span class="o">&gt;</span>
+<a id="__codelineno-28-6" name="__codelineno-28-6" href="#__codelineno-28-6"></a>            <span class="o">&lt;</span><span class="nb">set</span><span class="o">-</span><span class="nb">property</span> <span class="nb">property</span><span class="o">=</span><span class="s2">&quot;password&quot;</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;mdparticles&quot;</span><span class="o">&gt;&lt;/</span><span class="nb">set</span><span class="o">-</span><span class="nb">property</span><span class="o">&gt;</span>
+<a id="__codelineno-28-7" name="__codelineno-28-7" href="#__codelineno-28-7"></a>            <span class="o">&lt;</span><span class="nb">set</span><span class="o">-</span><span class="nb">property</span> <span class="nb">property</span><span class="o">=</span><span class="s2">&quot;minCount&quot;</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;2&quot;</span><span class="o">&gt;&lt;/</span><span class="nb">set</span><span class="o">-</span><span class="nb">property</span><span class="o">&gt;</span>
+<a id="__codelineno-28-8" name="__codelineno-28-8" href="#__codelineno-28-8"></a>            <span class="o">&lt;</span><span class="nb">set</span><span class="o">-</span><span class="nb">property</span> <span class="nb">property</span><span class="o">=</span><span class="s2">&quot;maxCount&quot;</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;5&quot;</span><span class="o">&gt;&lt;/</span><span class="nb">set</span><span class="o">-</span><span class="nb">property</span><span class="o">&gt;</span>
+<a id="__codelineno-28-9" name="__codelineno-28-9" href="#__codelineno-28-9"></a>        <span class="o">&lt;/</span><span class="n">data</span><span class="o">-</span><span class="n">source</span><span class="o">&gt;</span>
+<a id="__codelineno-28-10" name="__codelineno-28-10" href="#__codelineno-28-10"></a>        <span class="o">&lt;</span><span class="n">data</span><span class="o">-</span><span class="n">source</span> <span class="n">key</span><span class="o">=</span><span class="s2">&quot;pgdbarticles&quot;</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;org.apache.commons.dbcp.BasicDataSource&quot;</span><span class="o">&gt;</span>
+<a id="__codelineno-28-11" name="__codelineno-28-11" href="#__codelineno-28-11"></a>            <span class="o">&lt;</span><span class="nb">set</span><span class="o">-</span><span class="nb">property</span> <span class="nb">property</span><span class="o">=</span><span class="s2">&quot;driverClassName&quot;</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;org.postgresql.Driver&quot;</span> <span class="o">/&gt;</span>
+<a id="__codelineno-28-12" name="__codelineno-28-12" href="#__codelineno-28-12"></a>            <span class="o">&lt;</span><span class="nb">set</span><span class="o">-</span><span class="nb">property</span> <span class="nb">property</span><span class="o">=</span><span class="s2">&quot;url&quot;</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;jdbc:postgresql://localhost/dbarticles&quot;</span> <span class="o">/&gt;</span>
+<a id="__codelineno-28-13" name="__codelineno-28-13" href="#__codelineno-28-13"></a>            <span class="o">&lt;</span><span class="nb">set</span><span class="o">-</span><span class="nb">property</span> <span class="nb">property</span><span class="o">=</span><span class="s2">&quot;username&quot;</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;serge&quot;</span> <span class="o">/&gt;</span>
+<a id="__codelineno-28-14" name="__codelineno-28-14" href="#__codelineno-28-14"></a>            <span class="o">&lt;</span><span class="nb">set</span><span class="o">-</span><span class="nb">property</span> <span class="nb">property</span><span class="o">=</span><span class="s2">&quot;password&quot;</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;serge&quot;</span> <span class="o">/&gt;</span>
+<a id="__codelineno-28-15" name="__codelineno-28-15" href="#__codelineno-28-15"></a>            <span class="o">&lt;</span><span class="nb">set</span><span class="o">-</span><span class="nb">property</span> <span class="nb">property</span><span class="o">=</span><span class="s2">&quot;maxActive&quot;</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;10&quot;</span> <span class="o">/&gt;</span>
+<a id="__codelineno-28-16" name="__codelineno-28-16" href="#__codelineno-28-16"></a>            <span class="o">&lt;</span><span class="nb">set</span><span class="o">-</span><span class="nb">property</span> <span class="nb">property</span><span class="o">=</span><span class="s2">&quot;maxWait&quot;</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;5000&quot;</span> <span class="o">/&gt;</span>
+<a id="__codelineno-28-17" name="__codelineno-28-17" href="#__codelineno-28-17"></a>            <span class="o">&lt;</span><span class="nb">set</span><span class="o">-</span><span class="nb">property</span> <span class="nb">property</span><span class="o">=</span><span class="s2">&quot;defaultAutoCommit&quot;</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;false&quot;</span> <span class="o">/&gt;</span>
+<a id="__codelineno-28-18" name="__codelineno-28-18" href="#__codelineno-28-18"></a>            <span class="o">&lt;</span><span class="nb">set</span><span class="o">-</span><span class="nb">property</span> <span class="nb">property</span><span class="o">=</span><span class="s2">&quot;defaultReadOnly&quot;</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;false&quot;</span> <span class="o">/&gt;</span>
+<a id="__codelineno-28-19" name="__codelineno-28-19" href="#__codelineno-28-19"></a>        <span class="o">&lt;/</span><span class="n">data</span><span class="o">-</span><span class="n">source</span><span class="o">&gt;</span>
+<a id="__codelineno-28-20" name="__codelineno-28-20" href="#__codelineno-28-20"></a>    <span class="o">&lt;/</span><span class="n">data</span><span class="o">-</span><span class="n">sources</span><span class="o">&gt;</span>
+</code></pre></div>
+<p>A nova fonte terá como identificador (<strong>chave</strong>) <strong>pgdbarticles</strong>. A novidade provém da classe que implementa a interface <strong>javax.sql.DataSource</strong>. A classe predefinida é <strong>a org.apache.struts.util.GenericDataSource,</strong> definida na biblioteca <strong>struts.jar</strong>. Esta classe será descontinuada em futuras versões do Struts e, para a versão 1.1, recomenda-se a utilização da classe <strong>org.apache.commons.dbcp.BasicDataSource,</strong> que se encontra na biblioteca <strong>commons-dbcp-1.1.jar</strong>. Esta não é necessariamente fornecida com o pacote Struts. Pode ser encontrada no endereço <strong>http://jakarta.apache.org/commons/index.html</strong> e, mais especificamente, no endereço <strong>http://jakarta.apache.org/site/binindex.cgi</strong>. É necessário descarregar o produto denominado Commons DBCP. No Windows, é possível descarregar o ficheiro .zip. Este contém o código-fonte da biblioteca, bem como o ficheiro .jar correspondente. É necessário extrair este último do arquivo .zip e colocá-lo na pasta WEB-INF/lib da aplicação. É igualmente necessário colocar nessa mesma pasta o controlador do SGBD utilizado:</p>
+<p><img src="images/10000000000001BE0000013139747522.png" width="446" height="305" style="width:11.799cm;height:8.068cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000001BE0000013139747522.png" /></p>
+<p>Para utilizar este código-fonte, alteramos uma instrução no código da ação <strong>/liste</strong>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>        DataSource dataSource = this.getDataSource(request, &quot;pgdbarticles&quot;);
+</code></pre></div>
+<p>Desta vez, solicitamos a fonte de dados denominada <strong>pgdbarticles</strong>, c.a.d, a fonte de dados Postgres.</p>
+<p>Resta-nos apenas compilar tudo, iniciar o Tomcat e aceder à página <strong>http://localhost:8080/listarticles/liste.do</strong>:</p>
+<p><img src="images/10000000000001DD000000FA19D70EAA.png" width="477" height="250" style="width:12.619cm;height:6.615cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000001DD000000FA19D70EAA.png" /></p>
+<h2 id="98-conclusao">9.8. <span style="color: #4f81bd">Conclusão</span></h2>
+<p>Mostrámos como utilizar um conjunto de ligações para aceder a uma base de dados. Note-se aqui que não respeitámos a arquitetura MVC. Com efeito, a ação <strong>/liste</strong> efetua ela própria as consultas SQL para aceder aos dados. Teria sido preferível que ela recorresse a uma classe de negócio intermédia que ocultasse o facto de que os dados são obtidos num SGBD. Provavelmente, seria essa classe de negócio a criar o conjunto de ligações, pelo que não seria necessário declará-lo no ficheiro de configuração do Struts. Isto é um indício: a presença de uma secção <strong>&lt;data-sources&gt;</strong> no ficheiro de configuração pode significar que a nossa aplicação não respeita a arquitetura MVC.</p>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner">
+
+      <div>
+        <a href="https://stahe.github.io" target="_blank">
+          https://stahe.github.io
+        </a>
+        <br>
+        Este tutorial, escrito por <strong>Serge Tahé</strong>, é disponibilizado ao público sob os termos da
+<em>Creative Commons Atribuição – Não comercial –
+Partilha igual 3.0 Unported</em>.
+      </div>
+
+    </div>
+  </div>
+
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.sections", "navigation.indexes", "navigation.expand", "toc.integrate", "navigation.top"], "search": "assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+        <script src="javascripts/focus.js"></script>
+      
+    
+  </body>
+</html>

@@ -12,10 +12,10 @@
         <meta name="author" content="Serge Tahé">
       
       
-        <link rel="canonical" href="https://stahe.github.io/pt-struts1x-dec-2003/a-aplicacao-strutspersonne.html">
+        <link rel="canonical" href="https://stahe.github.io/pt-struts1x-dec-2003/a-aplicacao-struts-pessoa.html">
       
       
-        <link rel="prev" href="informacoes-gerais.html">
+        <link rel="prev" href="generalidades.html">
       
       
         <link rel="next" href="processamento-do-formulario-pelo-controlador.html">
@@ -29,7 +29,7 @@
     
     
       
-        <title>2. A aplicação strutspersonne - Introdução ao Struts 1.x através de exemplos</title>
+        <title>2. A aplicação Struts «pessoa» - Introdução ao Struts 1.x através de exemplos</title>
       
     
     
@@ -56,6 +56,8 @@
     
     
       <link rel="stylesheet" href="stylesheets/focus.css">
+    
+      <link rel="stylesheet" href="stylesheets/bidi.css">
     
     <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -92,7 +94,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#2-a-aplicacao-strutspersonne" class="md-skip">
+        <a href="#2-a-aplicacao-struts-pessoa" class="md-skip">
           Skip to content
         </a>
       
@@ -128,7 +130,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              2. A aplicação strutspersonne
+              2. A aplicação Struts «pessoa»
             
           </span>
         </div>
@@ -303,14 +305,14 @@
   
   
     <li class="md-nav__item">
-      <a href="informacoes-gerais.html" class="md-nav__link">
+      <a href="generalidades.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    1. Informações gerais
+    1. Generalidades
   
 
     
@@ -346,7 +348,7 @@
   <span class="md-ellipsis">
     
   
-    2. A aplicação strutspersonne
+    2. A aplicação Struts «pessoa»
   
 
     
@@ -357,14 +359,14 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="a-aplicacao-strutspersonne.html" class="md-nav__link md-nav__link--active">
+      <a href="a-aplicacao-struts-pessoa.html" class="md-nav__link md-nav__link--active">
         
   
   
   <span class="md-ellipsis">
     
   
-    2. A aplicação strutspersonne
+    2. A aplicação Struts «pessoa»
   
 
     
@@ -390,10 +392,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#21-como-funciona-a-aplicacao" class="md-nav__link">
+  <a href="#21-o-funcionamento-da-aplicacao" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.1. Como funciona a aplicação
+        2.1. O funcionamento da aplicação
       
     </span>
   </a>
@@ -412,10 +414,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#23-compilacao-das-classes-necessarias-para-a-aplicacao-struts" class="md-nav__link">
+  <a href="#23-compilar-as-classes-necessarias-para-a-aplicacao-struts" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.3. Compilação das classes necessárias para a aplicação Struts
+        2.3. Compilar as classes necessárias para a aplicação Struts
       
     </span>
   </a>
@@ -446,10 +448,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#242-testar-a-visualizacao-errorspersonjsp" class="md-nav__link">
+  <a href="#242-teste-da-vista-erreurspersonnejsp" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.4.2. Testar a visualização errors.person.jsp
+        2.4.2. Teste da vista erreurs.personne.jsp
       
     </span>
   </a>
@@ -468,10 +470,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#244-testar-a-vista-reponsepersonnejsp" class="md-nav__link">
+  <a href="#244-teste-da-vista-reponsepersonnejsp" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.4.4. Testar a vista reponse.personne.jsp
+        2.4.4. Teste da vista reponse.personne.jsp
       
     </span>
   </a>
@@ -501,10 +503,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#247-testar-a-vista-formulairepersonnejsp" class="md-nav__link">
+  <a href="#247-teste-da-vista-formulairepersonnejsp" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.4.7. Testar a vista formulaire.personne.jsp
+        2.4.7. Teste da vista formulaire.personne.jsp
       
     </span>
   </a>
@@ -693,14 +695,14 @@
   
   
     <li class="md-nav__item">
-      <a href="trabalhar-com-uma-fonte-de-dados.html" class="md-nav__link">
+      <a href="exploracao-de-uma-fonte-de-dados.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    9. Trabalhar com uma fonte de dados
+    9. Exploração de uma fonte de dados
   
 
     
@@ -757,102 +759,102 @@
 
 
 
-<h1 id="2-a-aplicacao-strutspersonne">2. <span style="color: #365f91">A aplicação strutspersonne</span></h1>
-<p>Implementámos uma aplicação «<strong>person</strong>» utilizando o método tradicional: servlets e páginas JSP. Propomos agora introduzir o Struts utilizando esta mesma aplicação.</p>
-<h2 id="21-como-funciona-a-aplicacao">2.1. <span style="color: #4f81bd">Como funciona a aplicação</span></h2>
-<p>Vamos rever como funciona a aplicação <strong>«person»</strong> que desenvolvemos. Ela consiste em:</p>
+<h1 id="2-a-aplicacao-struts-pessoa">2. <span style="color: #365f91">A aplicação Struts «pessoa»</span></h1>
+<p>Tratámos, através do método clássico — servlet e páginas JSP —, uma aplicação <strong>de gestão de pessoas</strong>. Propomos introduzir o Struts com esta mesma aplicação.</p>
+<h2 id="21-o-funcionamento-da-aplicacao">2.1. <span style="color: #4f81bd">O funcionamento da aplicação</span></h2>
+<p>Recordemos aqui o funcionamento da aplicação <strong>«pessoa»</strong> que desenvolvemos. É composta por:</p>
 <ul>
-  <li>um servlet <b>principal</b>. Este lida com toda a lógica da aplicação.
+  <li>de um servlet <b>principal</b>. É este que assegura toda a lógica da aplicação.
   </li>
-  <li>três páginas JSP: <b>formulaire.personne.jsp</b>, <b>reponse.personne.jsp </b>e <b>erreurs.personne.jsp</b>
+  <li>três páginas JSP: <b>formulaire.personne.jsp</b>, <b>reponse.personne.jsp</b>, <b>erreurs.personne.jsp</b>
   </li>
 </ul>
 
-<p>A aplicação funciona da seguinte forma. É acessível através do URL <strong>http://localhost:8080/personne/main</strong>. Neste URL, é apresentado um formulário fornecido pela página <strong>formulaire.personne.jsp</strong>:</p>
-<p><img src="images/1000000000000181000000EE943A5129.png" width="385" height="238" style="width:10.185cm;height:6.295cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/1000000000000181000000EE943A5129.png" /></p>
-<p>O utilizador <strong>preenche</strong> o formulário e clica no botão [Submit]. O botão [Reset] é um botão <strong>de reinicialização</strong>, o que significa que restaura o documento para o estado em que foi recebido. O botão [Delete] é um <strong>botão</strong> padrão. O utilizador deve fornecer um nome e uma idade válidos. Se não for esse o caso, é-lhe enviada uma página de erro através da página JSP <strong>erreurs.personne.jsp</strong>. Aqui estão alguns exemplos:</p>
+<p>O funcionamento da aplicação é o seguinte. É acessível através do URL <strong>http://localhost:8080/personne/main</strong>. Nesta URL, obtém-se um formulário fornecido pela página <strong>formulaire.personne.jsp</strong>:</p>
+<p><img src="images/1000000000000181000000EE943A5129.png" width="385" height="238" style="width:10.185cm;height:6.297cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/1000000000000181000000EE943A5129.png" /></p>
+<p>O utilizador preenche o formulário e clica no botão [Envoyer] do tipo <strong>«submit</strong>». O botão [Rétablir] é do tipo <strong>«reset»</strong>, c.a.d, que repõe o documento no estado em que foi recebido. O botão [Effacer] é do tipo <strong>«button</strong>». O utilizador deve fornecer um nome e uma idade válidos. Caso contrário, é-lhe enviada uma página de erros através da página JSP <strong>erreurs.personne.jsp</strong>. Seguem-se alguns exemplos:</p>
 <p><strong>Intercâmbio n.º 1</strong></p>
-<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div markdown="block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>pedido
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>demande
 </code></pre></div>
-</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div markdown="block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>resposta
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>réponse
 </code></pre></div>
-</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/100000000000011C000000F7CB15923D.png" width="284" height="247" style="display:inline-block; margin:4px;width:7.512cm;height:6.533cm;" class="odt-zoomable" data-zoom-src="images/100000000000011C000000F7CB15923D.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/100000000000019E0000008BA0C7AA85.png" width="414" height="139" style="display:inline-block; margin:4px;width:10.952cm;height:3.678cm;" class="odt-zoomable" data-zoom-src="images/100000000000019E0000008BA0C7AA85.png" /></td></tr></table>
+</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/100000000000011C000000F7CB15923D.png" width="284" height="247" style="display:inline-block; margin:4px;width:7.512cm;height:6.535cm;" class="odt-zoomable" data-zoom-src="images/100000000000011C000000F7CB15923D.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/100000000000019E0000008BA0C7AA85.png" width="414" height="139" style="display:inline-block; margin:4px;width:10.952cm;height:3.678cm;" class="odt-zoomable" data-zoom-src="images/100000000000019E0000008BA0C7AA85.png" /></td></tr></table>
 
-<p>Se clicar no link [Voltar ao formulário], encontrará o formulário tal como o deixou:</p>
-<p><strong>Troca n.º 2</strong></p>
-<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div markdown="block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>pedido
+<p>Se seguirmos o link [Retour au formulaire], encontramos este no estado em que o deixámos:</p>
+<p><strong>Intercâmbio n.º 2</strong></p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>demande
 </code></pre></div>
-</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div markdown="block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>resposta
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>réponse
 </code></pre></div>
-</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/100000000000019700000097ECADF2E2.png" width="407" height="151" style="display:inline-block; margin:4px;width:10.767cm;height:3.995cm;" class="odt-zoomable" data-zoom-src="images/100000000000019700000097ECADF2E2.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/1000000000000101000000B3BA43B161.png" width="257" height="179" style="display:inline-block; margin:4px;width:6.8cm;height:4.736cm;" class="odt-zoomable" data-zoom-src="images/1000000000000101000000B3BA43B161.png" /></td></tr></table>
+</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/100000000000019700000097ECADF2E2.png" width="407" height="151" style="display:inline-block; margin:4px;width:10.767cm;height:3.995cm;" class="odt-zoomable" data-zoom-src="images/100000000000019700000097ECADF2E2.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/1000000000000101000000B3BA43B161.png" width="257" height="179" style="display:inline-block; margin:4px;width:6.8cm;height:4.736cm;" class="odt-zoomable" data-zoom-src="images/1000000000000101000000B3BA43B161.png" /></td></tr></table>
 
-<p>Se o utilizador enviar dados válidos, a aplicação envia uma resposta através da página JSP <strong>reponse.personne.jsp</strong>.</p>
+<p>Se o utilizador enviar dados corretos, a aplicação envia-lhe uma resposta através da página JSP <strong>reponse.personne.jsp</strong>.</p>
 <p><strong>Intercâmbio n.º 1</strong></p>
-<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div markdown="block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>solicitação
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>demande
 </code></pre></div>
-</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div markdown="block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>resposta
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>réponse
 </code></pre></div>
-</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/10000000000000F6000000B4C2BD6142.png" width="246" height="180" style="display:inline-block; margin:4px;width:6.509cm;height:4.763cm;" class="odt-zoomable" data-zoom-src="images/10000000000000F6000000B4C2BD6142.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/10000000000000DB000000AE9A49ACD9.png" width="219" height="174" style="display:inline-block; margin:4px;width:5.794cm;height:4.604cm;" class="odt-zoomable" data-zoom-src="images/10000000000000DB000000AE9A49ACD9.png" /></td></tr></table>
+</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000000F6000000B4C2BD6142.png" width="246" height="180" style="display:inline-block; margin:4px;width:6.509cm;height:4.763cm;" class="odt-zoomable" data-zoom-src="images/10000000000000F6000000B4C2BD6142.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000000DB000000AE9A49ACD9.png" width="219" height="174" style="display:inline-block; margin:4px;width:5.794cm;height:4.604cm;" class="odt-zoomable" data-zoom-src="images/10000000000000DB000000AE9A49ACD9.png" /></td></tr></table>
 
-<p>Se clicar no link [Voltar ao formulário], encontrará o formulário tal como o deixou:</p>
-<p><strong>Troca n.º 2</strong></p>
-<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div markdown="block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>pedido
+<p>Se seguirmos o link [Retour au formulaire], encontramos este no estado em que o deixámos:</p>
+<p><strong>Intercâmbio n.º 2</strong></p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>demande
 </code></pre></div>
-</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div markdown="block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>resposta
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>réponse
 </code></pre></div>
-</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/10000000000000DC000000B87D1CA95C.png" width="220" height="184" style="display:inline-block; margin:4px;width:5.821cm;height:4.868cm;" class="odt-zoomable" data-zoom-src="images/10000000000000DC000000B87D1CA95C.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/1000000000000102000000BFE8C1AA58.png" width="258" height="191" style="display:inline-block; margin:4px;width:6.826cm;height:5.054cm;" class="odt-zoomable" data-zoom-src="images/1000000000000102000000BFE8C1AA58.png" /></td></tr></table>
+</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000000DC000000B87D1CA95C.png" width="220" height="184" style="display:inline-block; margin:4px;width:5.821cm;height:4.868cm;" class="odt-zoomable" data-zoom-src="images/10000000000000DC000000B87D1CA95C.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/1000000000000102000000BFE8C1AA58.png" width="258" height="191" style="display:inline-block; margin:4px;width:6.826cm;height:5.054cm;" class="odt-zoomable" data-zoom-src="images/1000000000000102000000BFE8C1AA58.png" /></td></tr></table>
 
 <h2 id="22-a-arquitetura-struts-da-aplicacao">2.2. <span style="color: #4f81bd">A arquitetura Struts da aplicação</span></h2>
-<p>Iremos adotar a seguinte arquitetura Struts:</p>
-<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/10000000000005340000027B494721AE.png" width="643" height="306" style="display:inline-block; margin:4px;width:17cm;height:8.103cm;" class="odt-zoomable" data-zoom-src="images/10000000000005340000027B494721AE.png" /></td></tr></table>
+<p>Vamos adotar a seguinte arquitetura Struts:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000005340000027B494721AE.png" width="643" height="306" style="display:inline-block; margin:4px;width:17cm;height:8.105cm;" class="odt-zoomable" data-zoom-src="images/10000000000005340000027B494721AE.png" /></td></tr></table>
 
 <ul>
   <li>Haverá três vistas 
   </li>
-  <li>O controlador será aquele fornecido pelo Struts
+  <li>o controlador será o fornecido pelo Struts
   </li>
-  <li><b>FormBean </b>é a classe responsável por armazenar os valores do formulário apresentado pela vista <b>form.person.jsp</b>
+  <li><b>FormulaireBean </b>é a classe responsável por armazenar os valores do formulário apresentado pela vista <b>formulaire.personne.jsp</b>
   </li>
-  <li><b>FormAction </b>é a classe responsável por processar os valores do <b>FormBean </b>e especificar a página de resposta a ser enviada: 
+  <li><b>FormulaireAction </b>é a classe responsável por processar os valores de <b>FormulaireBean </b>e indicar a página de resposta a enviar: 
     <ul>
-      <li>a vista<b> errors.person.jsp </b>se os dados do formulário estiverem incorretos
+      <li>a vista <b>erreurs.personne.jsp, </b>se os dados do formulário estiverem incorretos
       </li>
-      <li>a vista<b> reponse.personne.jsp, </b>caso contrário
+      <li>a vista <b>reponse.personne.jsp, </b>caso contrário
       </li>
     </ul>
   </li>
 </ul>
 
-<p>Para o programador, a tarefa consiste em escrever o código:</p>
+<p>Para o programador, o trabalho consiste em escrever o código:</p>
 <ul>
-  <li>as três vistas
+  <li>das três vistas
   </li>
-  <li>o <b>FormBean </b>associado ao formulário
+  <li>do bean <b>FormulaireBean </b>associado ao formulário
   </li>
-  <li>a classe <b>FormAction </b>responsável pelo processamento do formulário
+  <li>da classe <b>FormulaireAction </b>responsável pelo processamento do formulário
   </li>
 </ul>
 
-<h2 id="23-compilacao-das-classes-necessarias-para-a-aplicacao-struts">2.3. <span style="color: #4f81bd">Compilação das classes necessárias para a aplicação Struts</span></h2>
-<p>Para compilar as classes necessárias para a nossa aplicação, utilizaremos o JBuilder. O JBuilder funciona com um JDK que não contém as classes necessárias para aplicações Struts. Podemos configurar o JBuilder da seguinte forma:</p>
+<h2 id="23-compilar-as-classes-necessarias-para-a-aplicacao-struts">2.3. <span style="color: #4f81bd">Compilar as classes necessárias para a aplicação Struts</span></h2>
+<p>Para compilar as classes necessárias à nossa aplicação, utilizaremos o JBuilder. Este programa funciona com um JDK no qual não se encontram as classes necessárias às aplicações Struts. Podemos configurar o JBuilder da seguinte forma:</p>
 <ul>
-<li>Ferramentas / Configurar JDKs</li>
+<li>opção Tools (Ferramentas) / Configure JDKs (Configurar o JDK)</li>
 </ul>
 <p><img src="images/10000000000001A3000001AA2F602FA8.png" width="419" height="426" style="width:11.084cm;height:11.269cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000001A3000001AA2F602FA8.png" /></p>
 <ul>
-<li>Utilize o botão [Adicionar] para adicionar os ficheiros .jar fornecidos pelo Struts aos arquivos de classes do JBuilder. Se tiver extraído o arquivo do Struts para o seu disco, pode adicionar todos os ficheiros .jar da pasta <strong>&lt;struts&gt;/lib</strong> ao JBuilder:</li>
+<li>utilizar o botão [Add/Ajouter] para adicionar aos arquivos de classes do JBuilder os ficheiros .jar fornecidos pelo Struts. Se o arquivo do Struts tiver sido descompactado no disco, é possível adicionar ao JBuilder todos os ficheiros .jar da pasta <strong>&lt;struts&gt;/lib</strong>:</li>
 </ul>
 <p><img src="images/100000000000016F0000011E3E8ECBF9.png" width="367" height="286" style="width:9.708cm;height:7.565cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/100000000000016F0000011E3E8ECBF9.png" /></p>
-<p>Pode adicionar todos os ficheiros .jar acima referidos aos arquivos do JBuilder. Já vimos que o Tomcat também precisa de acesso aos arquivos do Struts. Para o Tomcat 4.x, pode colocar os ficheiros .jar do Struts em <strong>&lt;tomcat4&gt;\common\lib</strong>. Para o Tomcat 5.x, pode colocá-los em <strong>&lt;tomcat5&gt;\shared\lib</strong>. Pode então configurar o JBuilder para localizar os ficheiros .jar do Struts no mesmo local que o Tomcat. Foi isso que foi feito na captura de ecrã que mostra os ficheiros .jar do JBuilder mencionados anteriormente. Foram retirados de <strong>&lt;tomcat5&gt;\shared\lib.</strong></p>
-<p>Portanto, se o JBuilder indicar que não consegue encontrar uma classe Struts durante a compilação de uma classe, verifique duas coisas:</p>
+<p>É possível adicionar ao JBuilder todos os ficheiros .jar acima referidos. Já vimos que o Tomcat também precisa de ter acesso aos arquivos do Struts. Para o Tomcat 4.x, pode-se colocar os ficheiros .jar do Struts em <strong>&lt;tomcat4&gt;\common\lib</strong>. Para o Tomcat 5.x, pode-se colocá-los em <strong>&lt;tomcat5&gt;\shared\lib</strong>. Pode-se, em seguida, definir que o JBuilder encontre os ficheiros .jar do Struts no mesmo local que o Tomcat. Foi isso que foi feito na captura de ecrã apresentada um pouco mais acima, que mostra os ficheiros .jar do JBuilder. Estes foram obtidos em <strong>&lt;tomcat5&gt;\shared\lib.</strong></p>
+<p>Portanto, se, durante a compilação de uma classe, o JBuilder indicar que não consegue encontrar uma classe do Struts, verifique duas coisas:</p>
 <ul>
   <li>a ortografia da classe
   </li>
@@ -863,11 +865,11 @@
 <h2 id="24-as-vistas-da-aplicacao-strutspersonne">2.4. <span style="color: #4f81bd">As vistas da aplicação strutspersonne</span></h2>
 <p>As três vistas da aplicação são as seguintes:</p>
 <ul>
-  <li><b>form.person.jsp</b>: apresenta o formulário para introduzir o nome e a idade de uma pessoa
+  <li><b>formulaire.personne.jsp</b>: apresenta o formulário para introduzir o nome e a idade de uma pessoa
   </li>
   <li><b>reponse.personne.jsp</b>: apresenta os valores introduzidos, caso sejam válidos
   </li>
-  <li><b>errors.person.jsp</b>: apresenta quaisquer erros
+  <li><b>erreurs.personne.jsp</b>: apresenta os erros, caso existam
   </li>
 </ul>
 
@@ -888,9 +890,9 @@
 <a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a>  <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
 <a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
 </code></pre></div>
-<p>Existem duas novas funcionalidades neste código:</p>
+<p>Existem duas novidades neste código:</p>
 <ol>
-  <li>a presença de tags<b> &lt;html:XX/&gt;</b>, que não são tags HTML. É possível criar bibliotecas de tags JSP que são convertidas em código Java quando a página JSP é transformada num servlet.
+  <li>a presença de tags <b>&lt;html:XX/&gt;, </b>que não são tags HTML. É possível, de facto, criar bibliotecas de tags JSP que, durante a transformação da página JSP num servlet, são convertidas em código Java.
   </li>
   <li>A página JSP deve declarar as bibliotecas de tags que utiliza. Faz-o aqui com a linha 
   </li>
@@ -900,49 +902,49 @@
 </code></pre></div>
 <p>Esta linha fornece duas informações:</p>
 <ul>
-  <li><b>uri</b>: a localização do ficheiro que define as regras de utilização da biblioteca. O ficheiro<b> struts-html.tld </b>está incluído na distribuição do Struts. No exemplo acima, encontra-se na pasta WEB-INF.
+  <li><b>uri</b>: a localização do ficheiro que define as regras de utilização da biblioteca. O ficheiro <b>struts-html.tld </b>é fornecido na distribuição do Struts. No exemplo acima, deve ser colocado na pasta WEB-INF.
   </li>
-  <li><b>prefix</b>: o identificador utilizado no código para prefixar as tags da biblioteca. Isto evita conflitos de nomenclatura que poderiam surgir ao utilizar várias bibliotecas de tags simultaneamente. É possível encontrar duas tags com o mesmo nome em duas bibliotecas diferentes. Ao atribuir a cada biblioteca um prefixo diferente, elimina-se qualquer ambiguidade.
+  <li><b>prefix</b>: o identificador utilizado no código para prefixar as tags da biblioteca. Isto permite evitar conflitos de nomes que possam surgir durante a utilização simultânea de várias bibliotecas de tags. Seria possível encontrar duas tags com o mesmo nome em duas bibliotecas diferentes. Ao atribuir um prefixo diferente a cada biblioteca, elimina-se qualquer ambiguidade.
   </li>
 </ul>
 
 <ul>
-  <li>A tag &lt;<b>html:errors</b>&gt; exibe a lista de erros que o controlador Struts lhe envia.
+  <li>A tag &lt;<b>html:errors</b>&gt; apresenta a lista de erros que o controlador Struts lhe transmite.
   </li>
   <li>A tag &lt;<b>html:link</b>&gt; gera um link que aponta para <b>/C/page, </b>onde
     <ul>
       <li><b>C </b>é o contexto da aplicação
       </li>
-      <li><b>page </b>é o URL especificado no atributo page da tag
+      <li><b>«page» </b>é o URL indicado no atributo «page» da tag
       </li>
     </ul>
   </li>
 </ul>
 
-<p>A</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>    <span class="p">&lt;</span><span class="nt">html:link</span> <span class="na">page</span><span class="o">=</span><span class="s">&quot;/formulaire.do&quot;</span><span class="p">&gt;</span>
+<p>A baliza</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>    &lt;html:link page=&quot;/formulaire.do&quot;&gt;
 <a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>            Retour au formulaire
-<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>        <span class="p">&lt;/</span><span class="nt">html:link</span><span class="p">&gt;</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>        &lt;/html:link&gt;
 </code></pre></div>
 <p>irá gerar o seguinte código HTML:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;/C/formulaire.do&quot;</span><span class="p">&gt;</span>Retour au formulaire<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
 </code></pre></div>
 <p>onde <strong>C</strong> é o contexto da aplicação</p>
-<h3 id="242-testar-a-visualizacao-errorspersonjsp">2.4.2. <span style="color: #4f81bd">Testar a visualização errors.person.jsp</span></h3>
+<h3 id="242-teste-da-vista-erreurspersonnejsp">2.4.2. <span style="color: #4f81bd">Teste da vista erreurs.personne.jsp</span></h3>
 <ul>
-  <li>O ficheiro<b> errors.person.jsp </b>está localizado na pasta <b>views </b>da aplicação <b>strutspersonne</b>:
+  <li>o ficheiro <b>erreurs.personne.jsp </b>é colocado na pasta <b>«vues» </b>da aplicação <b>strutspersonne</b>:
   </li>
 </ul>
 
 <p><img src="images/1000000000000153000000457E445417.png" width="339" height="69" style="width:8.968cm;height:1.826cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/1000000000000153000000457E445417.png" /></p>
 <ul>
-  <li>O ficheiro<b> struts-html.tld </b>é retirado da distribuição Struts (<b>&lt;struts&gt;/lib</b>) e colocado em <b>WEB-INF</b>:
+  <li>o ficheiro <b>struts-html.tld </b>é obtido da distribuição Struts (<b>&lt;struts&gt;/lib</b>) e colocado em <b>WEB-INF</b>:
   </li>
 </ul>
 
 <p><img src="images/100000000000013A0000005CC82C53BC.png" width="314" height="92" style="width:8.306cm;height:2.434cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/100000000000013A0000005CC82C53BC.png" /></p>
 <ul>
-  <li>O ficheiro<b> struts-config.xml </b>é modificado da seguinte forma:
+  <li>o ficheiro <b>struts-config.xml </b>é alterado da seguinte forma:
   </li>
 </ul>
 
@@ -967,14 +969,14 @@
 <a id="__codelineno-12-19" name="__codelineno-12-19" href="#__codelineno-12-19"></a><span class="w">    </span><span class="nt">&lt;/action-mappings&gt;</span>
 <a id="__codelineno-12-20" name="__codelineno-12-20" href="#__codelineno-12-20"></a><span class="nt">&lt;/struts-config&gt;</span>
 </code></pre></div>
-<p>Criamos uma nova URL <strong>/errors</strong> no ficheiro de configuração para ser tratada pelo controlador Struts. A URL <strong>/errors.do</strong> será redirecionada para a vista <strong>/views/errors.person.jsp</strong>. O ficheiro <strong>struts-config.xml</strong> é colocado na pasta WEB-INF.</p>
+<p>Criamos no ficheiro de configuração uma nova entrada URL <strong>/erros</strong> destinada a ser processada pelo controlador Struts. O URL <strong>/erreurs.do</strong> será redirecionado para a vista <strong>/vistas/erreurs.personne.jsp</strong>. O ficheiro <strong>struts-config.xml</strong> é colocado na pasta WEB-INF.</p>
 <ul>
-  <li>Reiniciamos o Tomcat para que o novo ficheiro<b> struts-config</b>.<b>xml </b>seja tido em conta e, em seguida, solicitamos a URL<b> http://localhost:8080/strutspersonne/erreurs.do</b>:
+  <li>Reiniciamos o Tomcat para que o novo ficheiro <b>struts-config.xml </b>seja tido em conta e, em seguida, acedemos à URL<b> http://localhost:8080/strutspersonne/erreurs.do</b>:
   </li>
 </ul>
 
 <p><img src="images/1000000000000208000000A366AB9994.png" width="520" height="163" style="width:13.757cm;height:4.313cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/1000000000000208000000A366AB9994.png" /></p>
-<p>A tag <strong>&lt;html:errors/&gt;</strong> não produziu nada. Isto é normal; <strong>a ForwardAction</strong> não gerou a lista de erros esperada pela tag. No entanto, a resposta acima mostra que a nossa vista JSP está, pelo menos, sintaticamente correta; caso contrário, teríamos recebido uma página de erro. Vamos verificar o código HTML recebido pelo navegador (Ver/Fonte):</p>
+<p>A baliza <strong>&lt;html:errors/&gt;</strong> não produziu qualquer resultado. Isto é normal, uma vez que a ação <strong>ForwardAction</strong> não gerou a lista de erros esperada pela baliza. No entanto, a resposta acima mostra que a nossa vista JSP está, pelo menos, sintaticamente correta; caso contrário, teríamos obtido uma página de erros. Verifiquemos o código HTML recebido pelo navegador (Ver/Fonte):</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
 <a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>    <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
 <a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>      <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Personne - erreurs<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
@@ -985,17 +987,17 @@
 <a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>  <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
 <a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
 </code></pre></div>
-<p>Repare no link gerado pela tag &lt;<strong>html:link</strong>&gt;. O contexto <strong>/strutspersonne</strong> foi automaticamente incluído no link. Isto permite que a aplicação seja movida de um contexto para outro (por exemplo, ao mudar de máquina) sem ter de alterar os links gerados pela tag &lt;<strong>html:link</strong>&gt;.</p>
+<p>Note-se o link gerado pela baliza &lt;<strong>html:link</strong>&gt;. O contexto <strong>/strutspersonne</strong> foi automaticamente incluído no link. Isto permite transferir a aplicação de um contexto para outro (por exemplo, mudança de computador) sem ter de alterar os links gerados pela baliza &lt;<strong>html:link</strong>&gt;.</p>
 <h3 id="243-a-vista-reponsepersonnejsp">2.4.3. <span style="color: #4f81bd">A vista reponse.personne.jsp</span></h3>
 <p>Esta vista, que confirma os valores introduzidos no formulário, é a seguinte:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="err">&lt;</span>%@ taglib uri=&quot;/WEB-INF/struts-html.tld&quot; prefix=&quot;html&quot; %&gt;
 <a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>
 <a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="err">&lt;</span>%
-<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>    // on récupère les données nom, age
-<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>  //String nom=(String)request.getAttribute(&quot;nom&quot;);
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>     // recuperamos os dados nome e idade
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>  //String nome = (String)request.getAttribute(&quot;nome&quot;);
 <a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>  String nom=&quot;jean&quot;;
 <a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a>
-<a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a>  //String age=(String)request.getAttribute(&quot;age&quot;); 
+<a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a>   //String idade = (String)request.getAttribute(&quot;idade&quot;); 
 <a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a>  String age=&quot;24&quot;; 
 <a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a>%&gt;
 <a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a>
@@ -1023,16 +1025,16 @@
 <a id="__codelineno-14-33" name="__codelineno-14-33" href="#__codelineno-14-33"></a>  <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
 <a id="__codelineno-14-34" name="__codelineno-14-34" href="#__codelineno-14-34"></a><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
 </code></pre></div>
-<p>A página apresenta duas informações, [name] e [age], que lhe serão passadas pelo controlador no objeto de <strong>pedido</strong> predefinido. Aqui, estamos a realizar um teste em que o controlador não terá a oportunidade de definir os valores de [name] e [age]. Por isso, inicializamos estas duas informações com valores arbitrários. Além disso, também aqui o link de retorno ao formulário é gerado por uma tag &lt;<strong>html:link</strong>&gt;.</p>
-<h3 id="244-testar-a-vista-reponsepersonnejsp">2.4.4. <span style="color: #4f81bd">Testar a vista reponse.personne.jsp</span></h3>
+<p>A página apresenta duas informações, [nom] e [age], que lhe serão passadas pelo controlador no objeto predefinido <strong>«request</strong>». Aqui, realizamos um teste em que o controlador não terá a oportunidade de definir os valores de [nom] e [age]. Por isso, inicializamos estas duas informações com valores arbitrários. Além disso, também aqui o link de retorno para o formulário é gerado por uma baliza &lt;<strong>html:link</strong>&gt;.</p>
+<h3 id="244-teste-da-vista-reponsepersonnejsp">2.4.4. <span style="color: #4f81bd">Teste da vista reponse.personne.jsp</span></h3>
 <ul>
-  <li>O ficheiro<b> reponse.personne.jsp </b>está localizado na pasta <b>views </b>da aplicação <b>strutspersonne</b>:
+  <li>O ficheiro <b>reponse.personne.jsp </b>é colocado na pasta <b>«vues» </b>da aplicação <b>strutspersonne</b>:
   </li>
 </ul>
 
 <p><img src="images/100000000000015F0000004EBBDF68D5.png" width="351" height="78" style="width:9.285cm;height:2.064cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/100000000000015F0000004EBBDF68D5.png" /></p>
 <ul>
-  <li>O ficheiro<b> struts-config.xml </b>é modificado da seguinte forma:
+  <li>O ficheiro <b>struts-config.xml </b>é alterado da seguinte forma:
   </li>
 </ul>
 
@@ -1062,16 +1064,16 @@
 <a id="__codelineno-15-24" name="__codelineno-15-24" href="#__codelineno-15-24"></a><span class="w">    </span><span class="nt">&lt;/action-mappings&gt;</span>
 <a id="__codelineno-15-25" name="__codelineno-15-25" href="#__codelineno-15-25"></a><span class="nt">&lt;/struts-config&gt;</span>
 </code></pre></div>
-<p>Criamos uma nova URL <strong>/reponse</strong> no ficheiro de configuração para ser tratada pelo controlador Struts. A URL <strong>/reponse.do</strong> será redirecionada para a vista <strong>/vues/reponse.personne.jsp</strong>. O ficheiro <strong>struts-config.xml</strong> é colocado na pasta WEB-INF.</p>
+<p>Criamos no ficheiro de configuração uma nova <strong>resposta</strong> URL destinada a ser processada pelo controlador Struts. O URL <strong>/reponse.do</strong> será redirecionado para a vista <strong>/vues/reponse.personne.jsp</strong>. O ficheiro <strong>struts-config.xml</strong> é colocado na pasta WEB-INF.</p>
 <ul>
-  <li>Reiniciamos o Tomcat para que o novo ficheiro<b> struts-config</b>.<b>xml </b>seja tido em conta e, em seguida, solicitamos a URL<b> http://localhost:8080/strutspersonne/erreurs.do</b>:
+  <li>Reiniciamos o Tomcat para que o novo ficheiro <b>struts-config.xml </b>seja reconhecido e, em seguida, acedemos à URL<b> http://localhost:8080/strutspersonne/erreurs.do</b>:
   </li>
 </ul>
 
-<p><img src="images/100000000000020A000001025729052F.png" width="522" height="258" style="width:13.809cm;height:6.824cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/100000000000020A000001025729052F.png" /></p>
-<p>Obtemos exatamente o que esperávamos.</p>
+<p><img src="images/100000000000020A000001025729052F.png" width="522" height="258" style="width:13.809cm;height:6.826cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/100000000000020A000001025729052F.png" /></p>
+<p>O resultado obtido corresponde ao esperado.</p>
 <h3 id="245-a-vista-formulairepersonnejsp">2.4.5. <span style="color: #4f81bd">A vista formulaire.personne.jsp</span></h3>
-<p>Esta vista apresenta o formulário para introduzir o nome e a idade do utilizador. O seu código JSP é o seguinte:</p>
+<p>Esta vista apresenta o formulário para introdução do nome e da idade do utilizador. O seu código JSP é o seguinte:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="err">&lt;</span>%@ taglib uri=&quot;/WEB-INF/struts-html.tld&quot; prefix=&quot;html&quot; %&gt;
 <a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>
 <a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
@@ -1116,52 +1118,52 @@
 <a id="__codelineno-16-42" name="__codelineno-16-42" href="#__codelineno-16-42"></a>  <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
 <a id="__codelineno-16-43" name="__codelineno-16-43" href="#__codelineno-16-43"></a><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
 </code></pre></div>
-<p>Vemos a biblioteca de tags <strong>struts-html.tld</strong> a ser utilizada na visualização de <strong>erros</strong>. Surgem novas tags:</p>
-<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div markdown="block">
+<p>Encontramos novamente a biblioteca de tags <strong>struts-html.tld</strong> utilizada na vista de <strong>erros</strong>. Surgem novas tags:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>html:form
 </code></pre></div>
-</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">é utilizada tanto para gerar a tag HTML &lt;<b>form</b>&gt; como para fornecer informações ao controlador que irá processar este formulário:</div><table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div markdown="block">
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">serve tanto para gerar a tag HTML &lt;<b>form</b>&gt; como para fornecer informações ao controlador que terá de processar este formulário:</div><table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>action
 </code></pre></div>
-</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">URL para a qual os valores do formulário serão enviados</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div markdown="block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>nome
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">URL para onde serão enviados os valores do formulário</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>name
 </code></pre></div>
-</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">nome do formulário HTML. Este é também o nome do bean que armazenará os valores do formulário</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div markdown="block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>tipo
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">nome do formulário HTML. É também o nome do bean que armazenará os valores do mesmo</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>type
 </code></pre></div>
-</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">Nome da classe que deve ser instanciada para obter o bean de armazenamento do formulário</div></td></tr></table><div style="margin:0 0 0.5em 0">Note que o método utilizado para enviar parâmetros do formulário (GET/POST) para o controlador não está especificado. Isto pode ser feito utilizando o atributo <b>method</b>. Se este atributo estiver em falta, o método <b>POST </b>é utilizado por predefinição.</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div markdown="block">
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">nome da classe que deverá ser instanciada para obter o bean de armazenamento do formulário</div></td></tr></table><div style="margin:0 0 0.5em 0">Note-se que o método de envio dos parâmetros do formulário (GET/POST) para o controlador não está especificado. Isso poderia ser feito com o atributo <b>method</b>. Na ausência deste, é utilizado por predefinição o método <b>POST</b>.</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>html:text
 </code></pre></div>
-</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">Utilizado para gerar a tag<b> &lt;input type=&quot;text&quot; value=&quot;...&quot;&gt;</b>:</div><table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div markdown="block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>propriedade
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">serve para gerar a baliza <b>&lt;input type=&quot;text&quot; value=&quot;...&quot;&gt;</b>:</div><table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>property
 </code></pre></div>
-</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">nome do campo no bean do formulário que será associado ao campo de entrada. Quando o formulário é enviado para o servidor (cliente -&gt; servidor), o campo do bean assume o valor do campo de entrada. Quando o formulário é apresentado (servidor -&gt; cliente), o valor contido no campo do bean é apresentado no campo de entrada.</div></td></tr></table></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div markdown="block">
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">nome do campo do bean do formulário que será associado à área de introdução de dados. Ao enviar o formulário para o servidor (cliente → servidor), o campo do bean assumirá o valor do campo de introdução de dados. Ao apresentar o formulário (servidor → cliente), o valor contido no campo do bean é apresentado na área de introdução de dados.</div></td></tr></table></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>html:submit
 </code></pre></div>
-</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">é utilizado para gerar a tag HTML &lt;<b>input type=&quot;submit&quot;</b>...&gt;</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div markdown="block">
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">serve para gerar a baliza HTML &lt;<b>input type=&quot;submit&quot;</b>...&gt;</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>html:reset
 </code></pre></div>
-</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">é utilizado para gerar a tag HTML &lt;<b>input type=&quot;reset&quot;</b>...&gt;</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div markdown="block">
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">serve para gerar a tag HTML &lt;<b>input type=&quot;reset&quot;</b>...&gt;</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>html:button
 </code></pre></div>
-</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">é utilizado para gerar a tag HTML &lt;<b>input type=&quot;button&quot;</b>...&gt;</div></td></tr></table>
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">serve para gerar a tag HTML &lt;<b>input type=&quot;button&quot;</b>...&gt;</div></td></tr></table>
 
 <h3 id="246-o-bean-associado-ao-formulario-formulairepersonnejsp">2.4.6. <span style="color: #4f81bd">O bean associado ao formulário formulaire.personne.jsp</span></h3>
 <ul>
-  <li>Com o Struts, cada formulário deve estar associado a um bean responsável por armazenar os valores do formulário e mantê-los na sessão atual. Um bean é uma classe Java que deve seguir uma sintaxe específica. O bean associado a um formulário deve estender a classe <b>ActionForm </b>definida na biblioteca Struts:
+  <li>Com o Struts, qualquer formulário deve estar associado a um bean responsável por memorizar os valores do formulário e mantê-los na sessão atual. Um bean é uma classe Java que deve respeitar uma sintaxe específica. O bean associado a um formulário deve derivar da classe <b>ActionForm </b>definida nas bibliotecas do Struts:
   </li>
 </ul>
 
-<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">FormulaireBean</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">ActionForm</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">FormulaireBean</span><span class="w"> </span><span class="n">extends</span><span class="w"> </span><span class="n">ActionForm</span><span class="w"> </span><span class="p">{</span>
 </code></pre></div>
 <ul>
-  <li>Os nomes dos atributos do bean devem corresponder aos campos do formulário (atributos de<b> propriedade </b>das tags<b> &lt;html:text&gt; </b>do formulário). Com base no código do formulário anterior, o bean deve, portanto, ter dois campos denominados <b>name </b>e <b>age</b>.
+  <li>os nomes dos atributos do bean devem corresponder aos campos do formulário (atributos <b>«property» </b>das tags <b>«html:text» </b>do formulário). De acordo com o código do formulário anterior, o bean deve, portanto, ter dois campos denominados <b>«nom» </b>e <b>«age</b>».
   </li>
-  <li>Para cada campo XX no formulário, o bean deve definir dois métodos:
+  <li>Para cada campo XX do formulário, o bean deve definir dois métodos:
     <ul>
-      <li>public void <b>setXX</b>(Type value): para atribuir um valor ao atributo XX
+      <li>public void <b>setXX</b>(Type valor): para atribuir um valor ao atributo XX
       </li>
-      <li>public <b>getXX</b>(Value type): para recuperar o valor do campo XX
+      <li>Type <b>getXX</b>(): para obter o valor do campo XX
       </li>
     </ul>
   </li>
@@ -1173,7 +1175,7 @@
 <a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.apache.struts.action.ActionForm</span><span class="p">;</span>
 <a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a>
 <a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">FormulaireBean</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">ActionForm</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-27-6" name="__codelineno-27-6" href="#__codelineno-27-6"></a><span class="w">   </span><span class="c1">// name</span>
+<a id="__codelineno-27-6" name="__codelineno-27-6" href="#__codelineno-27-6"></a><span class="w">   </span><span class="c1">// nome</span>
 <a id="__codelineno-27-7" name="__codelineno-27-7" href="#__codelineno-27-7"></a><span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">nom</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
 <a id="__codelineno-27-8" name="__codelineno-27-8" href="#__codelineno-27-8"></a><span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getNom</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-27-9" name="__codelineno-27-9" href="#__codelineno-27-9"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">nom</span><span class="p">;</span>
@@ -1182,7 +1184,7 @@
 <a id="__codelineno-27-12" name="__codelineno-27-12" href="#__codelineno-27-12"></a><span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="na">nom</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nom</span><span class="p">;</span>
 <a id="__codelineno-27-13" name="__codelineno-27-13" href="#__codelineno-27-13"></a><span class="w">  </span><span class="p">}</span>
 <a id="__codelineno-27-14" name="__codelineno-27-14" href="#__codelineno-27-14"></a>
-<a id="__codelineno-27-15" name="__codelineno-27-15" href="#__codelineno-27-15"></a><span class="w">   </span><span class="c1">// age</span>
+<a id="__codelineno-27-15" name="__codelineno-27-15" href="#__codelineno-27-15"></a><span class="w">   </span><span class="c1">// idade</span>
 <a id="__codelineno-27-16" name="__codelineno-27-16" href="#__codelineno-27-16"></a><span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
 <a id="__codelineno-27-17" name="__codelineno-27-17" href="#__codelineno-27-17"></a><span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getAge</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-27-18" name="__codelineno-27-18" href="#__codelineno-27-18"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">age</span><span class="p">;</span>
@@ -1192,12 +1194,12 @@
 <a id="__codelineno-27-22" name="__codelineno-27-22" href="#__codelineno-27-22"></a><span class="w">  </span><span class="p">}</span>
 <a id="__codelineno-27-23" name="__codelineno-27-23" href="#__codelineno-27-23"></a><span class="p">}</span>
 </code></pre></div>
-<p>Vamos compilar esta classe utilizando o JBuilder.</p>
-<h3 id="247-testar-a-vista-formulairepersonnejsp">2.4.7. <span style="color: #4f81bd">Testar a vista formulaire.personne.jsp</span></h3>
-<p>O ficheiro <strong>formulaire.personne.jsp</strong> está localizado na pasta <strong>views</strong> da aplicação <strong>strutspersonne</strong>:</p>
+<p>Estas classes serão compiladas com o JBuilder.</p>
+<h3 id="247-teste-da-vista-formulairepersonnejsp">2.4.7. <span style="color: #4f81bd">Teste da vista formulaire.personne.jsp</span></h3>
+<p>O ficheiro <strong>formulaire.personne.jsp</strong> é colocado na pasta <strong>«vues»</strong> da aplicação <strong>strutspersonne</strong>:</p>
 <p><img src="images/100000000000015E0000005D985EE8CF.png" width="350" height="93" style="width:9.259cm;height:2.461cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/100000000000015E0000005D985EE8CF.png" /></p>
 <ul>
-  <li>O ficheiro<b> struts-config.xml </b>é modificado da seguinte forma:
+  <li>O ficheiro <b>struts-config.xml </b>é alterado da seguinte forma:
   </li>
 </ul>
 
@@ -1232,7 +1234,7 @@
 <a id="__codelineno-28-29" name="__codelineno-28-29" href="#__codelineno-28-29"></a><span class="w">    </span><span class="nt">&lt;/action-mappings&gt;</span>
 <a id="__codelineno-28-30" name="__codelineno-28-30" href="#__codelineno-28-30"></a><span class="nt">&lt;/struts-config&gt;</span>
 </code></pre></div>
-<p>No ficheiro de configuração, criamos um novo URL <strong>/form</strong> para ser tratado pelo controlador Struts. O URL <strong>/form.do</strong> será redirecionado para a vista <strong>/views/form.person.jsp</strong>. O ficheiro <strong>struts-config.xml</strong> é colocado na pasta WEB-INF.</p>
+<p>Criamos no ficheiro de configuração um novo <strong>formulário</strong> URL destinado a ser processado pelo controlador Struts. O URL <strong>/formulaire.do</strong> será redirecionado para a vista <strong>/vues/formulaire.personne.jsp</strong>. O ficheiro <strong>struts-config.xml</strong> é colocado na pasta WEB-INF.</p>
 <ul>
   <li>Colocamos a classe <b>FormulaireBean </b>em <b>WEB-INF/classes</b>:
   </li>
@@ -1240,12 +1242,12 @@
 
 <p><img src="images/10000000000001FF00000066D8ACF269.png" width="511" height="102" style="width:13.518cm;height:2.699cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000001FF00000066D8ACF269.png" /></p>
 <ul>
-  <li>Reiniciamos o Tomcat para que o novo ficheiro<b> struts-config</b>.<b>xml </b>seja tido em conta e, em seguida, acedemos à URL<b> http://localhost:8080/strutspersonne/formulaire.do</b>:
+  <li>Reiniciamos o Tomcat para que o novo ficheiro <b>struts-config.xml </b>seja reconhecido e, em seguida, acedemos à URL<b> http://localhost:8080/strutspersonne/formulaire.do</b>:
   </li>
 </ul>
 
-<p><img src="images/1000000000000191000000FB1E91DDC5.png" width="401" height="251" style="width:10.608cm;height:6.639cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/1000000000000191000000FB1E91DDC5.png" /></p>
-<p>O formulário é apresentado corretamente. Podemos ficar curiosos para ver como as tags <strong>&lt;html:XX&gt;</strong> espalhadas pelo código JSP do formulário foram «traduzidas»:</p>
+<p><img src="images/1000000000000191000000FB1E91DDC5.png" width="401" height="251" style="width:10.608cm;height:6.641cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/1000000000000191000000FB1E91DDC5.png" /></p>
+<p>O formulário é apresentado corretamente. Podemos ficar curiosos em ver como foram «traduzidas» as balizas <strong>&lt;html:XX&gt;</strong> que pontuavam o código JSP do formulário:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
 <a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">http-equiv</span><span class="o">=</span><span class="s">&quot;pragma&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;no-cache&quot;</span><span class="p">&gt;</span> 
 <a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a>    <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
@@ -1291,9 +1293,9 @@
 <a id="__codelineno-29-43" name="__codelineno-29-43" href="#__codelineno-29-43"></a>  <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
 <a id="__codelineno-29-44" name="__codelineno-29-44" href="#__codelineno-29-44"></a><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
 </code></pre></div>
-<p>No formulário resultante, os botões [Reset] e [Clear] funcionam. <strong>O</strong> botão [Submit] redireciona para o URL <strong>/strutspersonne/main.do</strong>. De acordo com o ficheiro <strong>web.xml</strong> da aplicação, o controlador Struts irá tratar disso. De acordo com o ficheiro <strong>struts-config.html</strong>, o controlador deve redirecionar o pedido para a vista <strong>/vues/main.html</strong>. Vamos experimentar:</p>
+<p>No formulário obtido, os botões [Restaurar] e [Effacer] funcionam. O botão [Envoyer], do tipo <strong>«submit»,</strong> redireciona para a página URL <strong>/strutspersonne/main.do</strong>. De acordo com o ficheiro <strong>web.xml</strong> da aplicação, o controlador Struts irá tratá-la. De acordo com o ficheiro <strong>struts-config.html</strong>, o controlador deve redirecionar o pedido para a vista <strong>/vues/main.html</strong>. Vamos experimentar:</p>
 <p><img src="images/10000000000002060000009339E6DD43.png" width="518" height="147" style="width:13.704cm;height:3.889cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000002060000009339E6DD43.png" /></p>
-<p>Tudo funciona como esperado. Ainda precisamos de processar efetivamente os valores do formulário, ou seja, escrever a classe <strong>Action</strong> que irá receber os dados do formulário num objeto <strong>FormBean</strong>.</p>
+<p>Tudo corre como esperado. Resta-nos agora processar efetivamente os valores do formulário, c.a.d. Escrever a classe do tipo <strong>Action</strong> que irá receber os dados do formulário num objeto <strong>FormulaireBean</strong>.</p>
 
 
 
